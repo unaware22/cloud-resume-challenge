@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aditya Nur Lintang — Cyber Security & Network Engineer Portfolio</title>
+    <!-- Google Fonts: Pixelify Sans (Pixel Headings), Press Start 2P (8-Bit Accents), Plus Jakarta Sans (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=Press+Start+2P&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=3" />
+    <script src="script.js?v=3" defer></script>
+</head>
+<body>
+
+    <!-- Anime Pixel Art Cumulus Cloud Sky Background (Studio Ghibli Pixel Sky) -->
+    <div class="sky-background">
+        <div class="pixel-sky-gradient"></div>
+        <div class="pixel-cloud-layer pixel-clouds-back"></div>
+        <div class="pixel-cloud-layer pixel-clouds-mid"></div>
+        <div class="pixel-cloud-layer pixel-clouds-front"></div>
+        <div class="pixel-horizon-bar"></div>
+        <div class="cloud-glow"></div>
+    </div>
+
+
+
+    <div class="container">
+
+        <!-- Navigation Bar -->
+        <nav class="nav fade-in">
+            <div class="nav-brand">
+                <span class="nav-logo">Resume</span>
+                <span class="nav-logo-star">✦</span>
+            </div>
+            <div class="nav-links">
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#certifications">Certificates</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+                
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" class="theme-toggle" aria-label="Ubah Tema">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero reveal">
+            <div class="hero-layout">
+                <div class="hero-left">
+                    <div class="hero-badge">
+                        <span class="badge-dot"></span>
+                        <span id="typing-text" class="typing-text">AWS Enthusiast</span><span class="typing-cursor">|</span>
+                    </div>
+                    <h1 class="hero-title">
+                        Aditya Nur<br />
+                        <span class="accent-gradient">Lintang</span>
+                    </h1>
+                    <div class="hero-row">
+                        <button id="location-btn" class="hero-location-btn" aria-label="Buka Peta Lokasi Depok">
+                            <svg class="location-pin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            <span>Depok, Jawa Barat</span>
+                            <span class="location-pulse-dot"></span>
+                        </button>
+                        <span class="hero-year">2026</span>
+                    </div>
+                    <p class="hero-description">
+                        Saya adalah mahasiswa Teknik Informatika Universitas Pancasila angkatan 2023 dengan peminatan <strong>Network Cyber Security (NCS)</strong>. Memiliki minat pada infrastruktur TI, jaringan komputer, administrasi sistem Linux, serta layanan cloud menggunakan <strong>Amazon Web Services (AWS)</strong>. Saat ini saya berfokus mengembangkan kompetensi di bidang cloud computing melalui pembelajaran mandiri, sertifikasi, dan implementasi proyek sebagai persiapan untuk berkarier sebagai <strong>Cloud Engineer</strong>.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#projects" class="btn-primary">Lihat Project <span class="arrow">→</span></a>
+                        <a href="#contact" class="btn-secondary">Hubungi Saya</a>
+                    </div>
+                </div>
+                
+                <div class="hero-right">
+                    <div class="profile-image-container">
+                        <img src="chad.jpg" alt="Aditya Nur Lintang" class="profile-image" />
+                        <div class="profile-image-border"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Experience Section (Combined into 1 Card Container with AWS Pixel Cloud) -->
+        <section id="experience" class="reveal">
+            <div class="experience-main-card">
+                <div class="journey-header">
+                    <div class="journey-badge-group">
+                        <div class="journey-badge career-badge" tabindex="0">
+                            <svg class="badge-icon icon-career" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" fill="rgba(245, 158, 11, 0.18)"/>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                            </svg>
+                            <span>CAREER</span>
+                        </div>
+                        <div class="journey-badge exp-badge" tabindex="0">
+                            <svg class="badge-icon icon-exp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="rgba(6, 182, 212, 0.18)"/>
+                            </svg>
+                            <span>EXPERIENCE</span>
+                        </div>
+                        <div class="journey-badge edu-badge" tabindex="0">
+                            <svg class="badge-icon icon-edu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z" fill="rgba(139, 92, 246, 0.18)"/>
+                                <path d="M6 12.5v5c3 3 9 3 12 0v-5"/>
+                            </svg>
+                            <span>EDUCATION</span>
+                        </div>
+                    </div>
+                    <h2 class="journey-title">Network & Cyber Security Journey</h2>
+                    <p class="journey-subtitle">
+                        Perjalanan pendidikan, sertifikasi, dan pengalaman dalam bidang jaringan, keamanan siber, serta arsitektur cloud.
+                    </p>
+                </div>
+
+                <!-- 2D ASCII Cloud Object with 3D Optical Illusion Animation -->
+                <div class="ascii-cloud-standalone">
+                    <canvas id="ascii-cloud-canvas" width="800" height="280"></canvas>
+                </div>
+
+                <!-- Experience Cards Grid (Minimal & Clean, No Emojis) -->
+                <div class="experience-grid">
+                    <!-- Card 1: S1 Universitas Pancasila -->
+                    <div class="exp-card">
+                        <div class="exp-card-header">
+                            <span class="exp-card-category">Pendidikan</span>
+                            <span class="exp-card-period">2023 - Sekarang</span>
+                        </div>
+                        <h3 class="exp-card-title">S1 Teknik Informatika</h3>
+                        <span class="exp-card-subtitle">Universitas Pancasila — Angkatan 2023</span>
+                        <p class="exp-card-desc">
+                            Saya adalah mahasiswa Universitas Pancasila angkatan 2023. Mahasiswa Teknik Informatika Universitas Pancasila peminatan Network Cyber Security (NCS). Memiliki minat mendalam pada jaringan komputer, administrasi sistem Linux, security assessment, dan wawasan Cloud AWS.
+                        </p>
+                        <div class="exp-card-tech">
+                            <span>NCS</span>
+                            <span>Angkatan 2023</span>
+                            <span>Linux Admin</span>
+                            <span>Security Assessment</span>
+                            <span>AWS Cloud</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: MSIB Batch 4 -->
+                    <div class="exp-card">
+                        <div class="exp-card-header">
+                            <span class="exp-card-category">Ethical Hacking</span>
+                            <span class="exp-card-period">Feb 2026 - Jun 2026</span>
+                        </div>
+                        <h3 class="exp-card-title">MSIB Batch 4 — Ethical Hacking</h3>
+                        <span class="exp-card-subtitle">PT Vinix Seven Aurum</span>
+                        <p class="exp-card-desc">
+                            Trainee Ethical Hacking Division. Melakukan vulnerability assessment (OpenVAS, Burp Suite), asset discovery (Nmap), SIEM Wazuh, analisis malware, dan STRIDE threat modeling.
+                        </p>
+                        <div class="exp-card-tech">
+                            <span>Wazuh</span>
+                            <span>Burp Suite</span>
+                            <span>OpenVAS</span>
+                            <span>Nmap</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: AWS Multi-Tier Architecture -->
+                    <div class="exp-card">
+                        <div class="exp-card-header">
+                            <span class="exp-card-category">Cloud Infra</span>
+                            <span class="exp-card-period">Jul 2026</span>
+                        </div>
+                        <h3 class="exp-card-title">AWS Multi-Tier Architecture</h3>
+                        <span class="exp-card-subtitle">AWS VPC & EC2 Infrastructure</span>
+                        <p class="exp-card-desc">
+                            Membangun multi-tier architecture di AWS dengan EC2 Web Server (Nginx) & Database (MariaDB). Remote phpMyAdmin GUI, VPC internal routing, dan Security Groups.
+                        </p>
+                        <div class="exp-card-tech">
+                            <span>AWS EC2</span>
+                            <span>VPC</span>
+                            <span>Nginx</span>
+                            <span>MariaDB</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Cisco Packet Tracer -->
+                    <div class="exp-card">
+                        <div class="exp-card-header">
+                            <span class="exp-card-category">Networking</span>
+                            <span class="exp-card-period">Jun 2025 - Jul 2025</span>
+                        </div>
+                        <h3 class="exp-card-title">Infrastruktur Jaringan Cisco</h3>
+                        <span class="exp-card-subtitle">Cisco Packet Tracer</span>
+                        <p class="exp-card-desc">
+                            Merancang simulasi topologi jaringan LAN/WAN, konfigurasi VLAN, static/dynamic routing, subnetting IP, serta pengujian konektivitas perangkat jaringan.
+                        </p>
+                        <div class="exp-card-tech">
+                            <span>Cisco</span>
+                            <span>VLAN</span>
+                            <span>Routing</span>
+                            <span>Subnetting</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Pengembangan Website -->
+                    <div class="exp-card">
+                        <div class="exp-card-header">
+                            <span class="exp-card-category">Web Dev</span>
+                            <span class="exp-card-period">Jan 2025 - Feb 2025</span>
+                        </div>
+                        <h3 class="exp-card-title">Pengembangan Web App</h3>
+                        <span class="exp-card-subtitle">Full-Stack & Cloud Deployment</span>
+                        <p class="exp-card-desc">
+                            Mengembangkan aplikasi web menggunakan HTML, CSS, JavaScript, PHP, integrasi database MySQL, dan deployment website statis/dinamis via Vercel.
+                        </p>
+                        <div class="exp-card-tech">
+                            <span>JavaScript</span>
+                            <span>PHP</span>
+                            <span>MySQL</span>
+                            <span>Vercel</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 6: SMA Sejahtera 1 Depok -->
+                    <div class="exp-card">
+                        <div class="exp-card-header">
+                            <span class="exp-card-category">Pendidikan Dasar</span>
+                            <span class="exp-card-period">2020 - 2023</span>
+                        </div>
+                        <h3 class="exp-card-title">SMA Sejahtera 1 Depok</h3>
+                        <span class="exp-card-subtitle">Pendidikan Menengah Atas</span>
+                        <p class="exp-card-desc">
+                            Pendidikan Menengah Atas dengan fokus pada pemahaman dasar teknologi informasi, pemrograman komputer, dan logika dasar.
+                        </p>
+                        <div class="exp-card-tech">
+                            <span>IPA</span>
+                            <span>IT Basics</span>
+                            <span>Logika</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 02: Projects -->
+        <section id="projects" class="section reveal">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <span class="section-line"></span>
+                <span class="section-title">Projects</span>
+            </div>
+            <div class="project-grid">
+                <!-- Project 1 -->
+                <div class="project-card reveal">
+                    <div class="project-card-header">
+                        <span class="proj-category">Cyber Security</span>
+                        <span class="project-status-dot">Completed</span>
+                    </div>
+                    <h3 class="project-name">Vulnerability Assessment & SIEM Implementation</h3>
+                    <p class="project-desc">Penerapan framework Ethical Hacking dalam mengidentifikasi kerentanan web app, pemindaian aset jaringan menggunakan Nmap, serta instalasi dan konfigurasi SIEM Wazuh untuk mendeteksi ancaman secara real-time.</p>
+                    <div class="project-tech">
+                        <span>Wazuh</span>
+                        <span>OpenVAS</span>
+                        <span>Burp Suite</span>
+                        <span>Nmap</span>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card reveal">
+                    <div class="project-card-header">
+                        <span class="proj-category">Threat Modeling</span>
+                        <span class="project-status-dot">Completed</span>
+                    </div>
+                    <h3 class="project-name">Threat Modeling Sistem (Proyek Berdampak)</h3>
+                    <p class="project-desc">Penyusunan pemodelan ancaman keamanan pada arsitektur perangkat lunak dengan pendekatan STRIDE, analisis area ancaman, attack factors, dan penyusunan rekomendasi mitigasi. Skor Proyek: 95.</p>
+                    <div class="project-tech">
+                        <span>STRIDE</span>
+                        <span>Kubernetes</span>
+                        <span>Threat Mitigation</span>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card reveal">
+                    <div class="project-card-header">
+                        <span class="proj-category">Networking</span>
+                        <span class="project-status-dot">Completed</span>
+                    </div>
+                    <h3 class="project-name">LAN/WAN Network Architecture Simulation</h3>
+                    <p class="project-desc">Perancangan arsitektur jaringan LAN dan WAN perusahaan berskala medium. Konfigurasi VLAN, routing inter-VLAN, DHCP server, NAT, Access Control List (ACL), dan subnetting CIDR.</p>
+                    <div class="project-tech">
+                        <span>Cisco Packet Tracer</span>
+                        <span>VLAN</span>
+                        <span>Routing</span>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card reveal">
+                    <div class="project-card-header">
+                        <span class="proj-category">Web Dev</span>
+                        <span class="project-status-dot">Completed</span>
+                    </div>
+                    <h3 class="project-name">Web Application with MySQL Database</h3>
+                    <p class="project-desc">Pengembangan website dinamis menggunakan HTML, CSS, JavaScript, dan PHP. Mengintegrasikan database relasional MySQL untuk manajemen data serta deployment via platform Vercel.</p>
+                    <div class="project-tech">
+                        <span>PHP</span>
+                        <span>MySQL</span>
+                        <span>HTML/CSS/JS</span>
+                        <span>Vercel</span>
+                    </div>
+                </div>
+
+                <!-- Project 5 (NEW): Multi-Tier VPC Architecture on AWS -->
+                <div class="project-card reveal">
+                    <div class="project-card-header">
+                        <span class="proj-category">Cloud AWS</span>
+                        <span class="project-status-dot">Completed</span>
+                    </div>
+                    <h3 class="project-name">Multi-Tier VPC Architecture on AWS</h3>
+                    <p class="project-desc">Merancang dan mengimplementasikan arsitektur multi-tier di AWS menggunakan 2 EC2 — public subnet (Nginx web server) dan private subnet (MariaDB database). Web server bertindak sebagai jembatan ke database private via internal VPC. Database aman karena tidak dapat diakses langsung dari internet, diamankan oleh Security Group yang hanya mengizinkan koneksi dari subnet web.</p>
+                    <div class="project-tech">
+                        <span>AWS EC2</span>
+                        <span>VPC</span>
+                        <span>Nginx</span>
+                        <span>MariaDB</span>
+                        <span>Security Group</span>
+                        <span>phpMyAdmin</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 03: Certifications -->
+        <section id="certifications" class="section reveal">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <span class="section-line"></span>
+                <span class="section-title">Certifications</span>
+            </div>
+            <div class="certifications-grid">
+                <!-- Cert 1: MSIB PT Vinix -->
+                <div class="cert-card reveal">
+                    <div class="cert-card-accent"></div>
+                    <div class="cert-img-container">
+                        <img src="Certificate/images/aditya4523003@univpancasila.ac.id_Sertifikat Utama (1).png" alt="Sertifikat Utama MSIB Batch 4" class="cert-img" />
+                    </div>
+                    <div class="cert-info">
+                        <div class="cert-header">
+                            <span class="cert-issuer">PT Vinix Seven Aurum</span>
+                            <span class="cert-badge active">MSIB Batch 4</span>
+                        </div>
+                        <div class="cert-body">
+                            <h3 class="cert-title">Studi Independen: Cybersecurity Ethical Hackers</h3>
+                            <p class="cert-desc">Menyelesaikan program studi independen selama 4 bulan pada divisi Ethical Hacker.</p>
+                        </div>
+                        <div class="cert-footer">
+                            <span class="cert-id">No: 007/Batch-IV-MSIB/VINIX7</span>
+                            <a href="Certificate/aditya4523003@univpancasila.ac.id_Sertifikat Utama (1).pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cert 2: Proyek Berdampak PT Vinix -->
+                <div class="cert-card reveal">
+                    <div class="cert-card-accent"></div>
+                    <div class="cert-img-container">
+                        <img src="Certificate/images/aditya4523003@univpancasila.ac.id_Sertifikat Proyek (1).png" alt="Sertifikat Proyek Berdampak" class="cert-img" />
+                    </div>
+                    <div class="cert-info">
+                        <div class="cert-header">
+                            <span class="cert-issuer">PT Vinix Seven Aurum</span>
+                            <span class="cert-badge active">Skor: 95</span>
+                        </div>
+                        <div class="cert-body">
+                            <h3 class="cert-title">Sertifikat Proyek Berdampak: Threat Modeling</h3>
+                            <p class="cert-desc">Pengerjaan proyek analisis STRIDE, area ancaman, attack factors, dan mitigasi sistem perangkat lunak.</p>
+                        </div>
+                        <div class="cert-footer">
+                            <span class="cert-id">Divisi: Ethical Hacker</span>
+                            <a href="Certificate/aditya4523003@univpancasila.ac.id_Sertifikat Proyek (1).pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cert 3: TryHackMe Cyber Security 101 -->
+                <div class="cert-card reveal">
+                    <div class="cert-card-accent"></div>
+                    <div class="cert-img-container">
+                        <img src="Certificate/images/THM-7PKEKLLYLE.png" alt="Sertifikat TryHackMe Cyber Security 101" class="cert-img" />
+                    </div>
+                    <div class="cert-info">
+                        <div class="cert-header">
+                            <span class="cert-issuer">TryHackMe</span>
+                            <span class="cert-badge active">45 Hours</span>
+                        </div>
+                        <div class="cert-body">
+                            <h3 class="cert-title">Cyber Security 101 Path Completion</h3>
+                            <p class="cert-desc">Keahlian dasar keamanan siber, analisis lalu lintas jaringan, dan web hacking.</p>
+                        </div>
+                        <div class="cert-footer">
+                            <span class="cert-id">ID: THM-7PKEKLLYLE</span>
+                            <a href="Certificate/THM-7PKEKLLYLE.pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cert 4: TryHackMe Pre Security -->
+                <div class="cert-card reveal">
+                    <div class="cert-card-accent"></div>
+                    <div class="cert-img-container">
+                        <img src="Certificate/images/THM-8WKKI3COQN.png" alt="Sertifikat TryHackMe Pre Security" class="cert-img" />
+                    </div>
+                    <div class="cert-info">
+                        <div class="cert-header">
+                            <span class="cert-issuer">TryHackMe</span>
+                            <span class="cert-badge active">19 Hours</span>
+                        </div>
+                        <div class="cert-body">
+                            <h3 class="cert-title">Pre Security Path Completion</h3>
+                            <p class="cert-desc">Menguasai dasar jaringan komputer, protokol web, Linux, dan terminologi keamanan.</p>
+                        </div>
+                        <div class="cert-footer">
+                            <span class="cert-id">ID: THM-8WKKI3COQN</span>
+                            <a href="Certificate/THM-8WKKI3COQN.pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cert 5: Dicoding AWS Cloud & Gen AI -->
+                <div class="cert-card reveal">
+                    <div class="cert-card-accent"></div>
+                    <div class="cert-img-container">
+                        <img src="Certificate/images/sertifikat_course_251_5631887_170726013548.png" alt="Sertifikat Dicoding AWS" class="cert-img" />
+                    </div>
+                    <div class="cert-info">
+                        <div class="cert-header">
+                            <span class="cert-issuer">Dicoding</span>
+                            <span class="cert-badge active">AWS Cloud</span>
+                        </div>
+                        <div class="cert-body">
+                            <h3 class="cert-title">Belajar Dasar Cloud & Gen AI di AWS</h3>
+                            <p class="cert-desc">Memahami AWS global infrastructure, core services, IAM, EC2, S3, dan kecerdasan generatif AWS.</p>
+                        </div>
+                        <div class="cert-footer">
+                            <span class="cert-id">ID: MRZMW930LPYQ</span>
+                            <a href="Certificate/sertifikat_course_251_5631887_170726013548.pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cert 6: Softskill PT Vinix -->
+                <div class="cert-card reveal">
+                    <div class="cert-card-accent"></div>
+                    <div class="cert-img-container">
+                        <img src="Certificate/images/aditya4523003@univpancasila.ac.id_Sertifikat Softskill.png" alt="Sertifikat Softskill MSIB" class="cert-img" />
+                    </div>
+                    <div class="cert-info">
+                        <div class="cert-header">
+                            <span class="cert-issuer">PT Vinix Seven Aurum</span>
+                            <span class="cert-badge active">Apresiasi</span>
+                        </div>
+                        <div class="cert-body">
+                            <h3 class="cert-title">Professional Communication di Tempat Kerja</h3>
+                            <p class="cert-desc">Apresiasi keterlibatan aktif dalam pelatihan komunikasi profesional kerja.</p>
+                        </div>
+                        <div class="cert-footer">
+                            <span class="cert-id">No: 007/Batch-IV-SF/VINIX7</span>
+                            <a href="Certificate/aditya4523003@univpancasila.ac.id_Sertifikat Softskill.pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cert 7: IDN Webinar Pentesting -->
+                <div class="cert-card reveal">
+                    <div class="cert-card-accent"></div>
+                    <div class="cert-img-container">
+                        <img src="Certificate/images/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 27 Januari 2026.png" alt="Sertifikat Webinar Pentesting" class="cert-img" />
+                    </div>
+                    <div class="cert-info">
+                        <div class="cert-header">
+                            <span class="cert-issuer">ID-Networkers (IDN.ID)</span>
+                            <span class="cert-badge active">Webinar</span>
+                        </div>
+                        <div class="cert-body">
+                            <h3 class="cert-title">Basic Mobile Pentesting Participant</h3>
+                            <p class="cert-desc">Webinar pengenalan analisis keamanan dan pentesting aplikasi mobile Android.</p>
+                        </div>
+                        <div class="cert-footer">
+                            <span class="cert-id">Tanggal: 27 Januari 2026</span>
+                            <a href="Certificate/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 27 Januari 2026.pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cert 8: IDN Webinar Sistem Keamanan -->
+                <div class="cert-card reveal">
+                    <div class="cert-card-accent"></div>
+                    <div class="cert-img-container">
+                        <img src="Certificate/images/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 29 Januari 2026.png" alt="Sertifikat Webinar Keamanan" class="cert-img" />
+                    </div>
+                    <div class="cert-info">
+                        <div class="cert-header">
+                            <span class="cert-issuer">ID-Networkers (IDN.ID)</span>
+                            <span class="cert-badge active">Webinar</span>
+                        </div>
+                        <div class="cert-body">
+                            <h3 class="cert-title">Membangun Sistem Keamanan Dari Nol</h3>
+                            <p class="cert-desc">Solusi praktis merancang sistem keamanan jaringan, server, dan hak akses dari dasar.</p>
+                        </div>
+                        <div class="cert-footer">
+                            <span class="cert-id">Tanggal: 29 Januari 2026</span>
+                            <a href="Certificate/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 29 Januari 2026.pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Cert 9: IDN Webinar Sistem Keamanan -->
+                <div class="cert-card reveal">
+                    <div class="cert-card-accent"></div>
+                    <div class="cert-img-container">
+                        <img src="Certificate/Sertifikat -297-Aditya Nur Lintang.jpeg" alt="Sertifikat Peserta Kuliah Umum" class="cert-img" />
+                    </div>
+                    <div class="cert-info">
+                        <div class="cert-header">
+                            <span class="cert-issuer">Universitas Pancasila</span>
+                            <span class="cert-badge active">Kuliah Umum</span>
+                        </div>
+                        <div class="cert-body">
+                            <h3 class="cert-title">Peserta Kuliah Umum</h3>
+                            <p class="cert-desc">Tema "Interpretasi Data Geospasial Berbasis Artificial Intelligence"</p>
+                        </div>
+                        <div class="cert-footer">
+                            <span class="cert-id">Tanggal: 04 Juni 2025</span>
+                            <a href="Certificate/Sertifikat -297-Aditya Nur Lintang.jpeg" target="_blank" class="cert-btn">Lihat PDF ↗</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Cert 10: IDN Webinar Sistem Keamanan -->
+                <div class="cert-card reveal">
+                    <div class="cert-card-accent"></div>
+                    <div class="cert-img-container">
+                        <img src="Certificate/images/pancasila1.jpg" alt="Sertifikat Kuliah Umum" class="cert-img" />
+                    </div>
+                    <div class="cert-info">
+                        <div class="cert-header">
+                            <span class="cert-issuer">Fakultas Teknik Universitas Pancasila</span>
+                            <span class="cert-badge active">Kuliah</span>
+                        </div>
+                        <div class="cert-body">
+                            <h3 class="cert-title">Kuliah Tamu Internasional</h3>
+                            <p class="cert-desc">Tema "Dari Kampus ke Dunia Kerja Global: Pengembangan Hard Skill dan Soft Skill lewat Magang Internasional"</p>
+                        </div>
+                        <div class="cert-footer">
+                            <span class="cert-id">Tanggal: 10 September 2025</span>
+                            <a href="Certificate/4523210003 Aditya Nur Lintang - Sertifikat Kuliah Tamu Internasional 10 Sep 25.pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Cert 11: IDN Webinar Sistem Keamanan -->
+                <div class="cert-card reveal">
+                    <div class="cert-card-accent"></div>
+                    <div class="cert-img-container">
+                        <img src="Certificate/images/dicoding2.jpg" alt="Sertifikat Dicoding" class="cert-img" />
+                    </div>
+                    <div class="cert-info">
+                        <div class="cert-header">
+                            <span class="cert-issuer">Dicoding</span>
+                            <span class="cert-badge active">Kiro</span>
+                        </div>
+                        <div class="cert-body">
+                            <h3 class="cert-title">Spec-Driven Development dengan Kiro</h3>
+                            <p class="cert-desc">Memahami Spec-Driven Development (SDD), penggunaan Kiro, perancangan spesifikasi aplikasi, dan pengembangan aplikasi berbasis AI. Selain itu, mempelajari praktik terbaik untuk menjaga kualitas dan konsistensi kode.</p>
+                        </div>
+                        <div class="cert-footer">
+                            <span class="cert-id">ID: 72ZDJ1QWJZYW</span>
+                            <a href="Certificate/dicoding2.pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Cert 12: IDN Webinar Sistem Keamanan -->
+                <div class="cert-card reveal">
+                    <div class="cert-card-accent"></div>
+                    <div class="cert-img-container">
+                        <img src="Certificate/images/dicoding3.jpg" alt="Sertifikat Webinar Keamanan" class="cert-img" />
+                    </div>
+                    <div class="cert-info">
+                        <div class="cert-header">
+                            <span class="cert-issuer">Dicoding</span>
+                            <span class="cert-badge active">Microsoft Fabric</span>
+                        </div>
+                        <div class="cert-body">
+                            <h3 class="cert-title">Belajar Penerapan Data Science dengan Microsoft Fabric</h3>
+                            <p class="cert-desc">Mempelajari Microsoft Fabric untuk analitik end-to-end, eksplorasi dan preprocessing data, serta pengembangan dan deployment model machine learning menggunakan MLflow.</p>
+                        </div>
+                        <div class="cert-footer">
+                            <span class="cert-id">ID: MRZMW0533PYQ</span>
+                            <a href="Certificate/dicoding3.pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Cert 13: IDN Webinar Sistem Keamanan -->
+                <div class="cert-card reveal">
+                    <div class="cert-card-accent"></div>
+                    <div class="cert-img-container">
+                        <img src="Certificate/images/duniacoding.jpg" alt="Sertifikat Webinar Keamanan" class="cert-img" />
+                    </div>
+                    <div class="cert-info">
+                        <div class="cert-header">
+                            <span class="cert-issuer">Dunia Coding</span>
+                            <span class="cert-badge active">Webinar</span>
+                        </div>
+                        <div class="cert-body">
+                            <h3 class="cert-title">Website Aman di Era Al: Cara Developer Bertahan dari Serangan Hacker Modern</h3>
+                            <p class="cert-desc">memahami praktik pengembangan website yang aman serta strategi menghadapi serangan siber modern dengan bantuan AI.</p>
+                        </div>
+                        <div class="cert-footer">
+                            <span class="cert-id">Tanggal: 12 Mei 2026</span>
+                            <a href="Certificate/duniacoding.pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 04: Skills (2 Opposite Running Marquee Tracks: Row 1 Left to Right, Row 2 Right to Left) -->
+        <section id="skills" class="section reveal">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <span class="section-line"></span>
+                <span class="section-title">Skills</span>
+            </div>
+            
+            <div class="skills-marquee-container">
+                <!-- Track 1: Running Left to Right -->
+                <div class="marquee-track track-right">
+                    <!-- Set 1 -->
+                    <div class="skill-badge red-badge">
+                        <svg class="skill-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        <span>Wazuh SIEM</span>
+                    </div>
+                    <div class="skill-badge red-badge">
+                        <svg class="skill-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        <span>Burp Suite</span>
+                    </div>
+                    <div class="skill-badge yellow-badge">
+                        <svg class="skill-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span>OpenVAS</span>
+                    </div>
+                    <div class="skill-badge green-badge">
+                        <svg class="skill-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+                        <span>Nmap</span>
+                    </div>
+                    <div class="skill-badge blue-badge">
+                        <svg class="skill-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16.242V8c0-2.21 1.79-4 4-4h12c2.21 0 4 1.79 4 4v8.242M2 16.242a4 4 0 0 0 4 4h12c2.21 0 4-1.79 4-4M2 16.242l6-4M22 16.242l-6-4M12 4v8"/></svg>
+                        <span>Wireshark</span>
+                    </div>
+                    <div class="skill-badge red-badge">
+                        <svg class="skill-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        <span>Shodan</span>
+                    </div>
+                    <div class="skill-badge yellow-badge">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cisco/cisco-original.svg" class="skill-logo" alt="" />
+                        <span>Cisco Network</span>
+                    </div>
+                    <div class="skill-badge green-badge">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" class="skill-logo" alt="" />
+                        <span>Linux Admin</span>
+                    </div>
+
+                    <!-- Set 1 Duplicate for Loop -->
+                    <div class="skill-badge red-badge">
+                        <svg class="skill-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        <span>Wazuh SIEM</span>
+                    </div>
+                    <div class="skill-badge red-badge">
+                        <svg class="skill-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        <span>Burp Suite</span>
+                    </div>
+                    <div class="skill-badge yellow-badge">
+                        <svg class="skill-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span>OpenVAS</span>
+                    </div>
+                    <div class="skill-badge green-badge">
+                        <svg class="skill-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+                        <span>Nmap</span>
+                    </div>
+                    <div class="skill-badge blue-badge">
+                        <svg class="skill-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16.242V8c0-2.21 1.79-4 4-4h12c2.21 0 4 1.79 4 4v8.242M2 16.242a4 4 0 0 0 4 4h12c2.21 0 4-1.79 4-4M2 16.242l6-4M22 16.242l-6-4M12 4v8"/></svg>
+                        <span>Wireshark</span>
+                    </div>
+                    <div class="skill-badge red-badge">
+                        <svg class="skill-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        <span>Shodan</span>
+                    </div>
+                    <div class="skill-badge yellow-badge">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cisco/cisco-original.svg" class="skill-logo" alt="" />
+                        <span>Cisco Network</span>
+                    </div>
+                    <div class="skill-badge green-badge">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" class="skill-logo" alt="" />
+                        <span>Linux Admin</span>
+                    </div>
+                </div>
+
+                <!-- Track 2: Running Right to Left (Opposite Direction!) -->
+                <div class="marquee-track track-left" style="margin-top: 16px;">
+                    <!-- Set 2 -->
+                    <div class="skill-badge yellow-badge">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" class="skill-logo" alt="" />
+                        <span>AWS Cloud</span>
+                    </div>
+                    <div class="skill-badge blue-badge">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="skill-logo" alt="" />
+                        <span>Docker</span>
+                    </div>
+                    <div class="skill-badge green-badge">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="skill-logo" alt="" />
+                        <span>Python</span>
+                    </div>
+                    <div class="skill-badge blue-badge">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" class="skill-logo" alt="" />
+                        <span>PHP</span>
+                    </div>
+                    <div class="skill-badge red-badge">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" class="skill-logo" alt="" />
+                        <span>MySQL</span>
+                    </div>
+                    <div class="skill-badge yellow-badge">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="skill-logo" alt="" />
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="skill-badge blue-badge">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="skill-logo" alt="" />
+                        <span>HTML5</span>
+                    </div>
+                    <div class="skill-badge red-badge">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" class="skill-logo" alt="" />
+                        <span>CSS3</span>
+                    </div>
+
+                    <!-- Set 2 Duplicate for Loop -->
+                    <div class="skill-badge yellow-badge">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" class="skill-logo" alt="" />
+                        <span>AWS Cloud</span>
+                    </div>
+                    <div class="skill-badge blue-badge">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="skill-logo" alt="" />
+                        <span>Docker</span>
+                    </div>
+                    <div class="skill-badge green-badge">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="skill-logo" alt="" />
+                        <span>Python</span>
+                    </div>
+                    <div class="skill-badge blue-badge">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" class="skill-logo" alt="" />
+                        <span>PHP</span>
+                    </div>
+                    <div class="skill-badge red-badge">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" class="skill-logo" alt="" />
+                        <span>MySQL</span>
+                    </div>
+                    <div class="skill-badge yellow-badge">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="skill-logo" alt="" />
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="skill-badge blue-badge">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="skill-logo" alt="" />
+                        <span>HTML5</span>
+                    </div>
+                    <div class="skill-badge red-badge">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" class="skill-logo" alt="" />
+                        <span>CSS3</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 05: Contact -->
+        <section id="contact" class="section reveal">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <span class="section-line"></span>
+                <span class="section-title">Contact</span>
+            </div>
+            <div class="contact-grid">
+                <a href="https://github.com/unaware22" target="_blank" class="contact-link link-blue">
+                    <svg class="contact-svg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    <span>GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/aditya-nur-lintang-b8483333a/" target="_blank" class="contact-link link-red">
+                    <svg class="contact-svg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="mailto:adityanurlintang211@gmail.com" class="contact-link link-yellow">
+                    <svg class="contact-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <span>Email</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer reveal">
+            <div class="footer-left">
+                <span>© 2026 Aditya Nur Lintang — Cloud Resume Challenge</span>
+                <p class="footer-sub">Hosting di AWS S3 & CloudFront</p>
+            </div>
+            
+            <!-- Cloud Resume Visitor Counter -->
+            <div class="visitor-counter">
+                <div class="counter-glow"></div>
+                <span class="counter-icon">✨</span>
+                <span class="counter-label">Visitor Count:</span>
+                <span id="visitor-count" class="counter-num">00000</span>
+            </div>
+
+            <div class="footer-right">
+                <a href="#" class="back-to-top">Kembali ke atas ↑</a>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Interactive Location Modal Popup (No API Key Required) -->
+    <div id="location-modal" class="modal-overlay" aria-hidden="true">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <span class="modal-pin-dot"></span>
+                    <h3 class="modal-title">📍 Depok, Jawa Barat — Indonesia</h3>
+                </div>
+                <button id="close-location-modal" class="modal-close-btn" aria-label="Tutup Peta">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-description">
+                    Depok, Jawa Barat — Lokasi kampus Universitas Pancasila & wilayah domisili kegiatan.
+                </p>
+                <div class="map-iframe-container">
+                    <iframe 
+                        title="Peta Lokasi Depok Jawa Barat"
+                        src="https://maps.google.com/maps?q=Depok,Jawa+Barat,Indonesia&t=&z=12&ie=UTF8&iwloc=&output=embed" 
+                        width="100%" 
+                        height="320" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                <div class="modal-info-chips">
+                    <span class="info-chip">📍 Depok, West Java</span>
+                    <span class="info-chip">🏛️ Universitas Pancasila</span>
+                    <span class="info-chip">🕒 WIB (UTC+7)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
