@@ -332,12 +332,12 @@ Separate project demonstrating production-grade network architecture:
 **Aditya Nur Lintang**
 Network & Cyber Security — Universitas Pancasila
 
-| Contact  | Link                                         |
-| :------- | :------------------------------------------- |
-| GitHub   | github.com/unaware22                         |
-| LinkedIn | linkedin.com/in/aditya-nur-lintang-b8483333a |
-| Email    | aditya4523003@univpancasila.ac.id            |
-| Location | Depok, Jawa Barat, Indonesia                 |
+| Contact  | Link                                             |
+| :------- | :----------------------------------------------- |
+| GitHub   | www.github.com/unaware22                         |
+| LinkedIn | www.linkedin.com/in/aditya-nur-lintang-b8483333a |
+| Email    | adityanurlintang211@gmail.com                    |
+| Location | Depok, Jawa Barat, Indonesia                     |
 
 ---
 
