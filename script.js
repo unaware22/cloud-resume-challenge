@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initTypewriter();
     initAsciiCloud();
     initLocationModal();
+    initProjectCarousel();
     // Particle background removed for a cleaner look
 
 });
@@ -25,7 +26,8 @@ function initTypewriter() {
     const phrases = [
         "AWS Enthusiast",
         "Learning Cloud Architecture",
-        "AWS re/Start Learner"
+        "AWS re/Start Learner",
+        "Learning Frontend"
     ];
 
     let phraseIndex = 0;
@@ -127,20 +129,35 @@ function initScrollReveal() {
 }
 
 /**
- * 3. Visitor Counter for AWS Cloud Resume Challenge
- * Fetches the visitor count from AWS API Gateway + Lambda + DynamoDB
- * Falls back to LocalStorage simulation if API_URL is not set or fails.
+ * 3. Visitor Counter for AWS Cloud Resume / Portofolio
+ * Features Session Deduplication:
+ * Page refreshes will NOT increment the count.
  */
 async function initVisitorCounter() {
     const counterElement = document.getElementById("visitor-count");
     if (!counterElement) return;
 
-    // URL API Gateway (AWS Lambda + DynamoDB) untuk visitor counter
+    // URL API Gateway (AWS Lambda + DynamoDB)
     const API_URL = "https://npcoyuaddi.execute-api.ap-southeast-1.amazonaws.com/prod/visitor";
+
+    // Deduplication Key: Tandai kunjungan unik pengguna selama 24 jam
+    const VISITED_KEY = "portfolio_visited_timestamp";
+    const lastVisit = localStorage.getItem(VISITED_KEY);
+    const now = Date.now();
+    const TWENTY_FOUR_HOURS = 24 * 60 * 60 * 1000;
+
+    // Pengunjung baru hanya jika belum ada flag atau lebih dari 24 jam
+    const isNewVisitor = !lastVisit || (now - parseInt(lastVisit, 10)) > TWENTY_FOUR_HOURS;
+
+    if (isNewVisitor) {
+        localStorage.setItem(VISITED_KEY, now.toString());
+    }
 
     if (API_URL) {
         try {
-            const response = await fetch(API_URL, {
+            // Tambahkan query parameter ?increment=true (baru) atau ?increment=false (refresh)
+            const targetUrl = `${API_URL}?increment=${isNewVisitor ? 'true' : 'false'}`;
+            const response = await fetch(targetUrl, {
                 method: "GET",
                 mode: "cors",
                 headers: {
@@ -148,38 +165,32 @@ async function initVisitorCounter() {
                 }
             });
 
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
+            if (response.ok) {
+                const data = await response.json();
+                let parsedBody = data;
+                if (data.body) {
+                    parsedBody = typeof data.body === 'string' ? JSON.parse(data.body) : data.body;
+                }
+                const count = parsedBody.visitor_count ?? parsedBody.count ?? data.visitor_count ?? data.count;
 
-            const data = await response.json();
-            // Menangani beberapa kemungkinan format response dari Lambda
-            const count = data.visitor_count ?? data.count ?? (data.body && (data.body.visitor_count ?? data.body.count)) ?? data;
-
-            if (typeof count === "number" || !isNaN(count)) {
-                animateCounter(counterElement, parseInt(count));
-                return;
+                if (count !== undefined && !isNaN(count)) {
+                    animateCounter(counterElement, parseInt(count, 10));
+                    return;
+                }
             }
         } catch (error) {
-            console.warn("Gagal menghubungi AWS API Gateway. Menggunakan visitor counter simulasi lokal.", error);
+            console.warn("Gagal menghubungi AWS API Gateway.", error);
         }
     }
 
-    // FALLBACK SIMULATION (LocalStorage)
-    // Berguna untuk testing offline dan demo lokal sebelum API Gateway selesai dikonfigurasi
-    let localCount = localStorage.getItem("cloud_resume_visits");
+    // FALLBACK LOKAL (Jika API belum aktif)
+    let localCount = parseInt(localStorage.getItem("cloud_resume_visits") || "0", 10);
 
-    if (localCount === null) {
-        localCount = 205; // Nilai awal default
-    } else {
-        localCount = parseInt(localCount);
+    if (isNewVisitor) {
+        localCount += 1;
+        localStorage.setItem("cloud_resume_visits", localCount.toString());
     }
 
-    // Tambah jumlah kunjungan
-    localCount += 1;
-    localStorage.setItem("cloud_resume_visits", localCount.toString());
-
-    // Tampilkan dengan efek animasi menghitung (counting animation)
     animateCounter(counterElement, localCount);
 }
 
@@ -781,7 +792,94 @@ function initLocationModal() {
 
 
 
+/**
+ * Project Carousel
+ * Center-locked slider: active slide always centered in viewport.
+ * Uses offsetLeft for pixel-accurate positioning (no gap bug).
+ */
+function initProjectCarousel() {
+    const track    = document.getElementById("carouselTrack");
+    const viewport = document.getElementById("carouselViewport");
+    const prevBtn  = document.getElementById("carouselPrev");
+    const nextBtn  = document.getElementById("carouselNext");
+    const dotsEl   = document.getElementById("carouselDots");
 
+    if (!track || !prevBtn || !nextBtn || !dotsEl) return;
+
+    const slides = Array.from(track.querySelectorAll(".project-slide"));
+    const dots   = Array.from(dotsEl.querySelectorAll(".carousel-dot"));
+    const total  = slides.length;
+    let current  = 0;
+
+    // --- Compute translateX so that slide[index] is centered in viewport ---
+    function calcOffset(index) {
+        const slide = slides[index];
+        if (!slide) return 0;
+        const viewportW = viewport.clientWidth;
+        const slideW    = slide.offsetWidth;
+        // offsetLeft is the slide's left edge relative to the track
+        const slideLeft = slide.offsetLeft;
+        // We want: viewportCenter = slideLeft + slideW/2 - offset
+        // => offset = slideLeft + slideW/2 - viewportW/2
+        return Math.max(0, slideLeft + slideW / 2 - viewportW / 2);
+    }
+
+    function render(animate) {
+        track.style.transition = animate
+            ? "transform 0.42s cubic-bezier(0.4, 0, 0.2, 1)"
+            : "none";
+        track.style.transform = `translateX(${-calcOffset(current)}px)`;
+
+        slides.forEach((s, i) => s.classList.toggle("active", i === current));
+        dots.forEach((d, i) => {
+            d.classList.toggle("active", i === current);
+            d.setAttribute("aria-selected", String(i === current));
+        });
+
+        prevBtn.disabled = current === 0;
+        nextBtn.disabled = current === total - 1;
+    }
+
+    function goTo(index) {
+        const next = Math.max(0, Math.min(index, total - 1));
+        if (next === current) return;
+        current = next;
+        render(true);
+    }
+
+    // --- Events ---
+    prevBtn.addEventListener("click", () => goTo(current - 1));
+    nextBtn.addEventListener("click", () => goTo(current + 1));
+    dots.forEach((d, i) => d.addEventListener("click", () => goTo(i)));
+
+    // Keyboard nav when section is in view
+    document.addEventListener("keydown", (e) => {
+        const sect = document.getElementById("projects");
+        if (!sect) return;
+        const r = sect.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) {
+            if (e.key === "ArrowLeft")  { e.preventDefault(); goTo(current - 1); }
+            if (e.key === "ArrowRight") { e.preventDefault(); goTo(current + 1); }
+        }
+    });
+
+    // Touch swipe
+    let tx = 0, ty = 0;
+    track.addEventListener("touchstart", e => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, { passive: true });
+    track.addEventListener("touchend",   e => {
+        const dx = e.changedTouches[0].clientX - tx;
+        const dy = e.changedTouches[0].clientY - ty;
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40)
+            goTo(dx < 0 ? current + 1 : current - 1);
+    }, { passive: true });
+
+    // Debounced resize
+    let rt;
+    window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => render(false), 150); });
+
+    // Initial paint — wait for fonts/images so offsetLeft is correct
+    requestAnimationFrame(() => setTimeout(() => render(false), 100));
+}
 
 
 
