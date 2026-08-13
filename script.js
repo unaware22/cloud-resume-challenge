@@ -105,33 +105,45 @@ function initThemeSwitcher() {
 
 /**
  * 2. Scroll Reveal Animation using Intersection Observer
- * Adds the 'active' class to elements when they enter the viewport
+ * Adds the 'active' class to elements when they enter the viewport.
+ * Includes fallback so elements never stay hidden on mobile or S3 deployment.
  */
 function initScrollReveal() {
     const revealElements = document.querySelectorAll(".reveal");
+    if (!revealElements.length) return;
+
+    if (!("IntersectionObserver" in window)) {
+        revealElements.forEach(element => element.classList.add("active"));
+        return;
+    }
 
     const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("active");
-                // Unobserve once animated to keep the page performant
                 observer.unobserve(entry.target);
             }
         });
     }, {
-        threshold: 0.08,
-        rootMargin: "0px 0px -40px 0px"
+        threshold: 0.01,
+        rootMargin: "50px 0px 50px 0px"
     });
 
     revealElements.forEach(element => {
         revealObserver.observe(element);
     });
+
+    // Safety fallback: Ensure all elements are visible after page load
+    setTimeout(() => {
+        revealElements.forEach(element => {
+            element.classList.add("active");
+        });
+    }, 1200);
 }
 
 /**
  * 3. Visitor Counter for AWS Cloud Resume / Portofolio
- * Features Session Deduplication:
- * Page refreshes will NOT increment the count.
+ * Fetches count from AWS Lambda + DynamoDB with IP-based Deduplication.
  */
 async function initVisitorCounter() {
     const counterElement = document.getElementById("visitor-count");
@@ -140,24 +152,9 @@ async function initVisitorCounter() {
     // URL API Gateway (AWS Lambda + DynamoDB)
     const API_URL = "https://npcoyuaddi.execute-api.ap-southeast-1.amazonaws.com/prod/visitor";
 
-    // Deduplication Key: Tandai kunjungan unik pengguna selama 24 jam
-    const VISITED_KEY = "portfolio_visited_timestamp";
-    const lastVisit = localStorage.getItem(VISITED_KEY);
-    const now = Date.now();
-    const TWENTY_FOUR_HOURS = 24 * 60 * 60 * 1000;
-
-    // Pengunjung baru hanya jika belum ada flag atau lebih dari 24 jam
-    const isNewVisitor = !lastVisit || (now - parseInt(lastVisit, 10)) > TWENTY_FOUR_HOURS;
-
-    if (isNewVisitor) {
-        localStorage.setItem(VISITED_KEY, now.toString());
-    }
-
     if (API_URL) {
         try {
-            // Tambahkan query parameter ?increment=true (baru) atau ?increment=false (refresh)
-            const targetUrl = `${API_URL}?increment=${isNewVisitor ? 'true' : 'false'}`;
-            const response = await fetch(targetUrl, {
+            const response = await fetch(API_URL, {
                 method: "GET",
                 mode: "cors",
                 headers: {
@@ -183,14 +180,8 @@ async function initVisitorCounter() {
         }
     }
 
-    // FALLBACK LOKAL (Jika API belum aktif)
-    let localCount = parseInt(localStorage.getItem("cloud_resume_visits") || "0", 10);
-
-    if (isNewVisitor) {
-        localCount += 1;
-        localStorage.setItem("cloud_resume_visits", localCount.toString());
-    }
-
+    // FALLBACK LOKAL (Jika API offline/bermasalah)
+    let localCount = parseInt(localStorage.getItem("cloud_resume_visits") || "1", 10);
     animateCounter(counterElement, localCount);
 }
 

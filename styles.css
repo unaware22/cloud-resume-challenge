@@ -1370,9 +1370,10 @@ body.dark-theme .carousel-dot.active {
 /* Certifications Section */
 .certifications-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 24px;
 }
+
 
 .cert-card {
     display: flex;
@@ -1984,11 +1985,21 @@ body.dark-theme .counter-num {
     
     .certifications-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
+        width: 100%;
     }
     
     .cert-card {
         min-height: auto;
+        width: 100%;
+        max-width: 100%;
     }
+
+    .cert-card.reveal {
+        opacity: 1;
+        transform: none;
+    }
+
     
     .contact-grid {
         grid-template-columns: 1fr;
