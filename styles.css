@@ -1083,11 +1083,12 @@ body.dark-theme .project-slide.active .project-slide-inner:hover {
     box-shadow: 6px 6px 0px #FF9900;
 }
 
-/* --- Image Section --- */
+/* --- Image Section: fluid responsive scaling --- */
 .project-slide-img-wrap {
     position: relative;
     width: 100%;
-    height: 220px;
+    max-width: 100%;
+    height: clamp(170px, 32vw, 240px);
     overflow: hidden;
     background: var(--bg-secondary);
     flex-shrink: 0;
@@ -1097,11 +1098,13 @@ body.dark-theme .project-slide.active .project-slide-inner:hover {
 .project-slide-img {
     width: 100%;
     height: 100%;
+    max-width: 100%;
     object-fit: cover;
     object-position: top center;
     display: block;
     transition: transform 0.4s ease;
 }
+
 
 .project-slide.active .project-slide-inner:hover .project-slide-img {
     transform: scale(1.04);
@@ -1936,7 +1939,33 @@ body.dark-theme .counter-num {
     }
     
     .project-slide {
-        flex: 0 0 clamp(260px, 85%, 560px);
+        flex: 0 0 clamp(260px, 82vw, 480px);
+        max-width: calc(100vw - 32px);
+    }
+
+    .project-slide-img-wrap {
+        height: clamp(140px, 44vw, 190px);
+    }
+
+    .project-slide-body {
+        padding: 14px 16px 14px;
+        gap: 8px;
+    }
+
+    .project-slide-title {
+        font-size: 15.5px;
+    }
+
+    .project-slide-desc {
+        font-size: 12.5px;
+        line-height: 1.5;
+    }
+
+    .project-slide-badge {
+        top: 8px;
+        left: 8px;
+        font-size: 9.5px;
+        padding: 3px 8px;
     }
 
     .carousel-prev {
@@ -1951,6 +1980,7 @@ body.dark-theme .counter-num {
         width: 36px;
         height: 36px;
     }
+
     
     .certifications-grid {
         grid-template-columns: 1fr;
@@ -2320,4 +2350,46 @@ body.dark-theme .info-chip {
     color: #FF9900;
     border-color: rgba(255, 153, 0, 0.25);
 }
+
+/* Extra Mobile Responsiveness for Small Phone Screens */
+@media (max-width: 480px) {
+    .project-slide {
+        flex: 0 0 calc(100vw - 36px);
+        max-width: 100%;
+    }
+
+    .project-slide-img-wrap {
+        height: clamp(130px, 48vw, 170px);
+    }
+
+    .project-slide-body {
+        padding: 12px 14px 12px;
+    }
+
+    .project-slide-title {
+        font-size: 15px;
+    }
+
+    .project-slide-desc {
+        font-size: 12px;
+    }
+
+    .project-slide-tech span {
+        font-size: 10px;
+        padding: 2px 7px;
+    }
+
+    .project-slide-footer {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .project-slide-footer a {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
 
