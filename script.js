@@ -24,10 +24,10 @@ function initTypewriter() {
     if (!typingElement) return;
 
     const phrases = [
-        "Cloud & AI-Native Development Enthusiast",
-        "Learning Cloud Architecture",
+        "AI-Native Software Developer",
+        "Cloud, Network & Cyber Security Enthusiast",
         "AWS re/Start Learner",
-        "Learning Frontend"
+        "Frontend Learner"
     ];
 
     let phraseIndex = 0;
