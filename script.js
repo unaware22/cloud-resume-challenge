@@ -24,7 +24,7 @@ function initTypewriter() {
     if (!typingElement) return;
 
     const phrases = [
-        "AWS Enthusiast",
+        "Cloud & AI-Native Development Enthusiast",
         "Learning Cloud Architecture",
         "AWS re/Start Learner",
         "Learning Frontend"
