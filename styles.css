@@ -279,21 +279,26 @@ h1, h2, h3, .nav-logo {
 }
 
 .nav-brand {
+    width: 24px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 }
 
 .nav-brand-logo {
-    display: inline-flex;
+    display: flex;
     align-items: center;
+    justify-content: center;
     text-decoration: none;
+    width: 24px;
     transition: opacity 0.2s ease;
 }
 
 .brand-logo-img {
     height: 38px;
     width: auto;
-    max-width: 140px;
+    max-width: none;
     object-fit: contain;
     display: block;
     transition: transform 0.25s ease, opacity 0.2s ease;
@@ -394,7 +399,7 @@ h1, h2, h3, .nav-logo {
 }
 
 /* =============================================
-   FLOATING BURGER BUTTON & GLASS DRAWER ON SCROLL
+   FLOATING BURGER BUTTON & FRAMER-STYLE DARK DRAWER
    ============================================= */
 .floating-burger-btn {
     position: fixed;
@@ -427,6 +432,14 @@ h1, h2, h3, .nav-logo {
     transform: scale(1);
 }
 
+/* Hide floating burger button when drawer is open so there is only ONE close button */
+.floating-burger-btn.is-active,
+.floating-nav-drawer.is-open ~ .floating-burger-btn {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: scale(0.5) !important;
+}
+
 .floating-burger-btn:hover {
     background: #FFFFFF;
     border-color: rgba(0, 0, 0, 0.2);
@@ -442,24 +455,11 @@ h1, h2, h3, .nav-logo {
     transition: all 0.25s ease;
 }
 
-.floating-burger-btn.is-active .line-1 {
-    transform: translateY(7px) rotate(45deg);
-}
-
-.floating-burger-btn.is-active .line-2 {
-    opacity: 0;
-    transform: scaleX(0);
-}
-
-.floating-burger-btn.is-active .line-3 {
-    transform: translateY(-7px) rotate(-45deg);
-}
-
-/* Floating Navigation Drawer */
+/* Framer-Style Pitch Black Navigation Drawer */
 .floating-nav-drawer {
     position: fixed;
     inset: 0;
-    z-index: 999;
+    z-index: 10000;
     pointer-events: none;
     visibility: hidden;
     transition: visibility 0.35s ease;
@@ -473,9 +473,9 @@ h1, h2, h3, .nav-logo {
 .drawer-backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     opacity: 0;
     transition: opacity 0.35s ease;
 }
@@ -485,121 +485,107 @@ h1, h2, h3, .nav-logo {
 }
 
 .drawer-panel {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    width: min(340px, calc(100vw - 32px));
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: 20px;
-    padding: 24px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-    transform: translateY(-20px) scale(0.95);
-    opacity: 0;
-    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(380px, 100vw);
+    background: #000000;
+    border-left: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 32px 32px 48px;
+    box-shadow: -20px 0 60px rgba(0, 0, 0, 0.85);
+    transform: translateX(100%);
+    opacity: 1;
+    transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 36px;
+    box-sizing: border-box;
+    overflow-y: auto;
 }
 
 .floating-nav-drawer.is-open .drawer-panel {
-    transform: translateY(0) scale(1);
-    opacity: 1;
+    transform: translateX(0);
 }
 
 .drawer-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 14px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    padding-bottom: 22px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .drawer-brand {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    color: #121212;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 800;
-    font-size: 17px;
+    gap: 12px;
+    color: #FFFFFF;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+    letter-spacing: -0.01em;
+}
+
+.drawer-logo-img {
+    height: 28px !important;
+    width: auto !important;
+    filter: invert(1);
+    display: block;
+}
+
+.drawer-brand-text {
+    color: #FFFFFF;
+}
+
+.drawer-header-actions {
+    display: flex;
+    align-items: center;
 }
 
 .drawer-close-btn {
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    color: #121212;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: transparent;
+    border: none;
     cursor: pointer;
-    transition: all 0.2s ease;
+    color: #FFFFFF;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+    padding: 0;
 }
 
 .drawer-close-btn:hover {
-    background: rgba(0, 0, 0, 0.1);
-    transform: rotate(90deg);
+    transform: scale(1.18);
+    opacity: 0.85;
 }
 
 .drawer-nav-list {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 22px;
+    margin-top: 12px;
 }
 
-.drawer-nav-link {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px 14px;
-    border-radius: 12px;
-    color: #334155;
-    text-decoration: none;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 15px;
+.drawer-nav-link.cipher-text {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+    font-size: clamp(24px, 5.2vw, 32px);
     font-weight: 600;
-    transition: all 0.2s ease;
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    letter-spacing: 0.02em;
+    display: block;
+    opacity: 0.95;
 }
 
-.drawer-nav-link span {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--pixel-orange);
-    opacity: 0.85;
-}
-
-.drawer-nav-link:hover {
-    background: rgba(0, 0, 0, 0.05);
-    color: #000000;
-    transform: translateX(4px);
-}
-
-.drawer-nav-contact {
-    margin-top: 6px;
-    background: #121212 !important;
-    color: #FFFFFF !important;
-    font-weight: 700;
-    justify-content: space-between;
-}
-
-.drawer-nav-contact span {
-    color: #FFFFFF !important;
-}
-
-.drawer-nav-contact:hover {
-    background: #000000 !important;
-    color: #FFFFFF !important;
-    transform: translateY(-2px) !important;
-}
-
-.drawer-footer {
-    padding-top: 14px;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
+.drawer-nav-link.cipher-text:hover {
+    opacity: 1;
+    color: #0084FF;
+    transform: translateX(8px);
+    text-shadow: 0 0 16px rgba(0, 132, 255, 0.45);
 }
 
 .drawer-socials {

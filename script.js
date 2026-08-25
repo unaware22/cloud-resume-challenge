@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initProjectCarousel();
     initBadgeCardTilt();
     initWavySkillsText();
+    initDrawerCipherScramble();
     initPageTransitions();
 });
 
@@ -268,6 +269,77 @@ function initScrollNavbar() {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
+}
+
+/**
+ * Cyberpunk Cipher Text Scrambler for Burger Navigation Menu
+ * Idle state: Displays scrambled cipher code (e.g. E4mV)
+ * Hover state: Smoothly decrypts and unscrambles into real plain text (e.g. Home)
+ * Mouse leave: Scrambles back into encrypted cipher text
+ */
+function initDrawerCipherScramble() {
+    const links = document.querySelectorAll(".drawer-nav-link.cipher-text");
+    if (!links.length) return;
+
+    const CIPHER_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+
+    links.forEach((link) => {
+        const targetText = link.getAttribute("data-text") || link.textContent.trim();
+        const initialCipher = link.textContent.trim();
+        let currentInterval = null;
+
+        function solveDecryption() {
+            clearInterval(currentInterval);
+            let iteration = 0;
+            const totalSteps = targetText.length * 3;
+
+            currentInterval = setInterval(() => {
+                link.textContent = targetText
+                    .split("")
+                    .map((char, index) => {
+                        if (index < Math.floor(iteration / 3)) {
+                            return targetText[index];
+                        }
+                        return CIPHER_CHARS[Math.floor(Math.random() * CIPHER_CHARS.length)];
+                    })
+                    .join("");
+
+                if (iteration >= totalSteps) {
+                    link.textContent = targetText;
+                    clearInterval(currentInterval);
+                }
+                iteration++;
+            }, 24);
+        }
+
+        function scrambleBack() {
+            clearInterval(currentInterval);
+            let iteration = 0;
+            const totalSteps = targetText.length * 3;
+
+            currentInterval = setInterval(() => {
+                link.textContent = targetText
+                    .split("")
+                    .map((char, index) => {
+                        if (index >= targetText.length - Math.floor(iteration / 3)) {
+                            return initialCipher[index] || CIPHER_CHARS[Math.floor(Math.random() * CIPHER_CHARS.length)];
+                        }
+                        return CIPHER_CHARS[Math.floor(Math.random() * CIPHER_CHARS.length)];
+                    })
+                    .join("");
+
+                if (iteration >= totalSteps) {
+                    link.textContent = initialCipher;
+                    clearInterval(currentInterval);
+                }
+                iteration++;
+            }, 24);
+        }
+
+        link.addEventListener("mouseenter", solveDecryption);
+        link.addEventListener("mouseleave", scrambleBack);
+        link.addEventListener("touchstart", solveDecryption, { passive: true });
+    });
 }
 
 /**
