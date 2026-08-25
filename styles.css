@@ -398,6 +398,36 @@ h1, h2, h3, .nav-logo {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 
+/* Header Burger Button (Visible on Mobile to replace Contact Button) */
+.header-burger-btn {
+    display: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4.5px;
+    cursor: pointer;
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 0;
+}
+
+.header-burger-btn .burger-line {
+    width: 18px;
+    height: 2px;
+    background: #121212;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+}
+
+.header-burger-btn:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+}
+
 /* =============================================
    FLOATING BURGER BUTTON & FRAMER-STYLE DARK DRAWER
    ============================================= */
@@ -2363,7 +2393,7 @@ body.dark-theme .hero-description:hover {
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    padding-top: 16px;
+    padding-top: 14px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     margin-top: 6px;
 }
@@ -2377,6 +2407,7 @@ body.dark-theme .hero-description:hover {
     font-weight: 700;
     color: #4ADE80;
     letter-spacing: 0.03em;
+    flex-shrink: 0;
 }
 
 .status-dot {
@@ -2391,12 +2422,13 @@ body.dark-theme .hero-description:hover {
 .project-github-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     padding: 8px 18px;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 12.5px;
+    font-size: 12px;
     font-weight: 700;
-    color: #0A0B0E;
+    color: #0A0B0E !important;
     background: #D4F436;
     border: 1px solid #D4F436;
     border-radius: 9999px;
@@ -2404,6 +2436,18 @@ body.dark-theme .hero-description:hover {
     transition: all 0.25s ease;
     white-space: nowrap;
     box-shadow: 0 0 14px rgba(212, 244, 54, 0.35);
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.github-icon {
+    width: 16px !important;
+    height: 16px !important;
+    max-width: 16px !important;
+    max-height: 16px !important;
+    flex-shrink: 0;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .project-github-btn:hover {
@@ -2508,10 +2552,28 @@ body.dark-theme .hero-description:hover {
     }
 }
 
-/* Mobile: Exactly 3 Rows Layout with Smooth Horizontal Swipe */
+/* Mobile: Exactly 3 Rows Layout with Smooth Horizontal Flick/Swipe */
 @media (max-width: 768px) {
     .certifications-modern-section {
         padding: clamp(60px, 8vh, 80px) 16px clamp(50px, 7vh, 70px);
+    }
+
+    .cert-swipe-hint {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 18px;
+    }
+
+    .cert-swipe-hint span {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 11.5px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.6);
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 5px 16px;
+        border-radius: 9999px;
+        letter-spacing: 0.04em;
     }
 
     .certifications-grid {
@@ -2521,12 +2583,19 @@ body.dark-theme .hero-description:hover {
         grid-auto-flow: column;
         grid-auto-columns: clamp(140px, 42vw, 175px);
         overflow-x: auto;
+        overflow-y: hidden;
         -webkit-overflow-scrolling: touch;
-        scroll-snap-type: x mandatory;
+        touch-action: pan-x pan-y;
+        scroll-snap-type: none; /* Non-blocking smooth momentum swipe */
         gap: 12px;
         padding: 4px 4px 16px;
         scrollbar-width: thin;
         scrollbar-color: rgba(212, 244, 54, 0.4) transparent;
+        cursor: grab;
+    }
+
+    .certifications-grid:active {
+        cursor: grabbing;
     }
 
     .certifications-grid::-webkit-scrollbar {
@@ -2539,9 +2608,10 @@ body.dark-theme .hero-description:hover {
     }
 
     .cert-card {
-        scroll-snap-align: start;
         border-radius: 14px;
         min-width: 0;
+        user-select: none;
+        -webkit-user-select: none;
     }
 
     .cert-img-container {
@@ -3509,7 +3579,7 @@ body.dark-theme .info-chip {
     }
 
     .project-slide-body {
-        padding: 12px 14px 12px;
+        padding: 12px 14px 14px;
     }
 
     .project-slide-title {
@@ -3526,15 +3596,18 @@ body.dark-theme .info-chip {
     }
 
     .project-slide-footer {
-        flex-direction: column;
-        align-items: stretch;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
         gap: 8px;
+        padding-top: 10px;
     }
 
-    .project-slide-footer a {
-        width: 100%;
-        justify-content: center;
-        text-align: center;
+    .project-github-btn {
+        padding: 6px 14px;
+        font-size: 11.5px;
+        width: auto !important;
     }
 }
 
@@ -3542,8 +3615,129 @@ body.dark-theme .info-chip {
    COMPREHENSIVE GLOBAL MOBILE RESPONSIVENESS (<= 768px)
    ============================================= */
 @media (max-width: 768px) {
-    /* Hide floating social sidebar so it never overlaps mobile content */
+    /* Header layout on mobile (Absolute, scrolls naturally with the page) */
+    .site-header {
+        position: absolute !important;
+        top: 16px !important;
+        left: 18px !important;
+        right: 18px !important;
+        height: 46px !important;
+        padding: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        pointer-events: auto !important;
+        z-index: 100 !important;
+    }
+
+    .site-header.is-scrolled {
+        opacity: 0 !important;
+        transform: translateY(-16px) !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+
+    .nav-container-clean {
+        height: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+    }
+
+    .nav-brand {
+        height: 100% !important;
+        width: auto !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        pointer-events: auto !important;
+    }
+
+    .nav-brand-logo {
+        height: 100% !important;
+        width: auto !important;
+        display: inline-flex !important;
+        align-items: center !important;
+    }
+
+    .brand-logo-img {
+        height: 32px !important;
+        width: auto !important;
+        display: block !important;
+    }
+
+    .nav-links {
+        display: none !important;
+    }
+
+    .btn-contact-pill {
+        display: none !important;
+    }
+
+    .header-burger-btn {
+        display: none !important;
+    }
+
+    /* Floating Glass Burger Button is visible right from the start on mobile (matching logo Y and side margins) */
+    .floating-burger-btn {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        transform: scale(1) !important;
+        top: 16px !important;
+        right: 18px !important;
+        width: 46px !important;
+        height: 46px !important;
+    }
+
+    /* Bottom-Left Vertical Social Icons on Mobile (LinkedIn, GitHub, Email with left: 18px matching logo) */
     .hero-social-sidebar {
+        display: flex !important;
+        position: absolute !important;
+        left: 18px !important;
+        bottom: 24px !important;
+        top: auto !important;
+        height: auto !important;
+        width: 32px !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        gap: 14px !important;
+        z-index: 50 !important;
+    }
+
+    .hero-social-line {
+        display: none !important;
+    }
+
+    .hero-social-icons {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 14px !important;
+    }
+
+    .social-icon-link {
+        width: 32px !important;
+        height: 32px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        color: #121212 !important;
+        opacity: 0.85 !important;
+        text-decoration: none !important;
+        transition: transform 0.2s ease, opacity 0.2s ease !important;
+    }
+
+    .social-icon-link svg {
+        width: 18px !important;
+        height: 18px !important;
+    }
+
+    .social-icon-link:hover {
+        opacity: 1 !important;
+        transform: scale(1.15) !important;
+    }
+
+    .hero-bottom-footer-bar {
         display: none !important;
     }
 

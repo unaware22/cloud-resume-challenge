@@ -8,10 +8,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&family=Pixelify+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Press+Start+2P&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=35" />
+    <link rel="stylesheet" href="styles.css?v=41" />
     <script src="interactive/rive_lite.js"></script>
     <script src="interactive/cat_data.js"></script>
-    <script src="script.js?v=35" defer></script>
+    <script src="script.js?v=41" defer></script>
 </head>
 <body>
 
@@ -79,6 +79,11 @@
                         <span>CONTACT</span>
                         <span class="pill-arrow">↗</span>
                     </a>
+                    <button id="header-burger-btn" class="header-burger-btn" aria-label="Open Navigation Menu">
+                        <span class="burger-line line-1"></span>
+                        <span class="burger-line line-2"></span>
+                        <span class="burger-line line-3"></span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -86,18 +91,18 @@
 
     <!-- Hero Section (Studio Stage Canvas with 3D Orb Video matching halaman1.jpeg) -->
     <section id="hero" class="hero-minimal">
-        <!-- Left Vertical Tool Rail (Clean code, share, resume icons) -->
+        <!-- Left Vertical Tool Rail (LinkedIn, GitHub, Email) -->
         <div class="hero-social-sidebar">
             <div class="hero-social-line"></div>
             <div class="hero-social-icons">
-                <a href="#projects" class="social-icon-link" aria-label="Projects & Code" title="Projects & Code">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                <a href="https://www.linkedin.com/in/adityanurlintang" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="LinkedIn" title="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.65 1.65 0 0 0 0-3.3 1.65 1.65 0 0 0 0 3.3m1.4 9.74v-8.37H5.06v8.37h2.8z"/></svg>
                 </a>
-                <a href="#contact" class="social-icon-link" aria-label="Connect & Share" title="Connect & Share">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                <a href="https://github.com/unaware22" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="GitHub" title="GitHub">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
                 </a>
-                <a href="CV.pdf" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Curriculum Vitae / Resume" title="Curriculum Vitae / Resume">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                <a href="mailto:adityanurlintang22@gmail.com" class="social-icon-link" aria-label="Email" title="Email">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                 </a>
             </div>
         </div>
@@ -132,20 +137,9 @@
             </div>
         </div>
 
-        <!-- Subtle Sub-Footer Bar at Bottom Edge (Copyright Left, Icon-only Socials Right) -->
+        <!-- Subtle Sub-Footer Bar at Bottom Edge (Copyright Left) -->
         <div class="hero-bottom-footer-bar">
             <div class="footer-copy-text">© 2024 Developer Portfolio. Built with precision.</div>
-            <div class="footer-social-icons-only">
-                <a href="https://www.linkedin.com/in/adityanurlintang" target="_blank" rel="noopener noreferrer" class="hero-footer-icon-btn" aria-label="LinkedIn" title="LinkedIn">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.65 1.65 0 0 0 0-3.3 1.65 1.65 0 0 0 0 3.3m1.4 9.74v-8.37H5.06v8.37h2.8z"/></svg>
-                </a>
-                <a href="https://github.com/unaware22" target="_blank" rel="noopener noreferrer" class="hero-footer-icon-btn" aria-label="GitHub" title="GitHub">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                </a>
-                <a href="mailto:adityanurlintang22@gmail.com" class="hero-footer-icon-btn" aria-label="Email" title="Email">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                </a>
-            </div>
         </div>
     </section>
 
@@ -606,7 +600,10 @@
                 <span class="modern-section-overline">CREDENTIALS</span>
                 <h2 class="modern-section-title">Certifications &amp; Badges</h2>
             </div>
-            <div class="certifications-grid">
+            <div class="cert-swipe-hint">
+                <span>← Swipe untuk menjelajahi sertifikat →</span>
+            </div>
+            <div class="certifications-grid" id="certificationsGrid">
                 <!-- Cert 1: IBM SkillsBuild & Hacktiv8 AI Agent -->
                 <a href="Certificate/BuildanAIAgent_Badge20260729-8-idrwxr.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="IT AI Agent For Programming &amp; Build an AI Agent">
                     <div class="cert-img-container">

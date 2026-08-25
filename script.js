@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initBadgeCardTilt();
     initWavySkillsText();
     initDrawerCipherScramble();
+    initCertScrollDrag();
     initPageTransitions();
 });
 
@@ -215,12 +216,13 @@ function initHeroRive() {
 function initScrollNavbar() {
     const header = document.getElementById("site-header");
     const burgerBtn = document.getElementById("floating-burger-btn");
+    const headerBurgerBtn = document.getElementById("header-burger-btn");
     const drawer = document.getElementById("floating-nav-drawer");
     const closeBtn = document.getElementById("drawer-close-btn");
     const backdrop = document.getElementById("drawer-backdrop");
     const drawerLinks = document.querySelectorAll(".drawer-nav-link");
 
-    if (!header || !burgerBtn || !drawer) return;
+    if (!header || !drawer) return;
 
     let isDrawerOpen = false;
 
@@ -228,23 +230,35 @@ function initScrollNavbar() {
         isDrawerOpen = true;
         drawer.classList.add("is-open");
         drawer.setAttribute("aria-hidden", "false");
-        burgerBtn.classList.add("is-active");
+        if (burgerBtn) burgerBtn.classList.add("is-active");
     }
 
     function closeDrawer() {
         isDrawerOpen = false;
         drawer.classList.remove("is-open");
         drawer.setAttribute("aria-hidden", "true");
-        burgerBtn.classList.remove("is-active");
+        if (burgerBtn) burgerBtn.classList.remove("is-active");
     }
 
-    burgerBtn.addEventListener("click", () => {
-        if (isDrawerOpen) {
-            closeDrawer();
-        } else {
-            openDrawer();
-        }
-    });
+    if (burgerBtn) {
+        burgerBtn.addEventListener("click", () => {
+            if (isDrawerOpen) {
+                closeDrawer();
+            } else {
+                openDrawer();
+            }
+        });
+    }
+
+    if (headerBurgerBtn) {
+        headerBurgerBtn.addEventListener("click", () => {
+            if (isDrawerOpen) {
+                closeDrawer();
+            } else {
+                openDrawer();
+            }
+        });
+    }
 
     if (closeBtn) closeBtn.addEventListener("click", closeDrawer);
     if (backdrop) backdrop.addEventListener("click", closeDrawer);
@@ -255,19 +269,32 @@ function initScrollNavbar() {
 
     const handleScroll = () => {
         const scrollY = window.scrollY || window.pageYOffset;
-        if (scrollY > 70) {
-            header.classList.add("is-scrolled");
+        const isMobile = window.innerWidth <= 768;
+
+        if (isMobile) {
+            // On mobile, the floating glass burger is always visible from the start
             burgerBtn.classList.add("is-visible");
+            if (scrollY > 70) {
+                header.classList.add("is-scrolled");
+            } else {
+                header.classList.remove("is-scrolled");
+            }
         } else {
-            header.classList.remove("is-scrolled");
-            burgerBtn.classList.remove("is-visible");
-            if (isDrawerOpen) {
-                closeDrawer();
+            if (scrollY > 70) {
+                header.classList.add("is-scrolled");
+                burgerBtn.classList.add("is-visible");
+            } else {
+                header.classList.remove("is-scrolled");
+                burgerBtn.classList.remove("is-visible");
+                if (isDrawerOpen) {
+                    closeDrawer();
+                }
             }
         }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
     handleScroll();
 }
 
@@ -339,6 +366,40 @@ function initDrawerCipherScramble() {
         link.addEventListener("mouseenter", solveDecryption);
         link.addEventListener("mouseleave", scrambleBack);
         link.addEventListener("touchstart", solveDecryption, { passive: true });
+    });
+}
+
+/**
+ * Smooth Drag & Flick Scrolling for Certifications Grid on Mobile / Desktop
+ */
+function initCertScrollDrag() {
+    const grid = document.getElementById("certificationsGrid");
+    if (!grid) return;
+
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    grid.addEventListener("mousedown", (e) => {
+        isDown = true;
+        startX = e.pageX - grid.offsetLeft;
+        scrollLeft = grid.scrollLeft;
+    });
+
+    grid.addEventListener("mouseleave", () => {
+        isDown = false;
+    });
+
+    grid.addEventListener("mouseup", () => {
+        isDown = false;
+    });
+
+    grid.addEventListener("mousemove", (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - grid.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        grid.scrollLeft = scrollLeft - walk;
     });
 }
 
