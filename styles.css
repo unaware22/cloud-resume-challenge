@@ -2522,16 +2522,53 @@ body.dark-theme .hero-description:hover {
     }
 }
 
-@media (max-width: 640px) {
-    .certifications-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+/* Mobile: Exactly 3 Rows Layout with Smooth Horizontal Swipe */
+@media (max-width: 768px) {
+    .certifications-modern-section {
+        padding: clamp(60px, 8vh, 80px) 16px clamp(50px, 7vh, 70px);
     }
-}
 
-@media (max-width: 380px) {
     .certifications-grid {
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: none;
+        grid-template-rows: repeat(3, 1fr);
+        grid-auto-flow: column;
+        grid-auto-columns: clamp(140px, 42vw, 175px);
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        gap: 12px;
+        padding: 4px 4px 16px;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(212, 244, 54, 0.4) transparent;
+    }
+
+    .certifications-grid::-webkit-scrollbar {
+        height: 4px;
+    }
+
+    .certifications-grid::-webkit-scrollbar-thumb {
+        background: rgba(212, 244, 54, 0.4);
+        border-radius: 9999px;
+    }
+
+    .cert-card {
+        scroll-snap-align: start;
+        border-radius: 14px;
+        min-width: 0;
+    }
+
+    .cert-img-container {
+        height: 95px !important;
+    }
+
+    .cert-info {
+        padding: 8px 10px !important;
+    }
+
+    .cert-title {
+        font-size: 11.5px !important;
+        line-height: 1.25 !important;
     }
 }
 
@@ -3511,6 +3548,222 @@ body.dark-theme .info-chip {
     .project-slide-footer a {
         width: 100%;
         justify-content: center;
+        text-align: center;
+    }
+}
+
+/* =============================================
+   COMPREHENSIVE GLOBAL MOBILE RESPONSIVENESS (<= 768px)
+   ============================================= */
+@media (max-width: 768px) {
+    /* Hide floating social sidebar so it never overlaps mobile content */
+    .hero-social-sidebar {
+        display: none !important;
+    }
+
+    .hero-typography-wrap {
+        padding: 0 12px;
+    }
+
+    .hero-sub-intro {
+        font-size: 13.5px;
+    }
+
+    .hero-main-title {
+        font-size: clamp(28px, 7.5vw, 44px);
+    }
+
+    .hero-cat-container {
+        max-width: clamp(200px, 55vw, 280px);
+        height: clamp(140px, 36vw, 190px);
+    }
+
+    .hero-footer-bar-clean {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-stats-row {
+        justify-content: center;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .hero-stat-pill {
+        padding: 6px 14px;
+        font-size: 11px;
+    }
+
+    /* Page 2 Editorial */
+    .page-two-stage {
+        padding: 70px 16px 60px;
+        min-height: auto;
+    }
+
+    .about-editorial-heading {
+        font-size: clamp(22px, 5.8vw, 32px);
+        line-height: 1.35;
+        margin-bottom: 16px;
+    }
+
+    .about-editorial-subtext {
+        font-size: 13.5px;
+        line-height: 1.65;
+        margin-bottom: 24px;
+    }
+
+    /* Page 3 About Me / ID Card */
+    .page-three-stage {
+        padding: 70px 16px 60px;
+    }
+
+    .about-two-column-layout {
+        flex-direction: column;
+        align-items: center;
+        gap: 36px;
+    }
+
+    .id-card-lanyard-wrapper {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .about-content-column {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+
+    .about-lead-title {
+        font-size: clamp(26px, 6.5vw, 36px);
+        text-align: center;
+    }
+
+    .about-body-paragraph {
+        font-size: 13.5px;
+        text-align: left;
+    }
+
+    .about-cta-row {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .about-vision-card {
+        width: 100%;
+        padding: 20px 16px;
+    }
+
+    .about-vision-title {
+        font-size: 17px;
+    }
+
+    .about-vision-quote {
+        font-size: 13px;
+    }
+
+    /* Section 01: Experience Timeline */
+    .experience-modern-section {
+        padding: 70px 16px 60px;
+    }
+
+    .journey-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-bottom: 36px;
+    }
+
+    .journey-stat-card {
+        padding: 16px 14px;
+        border-radius: 16px;
+    }
+
+    .journey-stat-number {
+        font-size: 26px;
+    }
+
+    .journey-stat-label {
+        font-size: 11px;
+    }
+
+    .timeline-center-line {
+        left: 18px;
+    }
+
+    .timeline-year-node {
+        left: 18px;
+        transform: translateX(-50%);
+    }
+
+    .timeline-item.timeline-left,
+    .timeline-item.timeline-right {
+        padding-left: 42px;
+        padding-right: 0;
+        justify-content: flex-start;
+        width: 100%;
+    }
+
+    .timeline-card-box {
+        padding: 18px 18px;
+        border-radius: 16px;
+    }
+
+    .timeline-role-title {
+        font-size: 16.5px;
+    }
+
+    .timeline-company-name {
+        font-size: 12px;
+    }
+
+    .timeline-card-desc {
+        font-size: 12.5px;
+        line-height: 1.6;
+        margin-bottom: 12px;
+    }
+
+    .t-tag {
+        font-size: 10.5px;
+        padding: 3px 8px;
+    }
+
+    /* Section 04: Skills Wavy Container */
+    .skills-section-wavy-dark {
+        padding: 60px 0 50px;
+    }
+
+    .skills-wavy-container {
+        height: clamp(240px, 48vw, 340px);
+        margin-top: 24px;
+    }
+
+    /* Section 05: Contact */
+    .contact-section-dark {
+        padding: 70px 16px 60px;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        max-width: 420px;
+    }
+
+    .contact-link {
+        padding: 22px 18px;
+        border-radius: 16px;
+        font-size: 14.5px;
+    }
+
+    .footer {
+        padding: 30px 16px 40px;
+        flex-direction: column;
+        text-align: center;
+        gap: 18px;
+    }
+
+    .footer-left, .footer-right {
         text-align: center;
     }
 }
