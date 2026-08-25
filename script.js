@@ -487,66 +487,13 @@ function initExperienceCountUp() {
 }
 
 /**
- * Interactive Cursor-Driven Card Color & Lighting for Experience Cards (card.riv)
- * Loads interactive/card.riv to canvas and controls cursor-reactive properties,
- * dynamic color spotlights, holographic gradient mesh, and subtle 3D tilt
+ * Interactive Cursor-Driven Card Color & Lighting for Experience Cards
+ * Controls dynamic color spotlights, holographic gradient mesh, and subtle 3D tilt
  * in real-time as the cursor moves over each card (AWS, IBM, MSIB 4, S1 UP)
  */
-let cardRivBufferPromise = null;
-
-function getCardRivBuffer() {
-    if (!cardRivBufferPromise) {
-        cardRivBufferPromise = fetch("interactive/card.riv")
-            .then(res => res.ok ? res.arrayBuffer() : null)
-            .catch(err => {
-                console.warn("card.riv buffer fetch error:", err);
-                return null;
-            });
-    }
-    return cardRivBufferPromise;
-}
-
 function initInteractiveExperienceCards() {
     const cards = document.querySelectorAll(".interactive-glow-card");
     if (!cards.length) return;
-
-    // Load Rive card instances if Rive runtime is available
-    if (typeof rive !== "undefined") {
-        getCardRivBuffer().then(buffer => {
-            cards.forEach((card) => {
-                const canvas = card.querySelector(".timeline-rive-card-canvas");
-                if (!canvas) return;
-
-                try {
-                    const riveParams = {
-                        canvas: canvas,
-                        autoplay: true,
-                        autoBind: true,
-                        layout: new rive.Layout({
-                            fit: rive.Fit.Cover,
-                            alignment: rive.Alignment.Center,
-                        }),
-                        onLoad: () => {
-                            if (card._riveInstance) {
-                                card._riveInstance.resizeDrawingSurfaceToCanvas();
-                            }
-                        }
-                    };
-
-                    if (buffer) {
-                        riveParams.buffer = buffer.slice(0);
-                    } else {
-                        riveParams.src = "interactive/card.riv";
-                    }
-
-                    const riveInstance = new rive.Rive(riveParams);
-                    card._riveInstance = riveInstance;
-                } catch (e) {
-                    console.log("Rive card initialization note:", e);
-                }
-            });
-        });
-    }
 
     cards.forEach((card) => {
         let isHovered = false;
@@ -585,23 +532,6 @@ function initInteractiveExperienceCards() {
 
             card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px) scale(1.015)`;
             card.style.setProperty("--cursor-opacity", "1");
-
-            // If Rive instance is active, update inputs
-            if (card._riveInstance && card._riveInstance.stateMachineInputs) {
-                try {
-                    const inputs = card._riveInstance.stateMachineInputs("State Machine 1") || [];
-                    inputs.forEach(input => {
-                        const name = input.name.toLowerCase();
-                        if (name.includes("x") || name.includes("horiz") || name.includes("ltor")) {
-                            input.value = targetX;
-                        } else if (name.includes("y") || name.includes("vert") || name.includes("utod")) {
-                            input.value = targetY;
-                        } else if (name.includes("hover")) {
-                            input.value = true;
-                        }
-                    });
-                } catch (_) {}
-            }
 
             if (!animFrameId) {
                 animFrameId = requestAnimationFrame(updateGlow);
