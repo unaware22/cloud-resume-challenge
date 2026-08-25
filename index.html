@@ -8,10 +8,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&family=Pixelify+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Press+Start+2P&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=23" />
+    <link rel="stylesheet" href="styles.css?v=30" />
     <script src="interactive/rive_lite.js"></script>
     <script src="interactive/cat_data.js"></script>
-    <script src="script.js?v=23" defer></script>
+    <script src="script.js?v=30" defer></script>
 </head>
 <body>
 
@@ -170,7 +170,7 @@
                 
                 <!-- Subtitle / Bio summary -->
                 <p class="about-editorial-subtext">
-                    Saya adalah mahasiswa Teknik Informatika Universitas Pancasila angkatan 2023 yang berfokus pada logika, struktur, dan arsitektur aplikasi AI-native, cloud AWS, serta Network &amp; Cyber Security (NCS).
+                    Saya adalah mahasiswa Teknik Informatika Universitas Pancasila angkatan 2023 yang berfokus pada logika, struktur, dan arsitektur aplikasi AI-native, cloud AWS, serta Network &amp; Cyber Security.
                 </p>
 
                 <!-- Lime Green Action Button Row (Scrolls Smoothly to Page 3 About Me) -->
@@ -272,15 +272,15 @@
                             </svg>
                         </a>
                     </div>
-                </div>
-            </div>
 
-            <!-- Bottom: Visi & Pendekatan Card -->
-            <div class="about-vision-card">
-                <h3 class="about-vision-title">Visi &amp; Pendekatan</h3>
-                <p class="about-vision-quote">
-                    "Saya berkomitmen untuk menciptakan solusi teknologi yang tidak hanya berfungsi secara optimal, tetapi juga mendorong batasan inovasi. Melalui kombinasi logika yang ketat, struktur yang solid, dan arsitektur yang modern, tujuan saya adalah membangun aplikasi yang berdampak positif dan bertahan di masa depan."
-                </p>
+                    <!-- Visi dan Pendekatan Card (Placed under Download CV button beside ID Card) -->
+                    <div class="about-vision-card">
+                        <h3 class="about-vision-title">Visi dan Pendekatan</h3>
+                        <p class="about-vision-quote">
+                            "Saya berkomitmen untuk menciptakan solusi teknologi yang tidak hanya berfungsi secara optimal, tetapi juga mendorong batasan inovasi. Melalui kombinasi logika yang ketat, struktur yang solid, dan arsitektur yang modern, tujuan saya adalah membangun aplikasi yang berdampak positif dan bertahan di masa depan."
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -324,7 +324,9 @@
                     <div class="timeline-year-node">
                         <span class="year-badge badge-amber">2026</span>
                     </div>
-                    <div class="timeline-card-box card-accent-amber">
+                    <div class="timeline-card-box card-accent-amber interactive-glow-card">
+                        <canvas class="timeline-rive-card-canvas" aria-hidden="true"></canvas>
+                        <div class="card-glow-mesh"></div>
                         <div class="timeline-card-top">
                             <div class="timeline-role-info">
                                 <h3 class="timeline-role-title">AWS Cloud Architecture</h3>
@@ -350,7 +352,9 @@
                     <div class="timeline-year-node">
                         <span class="year-badge badge-blue">2026</span>
                     </div>
-                    <div class="timeline-card-box card-accent-blue">
+                    <div class="timeline-card-box card-accent-blue interactive-glow-card">
+                        <canvas class="timeline-rive-card-canvas" aria-hidden="true"></canvas>
+                        <div class="card-glow-mesh"></div>
                         <div class="timeline-card-top">
                             <div class="timeline-role-info">
                                 <h3 class="timeline-role-title">IT AI Agent For Programming</h3>
@@ -375,7 +379,9 @@
                     <div class="timeline-year-node">
                         <span class="year-badge badge-lime">2026</span>
                     </div>
-                    <div class="timeline-card-box card-accent-lime">
+                    <div class="timeline-card-box card-accent-lime interactive-glow-card">
+                        <canvas class="timeline-rive-card-canvas" aria-hidden="true"></canvas>
+                        <div class="card-glow-mesh"></div>
                         <div class="timeline-card-top">
                             <div class="timeline-role-info">
                                 <h3 class="timeline-role-title">MSIB 4 — Ethical Hacking</h3>
@@ -401,22 +407,25 @@
                     <div class="timeline-year-node">
                         <span class="year-badge badge-cyan">2023</span>
                     </div>
-                    <div class="timeline-card-box card-accent-cyan">
+                    <div class="timeline-card-box card-accent-cyan interactive-glow-card">
+                        <canvas class="timeline-rive-card-canvas" aria-hidden="true"></canvas>
+                        <div class="card-glow-mesh"></div>
                         <div class="timeline-card-top">
                             <div class="timeline-role-info">
-                                <h3 class="timeline-role-title">S1 Teknik Informatika (NCS)</h3>
+                                <h3 class="timeline-role-title">S1 Teknik Informatika</h3>
                                 <span class="timeline-company-name">Universitas Pancasila</span>
                             </div>
                             <span class="timeline-type-pill pill-cyan">Formal Education</span>
                         </div>
                         <p class="timeline-card-desc">
-                            Mahasiswa Teknik Informatika Universitas Pancasila peminatan Network Cyber Security (NCS) angkatan 2023. Berfokus pada arsitektur jaringan komputer, administrasi sistem Linux, security assessment, dan wawasan cloud computing.
+                            Mahasiswa Teknik Informatika Universitas Pancasila angkatan 2023. Mempelajari fondasi algoritma dan pemrograman menggunakan C++, Pemrograman Berorientasi Objek (OOP) dengan Java, serta pengembangan web dinamis berbasis Framework Laravel dan basis data MySQL.
                         </p>
                         <div class="timeline-tech-tags">
-                            <span class="t-tag">Network Architecture</span>
-                            <span class="t-tag">Cyber Security</span>
-                            <span class="t-tag">Linux Admin</span>
-                            <span class="t-tag">Cloud Foundations</span>
+                            <span class="t-tag">C++</span>
+                            <span class="t-tag">Java</span>
+                            <span class="t-tag">Laravel</span>
+                            <span class="t-tag">MySQL</span>
+                            <span class="t-tag">OOP &amp; Data Structures</span>
                         </div>
                     </div>
                 </div>
@@ -823,155 +832,45 @@
             </div>
         </section>
 
-        <!-- Section 04: Skills (Bright Canvas Background + Dark Font & Badges) -->
-        <section id="skills" class="skills-section-bright reveal">
+        <!-- Section 04: Skills (Dark Obsidian Studio + Wavy Text Follow Path Ribbons) -->
+        <section id="skills" class="skills-section-wavy-dark reveal">
             <div class="modern-section-header">
-                <span class="modern-section-overline skills-dark-overline">TECH STACK</span>
-                <h2 class="modern-section-title skills-dark-title">Skills &amp; Technologies</h2>
+                <span class="modern-section-overline skills-neon-overline">TECH STACK</span>
+                <h2 class="modern-section-title skills-white-title">Skills &amp; Technologies</h2>
             </div>
             
-            <div class="skills-marquee-container">
-                <!-- Track 1: Running Left to Right -->
-                <div class="marquee-track track-right">
-                    <!-- Set 1 -->
-                    <div class="skill-badge red-badge">
-                        <svg class="skill-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                        <span>Wazuh SIEM</span>
-                    </div>
-                    <div class="skill-badge red-badge">
-                        <svg class="skill-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                        <span>Burp Suite</span>
-                    </div>
-                    <div class="skill-badge yellow-badge">
-                        <svg class="skill-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                        <span>OpenVAS</span>
-                    </div>
-                    <div class="skill-badge green-badge">
-                        <svg class="skill-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
-                        <span>Nmap</span>
-                    </div>
-                    <div class="skill-badge blue-badge">
-                        <svg class="skill-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16.242V8c0-2.21 1.79-4 4-4h12c2.21 0 4 1.79 4 4v8.242M2 16.242a4 4 0 0 0 4 4h12c2.21 0 4-1.79 4-4M2 16.242l6-4M22 16.242l-6-4M12 4v8"/></svg>
-                        <span>Wireshark</span>
-                    </div>
-                    <div class="skill-badge red-badge">
-                        <svg class="skill-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                        <span>Shodan</span>
-                    </div>
-                    <div class="skill-badge yellow-badge">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cisco/cisco-original.svg" class="skill-logo" alt="" />
-                        <span>Cisco Network</span>
-                    </div>
-                    <div class="skill-badge green-badge">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" class="skill-logo" alt="" />
-                        <span>Linux Admin</span>
-                    </div>
+            <div class="skills-wavy-container" aria-label="Animated Wavy Skills and Technologies Ribbons">
+                <svg class="skills-wavy-svg" viewBox="0 0 1600 440" preserveAspectRatio="none">
+                    <defs>
+                        <!-- Wave 1 Center Path for Text -->
+                        <path id="wavePath1" d="M -2400,110 C -2181.5,160.4 -2018.5,160.4 -1800.0,110 C -1581.5,59.6 -1418.5,59.6 -1200.0,110 C -981.5,160.4 -818.5,160.4 -600.0,110 C -381.5,59.6 -218.5,59.6 0.0,110 C 218.5,160.4 381.5,160.4 600.0,110 C 818.5,59.6 981.5,59.6 1200.0,110 C 1418.5,160.4 1581.5,160.4 1800.0,110 C 2018.5,59.6 2181.5,59.6 2400.0,110 C 2618.5,160.4 2781.5,160.4 3000.0,110 C 3218.5,59.6 3381.5,59.6 3600.0,110 C 3818.5,160.4 3981.5,160.4 4200.0,110 C 4418.5,59.6 4581.5,59.6 4800.0,110" fill="none" />
+                        
+                        <!-- Wave 2 Center Path for Text -->
+                        <path id="wavePath2" d="M -2400,310 C -2181.5,259.6 -2018.5,259.6 -1800.0,310 C -1581.5,360.4 -1418.5,360.4 -1200.0,310 C -981.5,259.6 -818.5,259.6 -600.0,310 C -381.5,360.4 -218.5,360.4 0.0,310 C 218.5,259.6 381.5,259.6 600.0,310 C 818.5,360.4 981.5,360.4 1200.0,310 C 1418.5,259.6 1581.5,259.6 1800.0,310 C 2018.5,360.4 2181.5,360.4 2400.0,310 C 2618.5,259.6 2781.5,259.6 3000.0,310 C 3218.5,360.4 3381.5,360.4 3600.0,310 C 3818.5,259.6 3981.5,259.6 4200.0,310 C 4418.5,360.4 4581.5,360.4 4800.0,310" fill="none" />
+                    </defs>
 
-                    <!-- Set 1 Duplicate for Loop -->
-                    <div class="skill-badge red-badge">
-                        <svg class="skill-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                        <span>Wazuh SIEM</span>
-                    </div>
-                    <div class="skill-badge red-badge">
-                        <svg class="skill-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                        <span>Burp Suite</span>
-                    </div>
-                    <div class="skill-badge yellow-badge">
-                        <svg class="skill-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                        <span>OpenVAS</span>
-                    </div>
-                    <div class="skill-badge green-badge">
-                        <svg class="skill-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
-                        <span>Nmap</span>
-                    </div>
-                    <div class="skill-badge blue-badge">
-                        <svg class="skill-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16.242V8c0-2.21 1.79-4 4-4h12c2.21 0 4 1.79 4 4v8.242M2 16.242a4 4 0 0 0 4 4h12c2.21 0 4-1.79 4-4M2 16.242l6-4M22 16.242l-6-4M12 4v8"/></svg>
-                        <span>Wireshark</span>
-                    </div>
-                    <div class="skill-badge red-badge">
-                        <svg class="skill-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                        <span>Shodan</span>
-                    </div>
-                    <div class="skill-badge yellow-badge">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cisco/cisco-original.svg" class="skill-logo" alt="" />
-                        <span>Cisco Network</span>
-                    </div>
-                    <div class="skill-badge green-badge">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" class="skill-logo" alt="" />
-                        <span>Linux Admin</span>
-                    </div>
-                </div>
+                    <!-- Wave 1 Upper & Lower Contour Lines (Matching Reference Image) -->
+                    <path class="wave-contour-line" d="M -2400,65 C -2181.5,115.4 -2018.5,115.4 -1800.0,65 C -1581.5,14.6 -1418.5,14.6 -1200.0,65 C -981.5,115.4 -818.5,115.4 -600.0,65 C -381.5,14.6 -218.5,14.6 0.0,65 C 218.5,115.4 381.5,115.4 600.0,65 C 818.5,14.6 981.5,14.6 1200.0,65 C 1418.5,115.4 1581.5,115.4 1800.0,65 C 2018.5,14.6 2181.5,14.6 2400.0,65 C 2618.5,115.4 2781.5,115.4 3000.0,65 C 3218.5,14.6 3381.5,14.6 3600.0,65 C 3818.5,115.4 3981.5,115.4 4200.0,65 C 4418.5,14.6 4581.5,14.6 4800.0,65" fill="none" />
+                    <path class="wave-contour-line" d="M -2400,155 C -2181.5,205.4 -2018.5,205.4 -1800.0,155 C -1581.5,104.6 -1418.5,104.6 -1200.0,155 C -981.5,205.4 -818.5,205.4 -600.0,155 C -381.5,104.6 -218.5,104.6 0.0,155 C 218.5,205.4 381.5,205.4 600.0,155 C 818.5,104.6 981.5,104.6 1200.0,155 C 1418.5,205.4 1581.5,205.4 1800.0,155 C 2018.5,104.6 2181.5,104.6 2400.0,155 C 2618.5,205.4 2781.5,205.4 3000.0,155 C 3218.5,104.6 3381.5,104.6 3600.0,155 C 3818.5,205.4 3981.5,205.4 4200.0,155 C 4418.5,104.6 4581.5,104.6 4800.0,155" fill="none" />
 
-                <!-- Track 2: Running Right to Left (Opposite Direction!) -->
-                <div class="marquee-track track-left" style="margin-top: 16px;">
-                    <!-- Set 2 -->
-                    <div class="skill-badge yellow-badge">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" class="skill-logo" alt="" />
-                        <span>AWS Cloud</span>
-                    </div>
-                    <div class="skill-badge blue-badge">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="skill-logo" alt="" />
-                        <span>Docker</span>
-                    </div>
-                    <div class="skill-badge green-badge">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="skill-logo" alt="" />
-                        <span>Python</span>
-                    </div>
-                    <div class="skill-badge blue-badge">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" class="skill-logo" alt="" />
-                        <span>PHP</span>
-                    </div>
-                    <div class="skill-badge red-badge">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" class="skill-logo" alt="" />
-                        <span>MySQL</span>
-                    </div>
-                    <div class="skill-badge yellow-badge">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="skill-logo" alt="" />
-                        <span>JavaScript</span>
-                    </div>
-                    <div class="skill-badge blue-badge">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="skill-logo" alt="" />
-                        <span>HTML5</span>
-                    </div>
-                    <div class="skill-badge red-badge">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" class="skill-logo" alt="" />
-                        <span>CSS3</span>
-                    </div>
+                    <!-- Wave 2 Upper & Lower Contour Lines (Matching Reference Image) -->
+                    <path class="wave-contour-line" d="M -2400,265 C -2181.5,214.6 -2018.5,214.6 -1800.0,265 C -1581.5,315.4 -1418.5,315.4 -1200.0,265 C -981.5,214.6 -818.5,214.6 -600.0,265 C -381.5,315.4 -218.5,315.4 0.0,265 C 218.5,214.6 381.5,214.6 600.0,265 C 818.5,315.4 981.5,315.4 1200.0,265 C 1418.5,214.6 1581.5,214.6 1800.0,265 C 2018.5,315.4 2181.5,315.4 2400.0,265 C 2618.5,214.6 2781.5,214.6 3000.0,265 C 3218.5,315.4 3381.5,315.4 3600.0,265 C 3818.5,214.6 3981.5,214.6 4200.0,265 C 4418.5,315.4 4581.5,315.4 4800.0,265" fill="none" />
+                    <path class="wave-contour-line" d="M -2400,355 C -2181.5,304.6 -2018.5,304.6 -1800.0,355 C -1581.5,405.4 -1418.5,405.4 -1200.0,355 C -981.5,304.6 -818.5,304.6 -600.0,355 C -381.5,405.4 -218.5,405.4 0.0,355 C 218.5,304.6 381.5,304.6 600.0,355 C 818.5,405.4 981.5,405.4 1200.0,355 C 1418.5,304.6 1581.5,304.6 1800.0,355 C 2018.5,405.4 2181.5,405.4 2400.0,355 C 2618.5,304.6 2781.5,304.6 3000.0,355 C 3218.5,405.4 3381.5,405.4 3600.0,355 C 3818.5,304.6 3981.5,304.6 4200.0,355 C 4418.5,405.4 4581.5,405.4 4800.0,355" fill="none" />
 
-                    <!-- Set 2 Duplicate for Loop -->
-                    <div class="skill-badge yellow-badge">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" class="skill-logo" alt="" />
-                        <span>AWS Cloud</span>
-                    </div>
-                    <div class="skill-badge blue-badge">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="skill-logo" alt="" />
-                        <span>Docker</span>
-                    </div>
-                    <div class="skill-badge green-badge">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="skill-logo" alt="" />
-                        <span>Python</span>
-                    </div>
-                    <div class="skill-badge blue-badge">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" class="skill-logo" alt="" />
-                        <span>PHP</span>
-                    </div>
-                    <div class="skill-badge red-badge">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" class="skill-logo" alt="" />
-                        <span>MySQL</span>
-                    </div>
-                    <div class="skill-badge yellow-badge">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="skill-logo" alt="" />
-                        <span>JavaScript</span>
-                    </div>
-                    <div class="skill-badge blue-badge">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="skill-logo" alt="" />
-                        <span>HTML5</span>
-                    </div>
-                    <div class="skill-badge red-badge">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" class="skill-logo" alt="" />
-                        <span>CSS3</span>
-                    </div>
-                </div>
+                    <!-- Track 1: Running Cyber Security Text Along Wave 1 -->
+                    <text class="wavy-follow-text text-track-1">
+                        <textPath id="wavyTextPath1" href="#wavePath1" startOffset="0%">
+                            CYBER SECURITY • WAZUH SIEM • BURP SUITE • OPENVAS • NMAP • WIRESHARK • SHODAN • CISCO NETWORK • LINUX ADMIN • ETHICAL HACKING • CYBER SECURITY • WAZUH SIEM • BURP SUITE • OPENVAS • NMAP • WIRESHARK • SHODAN • CISCO NETWORK • LINUX ADMIN • ETHICAL HACKING •
+                        </textPath>
+                    </text>
+
+                    <!-- Track 2: Running Cloud & Dev Text Along Wave 2 -->
+                    <text class="wavy-follow-text text-track-2">
+                        <textPath id="wavyTextPath2" href="#wavePath2" startOffset="0%">
+                            AWS CLOUD ARCHITECTURE • DOCKER • PYTHON • LARAVEL • PHP • MYSQL • JAVASCRIPT • HTML5 • CSS3 • AI AGENTS • CLOUD COMPUTING • AWS CLOUD ARCHITECTURE • DOCKER • PYTHON • LARAVEL • PHP • MYSQL • JAVASCRIPT • HTML5 • CSS3 • AI AGENTS • CLOUD COMPUTING •
+                        </textPath>
+                    </text>
+                </svg>
             </div>
         </section>
 

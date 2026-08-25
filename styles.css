@@ -254,9 +254,9 @@ h1, h2, h3, .nav-logo {
 .site-header {
     position: absolute;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 95%;
+    left: max(2.5%, calc((100% - 1750px) / 2));
+    right: max(2.5%, calc((100% - 1750px) / 2));
+    width: auto;
     max-width: 1750px;
     padding: 30px 0;
     z-index: 100;
@@ -265,7 +265,7 @@ h1, h2, h3, .nav-logo {
 
 .site-header.is-scrolled {
     opacity: 0;
-    transform: translateX(-50%) translateY(-24px);
+    transform: translateY(-24px);
     pointer-events: none;
     visibility: hidden;
 }
@@ -1389,42 +1389,47 @@ h1, h2, h3, .nav-logo {
 }
 
 /* =============================================
-   BOTTOM: VISI & PENDEKATAN CARD
+   VISI & PENDEKATAN CARD (SIDE BY SIDE WITH ID CARD UNDER CTA - CENTERED)
    ============================================= */
 .about-vision-card {
     width: 100%;
+    max-width: 660px;
     background: #FFFFFF;
     border: 1px solid rgba(0, 0, 0, 0.07);
-    border-radius: 24px;
-    padding: clamp(32px, 5vw, 54px) clamp(24px, 5vw, 64px);
-    box-shadow: 0 20px 48px rgba(15, 23, 42, 0.05);
+    border-radius: 20px;
+    padding: 26px 30px;
+    margin-top: 32px;
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.05);
     text-align: center;
     box-sizing: border-box;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .about-vision-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 26px 56px rgba(15, 23, 42, 0.08);
+    border-color: rgba(37, 99, 235, 0.25);
+    box-shadow: 0 18px 44px rgba(15, 23, 42, 0.09);
 }
 
 .about-vision-title {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: clamp(20px, 2.2vw, 25px);
+    font-size: 18.5px;
     font-weight: 800;
     color: #0F172A;
     letter-spacing: -0.02em;
-    margin: 0 0 16px;
+    margin: 0 0 12px;
+    text-align: center;
 }
 
 .about-vision-quote {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: clamp(14.5px, 1.4vw, 16.5px);
+    font-size: 14.5px;
     font-weight: 450;
-    line-height: 1.76;
+    line-height: 1.74;
     color: #475569;
-    max-width: 860px;
+    font-style: italic;
     margin: 0 auto;
+    text-align: center;
 }
 
 /* Responsive Breakpoints for About Section */
@@ -1897,47 +1902,167 @@ body.dark-theme .hero-description:hover {
     box-shadow: 0 0 12px rgba(6, 182, 212, 0.4);
 }
 
-/* Timeline Transparent Glass Card */
+/* Timeline Transparent Glass Card with Interactive Cursor Lighting (from card.riv) */
 .timeline-card-box {
     width: 100%;
     background: rgba(255, 255, 255, 0.025);
-    border: 1px solid rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-radius: 22px;
     padding: 26px 28px;
     box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
     position: relative;
-    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    --cursor-x: 50%;
+    --cursor-y: 50%;
+    --cursor-opacity: 0;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
     box-sizing: border-box;
+    cursor: default;
 }
 
-.timeline-card-box:hover {
-    transform: translateY(-4px) scale(1.015);
-    background: rgba(255, 255, 255, 0.045);
-    border-color: rgba(255, 255, 255, 0.16);
-    box-shadow: 0 28px 60px rgba(0, 0, 0, 0.55);
+/* Embedded Rive Interactive Card Canvas (card.riv) */
+.timeline-rive-card-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.75;
+    mix-blend-mode: screen;
+    display: block;
 }
 
-/* Glowing Border Accents Matching Theme */
+/* Interactive Cursor Glowing Mesh Layer */
+.timeline-card-box .card-glow-mesh {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: var(--cursor-opacity, 0);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1;
+    mix-blend-mode: screen;
+}
+
+/* Interactive Specular Glint along Card Edges */
+.timeline-card-box::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: radial-gradient(
+        380px circle at var(--cursor-x, 50%) var(--cursor-y, 50%),
+        rgba(255, 255, 255, 0.65) 0%,
+        rgba(255, 255, 255, 0.18) 35%,
+        transparent 65%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: var(--cursor-opacity, 0);
+    transition: opacity 0.35s ease;
+    z-index: 2;
+}
+
+/* Amber Interactive Mesh (AWS Cloud) - Right Border Accent */
 .card-accent-amber {
-    border-left: 4px solid #F59E0B;
+    border-right: 4px solid #F59E0B;
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4), inset 0 0 30px rgba(245, 158, 11, 0.035);
 }
 
+.card-accent-amber .card-glow-mesh {
+    background: radial-gradient(
+        520px circle at var(--cursor-x, 50%) var(--cursor-y, 50%),
+        rgba(245, 158, 11, 0.32) 0%,
+        rgba(245, 158, 11, 0.14) 35%,
+        rgba(212, 244, 54, 0.05) 60%,
+        transparent 75%
+    );
+}
+
+.card-accent-amber:hover {
+    border-color: rgba(245, 158, 11, 0.4);
+    box-shadow: 0 28px 65px rgba(0, 0, 0, 0.55), 0 0 30px rgba(245, 158, 11, 0.18);
+}
+
+/* Blue Interactive Mesh (IBM Hacktiv8) */
 .card-accent-blue {
     border-left: 4px solid #2563EB;
     box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4), inset 0 0 30px rgba(37, 99, 235, 0.035);
 }
 
+.card-accent-blue .card-glow-mesh {
+    background: radial-gradient(
+        520px circle at var(--cursor-x, 50%) var(--cursor-y, 50%),
+        rgba(37, 99, 235, 0.36) 0%,
+        rgba(59, 130, 246, 0.16) 35%,
+        rgba(6, 182, 212, 0.06) 60%,
+        transparent 75%
+    );
+}
+
+.card-accent-blue:hover {
+    border-color: rgba(37, 99, 235, 0.45);
+    box-shadow: 0 28px 65px rgba(0, 0, 0, 0.55), 0 0 30px rgba(37, 99, 235, 0.2);
+}
+
+/* Lime Interactive Mesh (MSIB 4) - Right Border Accent */
 .card-accent-lime {
-    border-left: 4px solid #D4F436;
+    border-right: 4px solid #D4F436;
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4), inset 0 0 30px rgba(212, 244, 54, 0.035);
 }
 
+.card-accent-lime .card-glow-mesh {
+    background: radial-gradient(
+        520px circle at var(--cursor-x, 50%) var(--cursor-y, 50%),
+        rgba(212, 244, 54, 0.34) 0%,
+        rgba(163, 230, 53, 0.15) 35%,
+        rgba(37, 99, 235, 0.05) 60%,
+        transparent 75%
+    );
+}
+
+.card-accent-lime:hover {
+    border-color: rgba(212, 244, 54, 0.45);
+    box-shadow: 0 28px 65px rgba(0, 0, 0, 0.55), 0 0 30px rgba(212, 244, 54, 0.2);
+}
+
+/* Cyan Interactive Mesh (S1 UP) */
 .card-accent-cyan {
     border-left: 4px solid #06B6D4;
     box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4), inset 0 0 30px rgba(6, 182, 212, 0.035);
+}
+
+.card-accent-cyan .card-glow-mesh {
+    background: radial-gradient(
+        520px circle at var(--cursor-x, 50%) var(--cursor-y, 50%),
+        rgba(6, 182, 212, 0.34) 0%,
+        rgba(14, 165, 233, 0.15) 35%,
+        rgba(37, 99, 235, 0.06) 60%,
+        transparent 75%
+    );
+}
+
+.card-accent-cyan:hover {
+    border-color: rgba(6, 182, 212, 0.45);
+    box-shadow: 0 28px 65px rgba(0, 0, 0, 0.55), 0 0 30px rgba(6, 182, 212, 0.2);
+}
+
+.timeline-card-top,
+.timeline-card-desc,
+.timeline-tech-tags {
+    position: relative;
+    z-index: 3;
 }
 
 .timeline-card-top {
@@ -2501,127 +2626,85 @@ body.dark-theme .hero-description:hover {
 }
 
 /* =============================================
-   SECTION 04: SKILLS MARQUEE (BRIGHT CANVAS + DARK FONT & WHITE BADGES)
+   SECTION 04: SKILLS (WAVY TEXT-FOLLOW-PATH RIBBONS - OBSIDIAN DARK CANVAS)
    ============================================= */
-.skills-section-bright {
+.skills-section-wavy-dark {
     position: relative;
-    background: #ECEEF2;
-    padding: clamp(90px, 11vh, 130px) 4% clamp(80px, 10vh, 120px);
+    background: #0A0B0E;
+    padding: clamp(90px, 11vh, 130px) 0 clamp(80px, 10vh, 120px);
     width: 100%;
     box-sizing: border-box;
     overflow: hidden;
 }
 
-.skills-dark-overline {
+.skills-neon-overline {
     font-family: 'Plus Jakarta Sans', monospace, sans-serif;
     font-size: 13px;
     font-weight: 800;
-    color: #2563EB;
+    color: #D4F436;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     margin-bottom: 8px;
     display: inline-block;
-    filter: none;
+    filter: drop-shadow(0 0 10px rgba(212, 244, 54, 0.35));
 }
 
-.skills-dark-title {
+.skills-white-title {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
     font-size: clamp(34px, 4.6vw, 54px);
     font-weight: 800;
-    color: #0A0B0E !important;
+    color: #FFFFFF !important;
     line-height: 1.15;
     letter-spacing: -0.03em;
     margin: 0;
     text-align: center;
 }
 
-.skills-marquee-container {
+.skills-wavy-container {
     width: 100%;
     overflow: hidden;
-    padding: 24px 0;
     position: relative;
-    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-}
-
-.marquee-track {
+    margin-top: 42px;
+    height: 440px;
     display: flex;
-    gap: 16px;
-    width: max-content;
-    will-change: transform;
-}
-
-.marquee-track.track-right {
-    animation: marquee-right 28s linear infinite;
-}
-
-.marquee-track.track-left {
-    animation: marquee-left 28s linear infinite;
-}
-
-.skills-marquee-container:hover .marquee-track {
-    animation-play-state: paused;
-}
-
-@keyframes marquee-left {
-    0% {
-        transform: translate3d(0, 0, 0);
-    }
-    100% {
-        transform: translate3d(-50%, 0, 0);
-    }
-}
-
-@keyframes marquee-right {
-    0% {
-        transform: translate3d(-50%, 0, 0);
-    }
-    100% {
-        transform: translate3d(0, 0, 0);
-    }
-}
-
-.skill-badge {
-    display: inline-flex;
     align-items: center;
-    gap: 12px;
-    padding: 12px 24px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 14.5px;
-    font-weight: 700;
-    border-radius: 9999px;
-    background: #FFFFFF;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    color: #0F172A;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
-    white-space: nowrap;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    cursor: default;
+    justify-content: center;
+    user-select: none;
+    -webkit-user-select: none;
+    mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
 }
 
-.skill-badge:hover {
-    transform: translateY(-4px) scale(1.04);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+.skills-wavy-svg {
+    width: 100%;
+    height: 100%;
+    min-width: 1200px;
+    display: block;
+    overflow: visible;
 }
 
-.skill-badge.yellow-badge:hover {
-    border-color: #F59E0B;
-    color: #D97706;
+.wave-contour-line {
+    stroke: rgba(255, 255, 255, 0.42);
+    stroke-width: 1.8;
+    opacity: 0.85;
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.22));
 }
 
-.skill-badge.blue-badge:hover {
-    border-color: #2563EB;
-    color: #2563EB;
+.wavy-follow-text {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+    font-size: 46px;
+    font-weight: 800;
+    fill: #FFFFFF;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    dominant-baseline: central;
+    filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.28));
+    transition: fill 0.3s ease;
 }
 
-.skill-badge.green-badge:hover {
-    border-color: #10B981;
-    color: #059669;
-}
-
-.skill-badge.red-badge:hover {
-    border-color: #EF4444;
-    color: #DC2626;
+.skills-wavy-container:hover .wavy-follow-text {
+    fill: #FFFFFF;
+    filter: drop-shadow(0 0 20px rgba(212, 244, 54, 0.45));
 }
 
 .skill-logo, .skill-logo-svg {

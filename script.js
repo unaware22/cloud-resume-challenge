@@ -12,9 +12,11 @@ document.addEventListener("DOMContentLoaded", () => {
     initVisitorCounter();
     initTypewriter();
     initExperienceCountUp();
+    initInteractiveExperienceCards();
     initLocationModal();
     initProjectCarousel();
     initBadgeCardTilt();
+    initWavySkillsText();
     initPageTransitions();
 });
 
@@ -482,6 +484,177 @@ function initExperienceCountUp() {
             }
         });
     });
+}
+
+/**
+ * Interactive Cursor-Driven Card Color & Lighting for Experience Cards (card.riv)
+ * Loads interactive/card.riv to canvas and controls cursor-reactive properties,
+ * dynamic color spotlights, holographic gradient mesh, and subtle 3D tilt
+ * in real-time as the cursor moves over each card (AWS, IBM, MSIB 4, S1 UP)
+ */
+let cardRivBufferPromise = null;
+
+function getCardRivBuffer() {
+    if (!cardRivBufferPromise) {
+        cardRivBufferPromise = fetch("interactive/card.riv")
+            .then(res => res.ok ? res.arrayBuffer() : null)
+            .catch(err => {
+                console.warn("card.riv buffer fetch error:", err);
+                return null;
+            });
+    }
+    return cardRivBufferPromise;
+}
+
+function initInteractiveExperienceCards() {
+    const cards = document.querySelectorAll(".interactive-glow-card");
+    if (!cards.length) return;
+
+    // Load Rive card instances if Rive runtime is available
+    if (typeof rive !== "undefined") {
+        getCardRivBuffer().then(buffer => {
+            cards.forEach((card) => {
+                const canvas = card.querySelector(".timeline-rive-card-canvas");
+                if (!canvas) return;
+
+                try {
+                    const riveParams = {
+                        canvas: canvas,
+                        autoplay: true,
+                        autoBind: true,
+                        layout: new rive.Layout({
+                            fit: rive.Fit.Cover,
+                            alignment: rive.Alignment.Center,
+                        }),
+                        onLoad: () => {
+                            if (card._riveInstance) {
+                                card._riveInstance.resizeDrawingSurfaceToCanvas();
+                            }
+                        }
+                    };
+
+                    if (buffer) {
+                        riveParams.buffer = buffer.slice(0);
+                    } else {
+                        riveParams.src = "interactive/card.riv";
+                    }
+
+                    const riveInstance = new rive.Rive(riveParams);
+                    card._riveInstance = riveInstance;
+                } catch (e) {
+                    console.log("Rive card initialization note:", e);
+                }
+            });
+        });
+    }
+
+    cards.forEach((card) => {
+        let isHovered = false;
+        let targetX = 50;
+        let targetY = 50;
+        let currentX = 50;
+        let currentY = 50;
+        let animFrameId = null;
+
+        function updateGlow() {
+            // Smooth natural interpolation (spring-like inertia)
+            currentX += (targetX - currentX) * 0.16;
+            currentY += (targetY - currentY) * 0.16;
+
+            card.style.setProperty("--cursor-x", `${currentX.toFixed(2)}%`);
+            card.style.setProperty("--cursor-y", `${currentY.toFixed(2)}%`);
+
+            if (isHovered || Math.abs(targetX - currentX) > 0.08 || Math.abs(targetY - currentY) > 0.08) {
+                animFrameId = requestAnimationFrame(updateGlow);
+            } else {
+                animFrameId = null;
+            }
+        }
+
+        card.addEventListener("mousemove", (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            targetX = (x / rect.width) * 100;
+            targetY = (y / rect.height) * 100;
+
+            // Subtle dynamic 3D tilt towards cursor position
+            const rotateX = ((y / rect.height) - 0.5) * -7;
+            const rotateY = ((x / rect.width) - 0.5) * 7;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px) scale(1.015)`;
+            card.style.setProperty("--cursor-opacity", "1");
+
+            // If Rive instance is active, update inputs
+            if (card._riveInstance && card._riveInstance.stateMachineInputs) {
+                try {
+                    const inputs = card._riveInstance.stateMachineInputs("State Machine 1") || [];
+                    inputs.forEach(input => {
+                        const name = input.name.toLowerCase();
+                        if (name.includes("x") || name.includes("horiz") || name.includes("ltor")) {
+                            input.value = targetX;
+                        } else if (name.includes("y") || name.includes("vert") || name.includes("utod")) {
+                            input.value = targetY;
+                        } else if (name.includes("hover")) {
+                            input.value = true;
+                        }
+                    });
+                } catch (_) {}
+            }
+
+            if (!animFrameId) {
+                animFrameId = requestAnimationFrame(updateGlow);
+            }
+        });
+
+        card.addEventListener("mouseenter", () => {
+            isHovered = true;
+            card.style.setProperty("--cursor-opacity", "1");
+            if (!animFrameId) {
+                animFrameId = requestAnimationFrame(updateGlow);
+            }
+        });
+
+        card.addEventListener("mouseleave", () => {
+            isHovered = false;
+            targetX = 50;
+            targetY = 50;
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) scale(1)`;
+            card.style.setProperty("--cursor-opacity", "0");
+        });
+    });
+}
+
+/**
+ * Animated Wavy Text-Follow-Path for Skills Section (Matching Reference Image)
+ * Continuously flows bold white text along undulating wave curves with contour strokes
+ */
+function initWavySkillsText() {
+    const textPath1 = document.getElementById("wavyTextPath1");
+    const textPath2 = document.getElementById("wavyTextPath2");
+    if (!textPath1 && !textPath2) return;
+
+    let offset1 = 0;
+    let offset2 = 0;
+    const speed1 = 1.0;
+    const speed2 = 1.0;
+    const loopLength = 2400; // Exact repeating wavelength loop
+
+    function animateWave() {
+        offset1 -= speed1;
+        offset2 += speed2;
+
+        if (offset1 <= -loopLength) offset1 += loopLength;
+        if (offset2 >= loopLength) offset2 -= loopLength;
+
+        if (textPath1) textPath1.setAttribute("startOffset", `${offset1.toFixed(1)}px`);
+        if (textPath2) textPath2.setAttribute("startOffset", `${offset2.toFixed(1)}px`);
+
+        requestAnimationFrame(animateWave);
+    }
+
+    requestAnimationFrame(animateWave);
 }
 
 /**
