@@ -4,202 +4,431 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aditya Nur Lintang Portofolio</title>
-    <!-- Google Fonts: Pixelify Sans (Pixel Headings), Press Start 2P (8-Bit Accents), Plus Jakarta Sans (Body) -->
+    <!-- Google Fonts: Instrument Serif, Playfair Display, Plus Jakarta Sans, Pixelify Sans, Press Start 2P -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=Press+Start+2P&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=4" />
-    <script src="script.js?v=4" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&family=Pixelify+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Press+Start+2P&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=23" />
+    <script src="interactive/rive_lite.js"></script>
+    <script src="interactive/cat_data.js"></script>
+    <script src="script.js?v=23" defer></script>
 </head>
 <body>
 
-    <!-- Anime Pixel Art Cumulus Cloud Sky Background (Studio Ghibli Pixel Sky) -->
-    <div class="sky-background">
-        <div class="pixel-sky-gradient"></div>
-        <div class="pixel-cloud-layer pixel-clouds-back"></div>
-        <div class="pixel-cloud-layer pixel-clouds-mid"></div>
-        <div class="pixel-cloud-layer pixel-clouds-front"></div>
-        <div class="pixel-horizon-bar"></div>
-        <div class="cloud-glow"></div>
+    <!-- Iris Greeting Preloader (Apple iOS-Style Cinematic Preloader) -->
+    <div id="iris-preloader" class="iris-preloader" role="status" aria-live="polite" aria-label="Loading content">
+        <div class="iris-content">
+            <p id="iris-greeting-text" class="iris-greeting-text"></p>
+        </div>
     </div>
 
+    <!-- Floating Burger Menu Button (Fixed at Top-Right on Scroll) -->
+    <button id="floating-burger-btn" class="floating-burger-btn" aria-label="Toggle Navigation Menu">
+        <span class="burger-line line-1"></span>
+        <span class="burger-line line-2"></span>
+        <span class="burger-line line-3"></span>
+    </button>
 
-
-    <div class="container">
-
-        <!-- Navigation Bar -->
-        <nav class="nav fade-in">
-            <div class="nav-brand">
-                <span class="nav-logo">Portofolio</span>
-                <span class="nav-logo-star">✦</span>
-            </div>
-            <div class="nav-links">
-                <a href="#experience">Experience</a>
-                <a href="#projects">Projects</a>
-                <a href="#certifications">Certificates</a>
-                <a href="#skills">Skills</a>
-                <a href="#contact">Contact</a>
-                
-                <!-- Theme Toggle Button -->
-                <button id="theme-toggle" class="theme-toggle" aria-label="Ubah Tema">
-                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <!-- Floating Glass Navigation Drawer -->
+    <div id="floating-nav-drawer" class="floating-nav-drawer" aria-hidden="true">
+        <div class="drawer-backdrop" id="drawer-backdrop"></div>
+        <div class="drawer-panel">
+            <div class="drawer-header">
+                <div class="drawer-brand">
+                    <img src="logo.png" alt="Logo" class="brand-logo-img" style="height: 32px;" />
+                </div>
+                <button id="drawer-close-btn" class="drawer-close-btn" aria-label="Close Menu">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
                 </button>
             </div>
-        </nav>
-
-        <!-- Hero Section -->
-        <section class="hero reveal">
-            <div class="hero-layout">
-                <div class="hero-left">
-                    <div class="hero-badge">
-                        <span class="badge-dot"></span>
-                        <span id="typing-text" class="typing-text">AI-Native Software Developer</span><span class="typing-cursor">|</span>
-                    </div>
-                    <h1 class="hero-title">
-                        Aditya Nur<br />
-                        <span class="accent-gradient">Lintang</span>
-                    </h1>
-                    <div class="hero-row">
-                        <button id="location-btn" class="hero-location-btn" aria-label="Buka Peta Lokasi Depok">
-                            <svg class="location-pin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                <circle cx="12" cy="10" r="3"/>
-                            </svg>
-                            <span>Depok, Jawa Barat</span>
-                            <span class="location-pulse-dot"></span>
-                        </button>
-                    </div>
-                    <p class="hero-description">
-                        Saya adalah mahasiswa Teknik Informatika Universitas Pancasila angkatan 2023 yang memiliki ketertarikan pada dunia programming, terutama dalam membangun aplikasi dengan pendekatan AI-native. Dalam prosesnya, saya memanfaatkan AI coding agent seperti Antigravity untuk membantu proses implementasi, sementara saya lebih banyak berfokus pada logika, struktur, dan arsitektur aplikasi. Saya juga menikmati sisi frontend karena tertarik dengan bagaimana sebuah aplikasi dapat terasa lebih menarik, interaktif, dan nyaman digunakan. Selain programming, saya memiliki peminatan Network Cyber Security (NCS) yang memperkuat pemahaman saya tentang jaringan, administrasi Linux, dan cloud AWS, sehingga aspek keamanan juga menjadi salah satu pertimbangan dalam setiap aplikasi yang saya bangun.
-                    </p>
-                    <div class="hero-cta">
-                        <a href="#projects" class="btn-primary">Lihat Project <span class="arrow">→</span></a>
-                        <a href="#contact" class="btn-secondary">Hubungi Saya</a>
-                    </div>
+            <nav class="drawer-nav-list">
+                <a href="#hero" class="drawer-nav-link"><span>01</span> Home</a>
+                <a href="#about" class="drawer-nav-link"><span>02</span> About</a>
+                <a href="#projects" class="drawer-nav-link"><span>03</span> Projects</a>
+                <a href="#experience" class="drawer-nav-link"><span>04</span> Experience</a>
+                <a href="#contact" class="drawer-nav-link drawer-nav-contact"><span>05</span> Contact ↗</a>
+            </nav>
+            <div class="drawer-footer">
+                <div class="drawer-socials">
+                    <a href="https://www.linkedin.com/in/adityanurlintang" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.65 1.65 0 0 0 0-3.3 1.65 1.65 0 0 0 0 3.3m1.4 9.74v-8.37H5.06v8.37h2.8z"/></svg>
+                    </a>
+                    <a href="https://github.com/unaware22" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                    </a>
+                    <a href="mailto:adityanurlintang22@gmail.com" aria-label="Email" title="Email">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </a>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Site Top Header (Clean Minimalist Bar matching halaman1.jpeg) -->
+    <header class="site-header" id="site-header">
+        <div class="nav-container-clean">
+            <div class="nav-brand">
+                <a href="#hero" class="nav-brand-logo" aria-label="Home">
+                    <img src="logo.png" alt="Logo" class="brand-logo-img" />
+                </a>
+            </div>
+            
+            <div class="nav-right-group">
+                <nav class="nav-links">
+                    <a href="#projects" class="nav-link-item">PROJECTS</a>
+                    <a href="#about" class="nav-link-item active">ABOUT</a>
+                    <a href="#experience" class="nav-link-item">EXPERIENCE</a>
+                </nav>
                 
-                <div class="hero-right">
-                    <div class="profile-image-container">
-                        <img src="me.jpeg" alt="Aditya Nur Lintang" class="profile-image" />
-                    </div>
+                <div class="nav-actions">
+                    <a href="#contact" class="btn-contact-pill">
+                        <span>CONTACT</span>
+                        <span class="pill-arrow">↗</span>
+                    </a>
                 </div>
             </div>
-        </section>
+        </div>
+    </header>
 
-        <!-- Main Experience Section (Combined into 1 Card Container with AWS Pixel Cloud) -->
-        <section id="experience" class="reveal">
-            <div class="experience-main-card">
-                <div class="journey-header">
-                    <div class="journey-badge-group">
-                        <div class="journey-badge career-badge" tabindex="0">
-                            <svg class="badge-icon icon-career" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" fill="rgba(245, 158, 11, 0.18)"/>
-                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-                            </svg>
-                            <span>CAREER</span>
+    <!-- Hero Section (Studio Stage Canvas with 3D Orb Video matching halaman1.jpeg) -->
+    <section id="hero" class="hero-minimal">
+        <!-- Left Vertical Tool Rail (Clean code, share, resume icons) -->
+        <div class="hero-social-sidebar">
+            <div class="hero-social-line"></div>
+            <div class="hero-social-icons">
+                <a href="#projects" class="social-icon-link" aria-label="Projects & Code" title="Projects & Code">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                </a>
+                <a href="#contact" class="social-icon-link" aria-label="Connect & Share" title="Connect & Share">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                </a>
+                <a href="CV.pdf" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Curriculum Vitae / Resume" title="Curriculum Vitae / Resume">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Center Stage (Stacked Typography Above and Interactive Cat Below) -->
+        <div class="hero-center-stage">
+            <!-- Editorial Typography (Positioned Cleanly Above the Cat) -->
+            <div class="hero-typography-wrap">
+                <p class="hero-sub-intro">Hi! I'm Aditya</p>
+                <h1 class="hero-main-title">
+                    <span class="hero-title-line">Software Engineer &amp;</span>
+                    <span class="hero-title-line">Cloud Enthusiast</span>
+                </h1>
+            </div>
+
+            <!-- Interactive Rive Cat (Cursor-Tracking & Interactive Animations) -->
+            <div class="hero-skull-stage hero-cat-stage" title="Move your cursor or click to interact with the Cat!">
+                <div class="hero-rive-container">
+                    <canvas id="hero-rive-canvas" class="hero-rive-canvas"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Alignment Bar (Scroll Down in Center) -->
+        <div class="hero-bottom-bar">
+            <!-- Center: Scroll Down with Vertical Line Indicator -->
+            <div class="hero-bottom-center">
+                <a href="#editorial-statement" class="hero-scroll-indicator" aria-label="Scroll down to editorial statement">
+                    <span class="scroll-label">scroll down</span>
+                    <span class="scroll-line-indicator"></span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Subtle Sub-Footer Bar at Bottom Edge (Copyright Left, Icon-only Socials Right) -->
+        <div class="hero-bottom-footer-bar">
+            <div class="footer-copy-text">© 2024 Developer Portfolio. Built with precision.</div>
+            <div class="footer-social-icons-only">
+                <a href="https://www.linkedin.com/in/adityanurlintang" target="_blank" rel="noopener noreferrer" class="hero-footer-icon-btn" aria-label="LinkedIn" title="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.65 1.65 0 0 0 0-3.3 1.65 1.65 0 0 0 0 3.3m1.4 9.74v-8.37H5.06v8.37h2.8z"/></svg>
+                </a>
+                <a href="https://github.com/unaware22" target="_blank" rel="noopener noreferrer" class="hero-footer-icon-btn" aria-label="GitHub" title="GitHub">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+                <a href="mailto:adityanurlintang22@gmail.com" class="hero-footer-icon-btn" aria-label="Email" title="Email">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 2: Editorial Dark Dome Section (Interactive Scroll Morphing Stage) -->
+    <section id="editorial-statement" class="page-two-stage">
+        <!-- Arched Curved Dome Container -->
+        <div class="page-two-dome-container">
+            <div class="about-editorial-card">
+                <!-- Big Editorial Statement -->
+                <h2 class="about-editorial-heading">
+                    I'm Aditya Nur Lintang — a Software Engineer &amp; Cloud Enthusiast crafting fast, scalable, and secure AI-native applications that merge creativity with engineering precision.
+                </h2>
+                
+                <!-- Subtitle / Bio summary -->
+                <p class="about-editorial-subtext">
+                    Saya adalah mahasiswa Teknik Informatika Universitas Pancasila angkatan 2023 yang berfokus pada logika, struktur, dan arsitektur aplikasi AI-native, cloud AWS, serta Network &amp; Cyber Security (NCS).
+                </p>
+
+                <!-- Lime Green Action Button Row (Scrolls Smoothly to Page 3 About Me) -->
+                <div class="about-action-row">
+                    <a href="#about" class="btn-lime-pill">
+                        <span>About Me</span>
+                    </a>
+                    <a href="#about" class="btn-lime-circle" aria-label="Scroll to About Me Details">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 3: About Me Section (Matching Reference Design) -->
+    <section id="about" class="about-modern-section reveal">
+        <div class="about-modern-container">
+            <!-- Top Grid: Hanging Lanyard ID Badge Left & Editorial Content Right -->
+            <div class="about-hero-grid">
+                <!-- Left: Hanging Lanyard Employee ID Badge with Physical Drag & Swing Physics -->
+                <div class="badge-stage-wrap" id="badge-stage-wrap">
+                    <!-- Long Lanyard Ribbon (Extending up from the dark section) -->
+                    <div class="lanyard-ribbon" id="lanyard-ribbon"></div>
+
+                    <!-- Draggable Card Assembly (Card + Clamped Metal Clip Moving Together) -->
+                    <div class="id-card-assembly" id="id-card-assembly" role="button" tabindex="0" aria-label="Interactive Employee ID Card - Drag and pull to swing">
+                        <!-- Metallic Ring & Hook Clip (Firmly Clamped onto the Card) -->
+                        <div class="lanyard-metal-clip" id="lanyard-metal-clip">
+                            <div class="clip-loop"></div>
+                            <div class="clip-hook"></div>
                         </div>
-                        <div class="journey-badge exp-badge" tabindex="0">
-                            <svg class="badge-icon icon-exp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="rgba(6, 182, 212, 0.18)"/>
-                            </svg>
-                            <span>EXPERIENCE</span>
-                        </div>
-                        <div class="journey-badge edu-badge" tabindex="0">
-                            <svg class="badge-icon icon-edu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 10v6M2 10l10-5 10 5-10 5z" fill="rgba(139, 92, 246, 0.18)"/>
-                                <path d="M6 12.5v5c3 3 9 3 12 0v-5"/>
-                            </svg>
-                            <span>EDUCATION</span>
+
+                        <!-- ID Card Body -->
+                        <div class="id-badge-card" id="id-badge-card">
+                            <!-- Top Slot Hole -->
+                            <div class="id-badge-slot"></div>
+
+                            <!-- User Profile Photo -->
+                            <div class="id-badge-photo-wrap">
+                                <img src="me.jpeg" alt="Aditya Nur Lintang" class="id-badge-photo" draggable="false" />
+                            </div>
+
+                            <!-- User Info -->
+                            <div class="id-badge-info">
+                                <h3 class="id-badge-name">Aditya Nur Lintang</h3>
+                                <span class="id-badge-role">SOFTWARE ENGINEER</span>
+                            </div>
+
+                            <!-- Realistic Barcode Scanner Graphic -->
+                            <div class="id-badge-barcode" aria-hidden="true">
+                                <span class="b-line b-w1"></span><span class="b-line b-w3"></span><span class="b-line b-w2"></span>
+                                <span class="b-line b-w1"></span><span class="b-line b-w4"></span><span class="b-line b-w2"></span>
+                                <span class="b-line b-w3"></span><span class="b-line b-w1"></span><span class="b-line b-w2"></span>
+                                <span class="b-line b-w4"></span><span class="b-line b-w1"></span><span class="b-line b-w3"></span>
+                                <span class="b-line b-w2"></span><span class="b-line b-w1"></span><span class="b-line b-w3"></span>
+                                <span class="b-line b-w2"></span><span class="b-line b-w4"></span><span class="b-line b-w1"></span>
+                                <span class="b-line b-w2"></span><span class="b-line b-w3"></span><span class="b-line b-w1"></span>
+                                <span class="b-line b-w4"></span><span class="b-line b-w2"></span><span class="b-line b-w1"></span>
+                                <span class="b-line b-w3"></span><span class="b-line b-w2"></span><span class="b-line b-w4"></span>
+                                <span class="b-line b-w1"></span><span class="b-line b-w2"></span><span class="b-line b-w3"></span>
+                            </div>
                         </div>
                     </div>
-                    <h2 class="journey-title">Network & Cyber Security Journey</h2>
-                    <p class="journey-subtitle">
-                        Perjalanan pendidikan, sertifikasi, dan pengalaman dalam bidang jaringan, keamanan siber, serta arsitektur cloud.
+                </div>
+
+                <!-- Right: Editorial About Me Content -->
+                <div class="about-content-column">
+                    <div class="about-title-wrap">
+                        <h2 class="about-section-heading">About Me</h2>
+                        <div class="about-heading-underline"></div>
+                    </div>
+
+                    <p class="about-paragraph">
+                        Saya adalah Aditya Nur Lintang, seorang Software Engineer yang bersemangat tentang cloud computing dan arsitektur scalable. Saya percaya bahwa kode yang baik adalah kode yang tidak hanya menyelesaikan masalah, tetapi juga elegan dan mudah dipelihara.
                     </p>
-                </div>
 
-                <!-- 2D ASCII Cloud Object with 3D Optical Illusion Animation -->
-                <div class="ascii-cloud-standalone">
-                    <canvas id="ascii-cloud-canvas" width="800" height="280"></canvas>
-                </div>
+                    <p class="about-paragraph">
+                        Fokus utama saya adalah membangun aplikasi AI-native yang cepat, aman, dan dapat diandalkan, menggabungkan kreativitas dengan presisi teknik.
+                    </p>
 
-                <!-- Experience Cards Grid (Minimal & Clean, No Emojis) -->
-                <div class="experience-grid">
-                    <!-- Card 1: S1 Universitas Pancasila -->
-                    <div class="exp-card">
-                        <div class="exp-card-header">
-                            <span class="exp-card-category cat-edu">Pendidikan</span>
-                            <span class="exp-card-period">2023 - Sekarang</span>
-                        </div>
-                        <h3 class="exp-card-title">S1 Teknik Informatika</h3>
-                        <span class="exp-card-subtitle">Universitas Pancasila</span>
-                        <p class="exp-card-desc">
-                            Saya adalah mahasiswa Universitas Pancasila angkatan 2023. Mahasiswa Teknik Informatika Universitas Pancasila peminatan Network Cyber Security (NCS). Memiliki minat mendalam pada jaringan komputer, administrasi sistem Linux, security assessment, dan wawasan Cloud AWS.
-                        </p>
-                    </div>
-
-                    <!-- Card 2: AWS re/START -->
-                    <div class="exp-card">
-                        <div class="exp-card-header">
-                            <span class="exp-card-category cat-cloud">Cloud Training</span>
-                            <span class="exp-card-period">Jul 2026 - Sekarang</span>
-                        </div>
-                        <h3 class="exp-card-title">AWS re/START</h3>
-                        <span class="exp-card-subtitle">Amazon Web Services</span>
-                        <p class="exp-card-desc">
-                            Sedang mengikuti program AWS re/START intensif selama 7 minggu yang berfokus pada fondasi cloud computing, praktik langsung di AWS Console, serta persiapan sertifikasi. Program ini mencakup materi EC2, S3, VPC, IAM, dan berbagai layanan inti AWS lainnya.
-                        </p>
-                    </div>
-
-                    <!-- Card 3: IBM SkillsBuild Hacktiv8 -->
-                    <div class="exp-card">
-                        <div class="exp-card-header">
-                            <span class="exp-card-category cat-ai">AI & Programming</span>
-                            <span class="exp-card-period">Jul 2026 (3 Hari)</span>
-                        </div>
-                        <h3 class="exp-card-title">IBM SkillsBuild University Education</h3>
-                        <span class="exp-card-subtitle">IT AI Agent For Programming</span>
-                        <p class="exp-card-desc">
-                            Mengikuti program intensif IBM SkillsBuild bersama Hacktiv8 selama 3 hari, berfokus pada pemanfaatan AI Agent untuk pemrograman. Mempelajari konsep AI-assisted development dan penerapan tools berbasis kecerdasan buatan dalam alur kerja pengembangan perangkat lunak.
-                        </p>
-                    </div>
-
-                    <!-- Card 4: MSIB Batch 4 -->
-                    <div class="exp-card">
-                        <div class="exp-card-header">
-                            <span class="exp-card-category cat-sec">Ethical Hacking</span>
-                            <span class="exp-card-period">Feb 2026 - Jun 2026</span>
-                        </div>
-                        <h3 class="exp-card-title">MSIB Batch 4 — Ethical Hacking</h3>
-                        <span class="exp-card-subtitle">PT Vinix Seven Aurum</span>
-                        <p class="exp-card-desc">
-                            Trainee Ethical Hacking Division. Melakukan vulnerability assessment (OpenVAS, Burp Suite), asset discovery (Nmap), SIEM Wazuh, analisis malware, dan STRIDE threat modeling.
-                        </p>
-                    </div>
-
-                    <!-- Card 5: SMA Sejahtera 1 Depok -->
-                    <div class="exp-card">
-                        <div class="exp-card-header">
-                            <span class="exp-card-category cat-base">Pendidikan Dasar</span>
-                            <span class="exp-card-period">2020 - 2023</span>
-                        </div>
-                        <h3 class="exp-card-title">SMA Sejahtera 1 Depok</h3>
-                        <span class="exp-card-subtitle">Pendidikan Menengah Atas</span>
-                        <p class="exp-card-desc">
-                            Pendidikan Menengah Atas dengan fokus pada pemahaman dasar teknologi informasi, pemrograman komputer, dan logika dasar.
-                        </p>
+                    <!-- Action Buttons: Lime Pill & Arrow Circle -->
+                    <div class="about-cta-row">
+                        <a href="CV.pdf" target="_blank" rel="noopener noreferrer" class="btn-about-cv">
+                            <span>Download CV</span>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                        </a>
+                        <a href="#projects" class="btn-about-icon-action" aria-label="Lihat Project" title="Lihat Project">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7"></line>
+                                <polyline points="7 7 17 7 17 17"></polyline>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Section 02: Projects -->
-        <section id="projects" class="section reveal">
-            <div class="section-header">
-                <span class="section-number">02</span>
-                <span class="section-line"></span>
-                <span class="section-title">Projects</span>
+            <!-- Bottom: Visi & Pendekatan Card -->
+            <div class="about-vision-card">
+                <h3 class="about-vision-title">Visi &amp; Pendekatan</h3>
+                <p class="about-vision-quote">
+                    "Saya berkomitmen untuk menciptakan solusi teknologi yang tidak hanya berfungsi secara optimal, tetapi juga mendorong batasan inovasi. Melalui kombinasi logika yang ketat, struktur yang solid, dan arsitektur yang modern, tujuan saya adalah membangun aplikasi yang berdampak positif dan bertahan di masa depan."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 4: Main Experience / Journey Section (Dark Studio Glassmorphism Timeline) -->
+    <section id="experience" class="experience-journey-section reveal">
+        <div class="experience-journey-container">
+            <!-- Journey Header (Using Plus Jakarta Sans matching Hero & Page 2) -->
+            <div class="journey-experience-header">
+                <span class="journey-overline">JOURNEY</span>
+                <h2 class="journey-experience-title">Experience</h2>
+            </div>
+
+            <!-- 4 Transparent Glassmorphism Stat Cards -->
+            <div class="journey-stats-grid">
+                <div class="journey-stat-card">
+                    <div class="stat-number count-up-stat" data-target="6" data-suffix="" data-prefix="">6</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="journey-stat-card">
+                    <div class="stat-number count-up-stat" data-target="3" data-suffix="+" data-prefix="">3+</div>
+                    <div class="stat-label">Years of Experience</div>
+                </div>
+                <div class="journey-stat-card">
+                    <div class="stat-number count-up-stat" data-target="8" data-suffix="+" data-prefix="">8+</div>
+                    <div class="stat-label">Technologies Mastered</div>
+                </div>
+                <div class="journey-stat-card">
+                    <div class="stat-number count-up-stat" data-target="100" data-suffix="%" data-prefix="">100%</div>
+                    <div class="stat-label">Passion for Code</div>
+                </div>
+            </div>
+
+            <!-- Central Vertical Timeline Tree with Alternating Cards -->
+            <div class="timeline-tree-wrapper">
+                <!-- Vertical Center Spine with Theme Gradient -->
+                <div class="timeline-center-line"></div>
+
+                <!-- Timeline Item 1 (Left - 2026: AWS re/START) -->
+                <div class="timeline-item timeline-left" data-year="2026">
+                    <div class="timeline-year-node">
+                        <span class="year-badge badge-amber">2026</span>
+                    </div>
+                    <div class="timeline-card-box card-accent-amber">
+                        <div class="timeline-card-top">
+                            <div class="timeline-role-info">
+                                <h3 class="timeline-role-title">AWS Cloud Architecture</h3>
+                                <span class="timeline-company-name">AWS re/START — Amazon Web Services</span>
+                            </div>
+                            <span class="timeline-type-pill pill-amber">Cloud Training</span>
+                        </div>
+                        <p class="timeline-card-desc">
+                            Mengikuti program intensif AWS re/START berfokus pada fondasi cloud computing, arsitektur AWS (EC2, S3, VPC, IAM, Lambda, DynamoDB), Linux system administration, security assessment, dan implementasi infrastruktur cloud scalable.
+                        </p>
+                        <div class="timeline-tech-tags">
+                            <span class="t-tag">AWS Cloud</span>
+                            <span class="t-tag">Linux</span>
+                            <span class="t-tag">Python</span>
+                            <span class="t-tag">Networking</span>
+                            <span class="t-tag">IAM &amp; Security</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 (Right - 2026: IBM SkillsBuild x Hacktiv8) -->
+                <div class="timeline-item timeline-right" data-year="2026">
+                    <div class="timeline-year-node">
+                        <span class="year-badge badge-blue">2026</span>
+                    </div>
+                    <div class="timeline-card-box card-accent-blue">
+                        <div class="timeline-card-top">
+                            <div class="timeline-role-info">
+                                <h3 class="timeline-role-title">IT AI Agent For Programming</h3>
+                                <span class="timeline-company-name">IBM SkillsBuild &amp; Hacktiv8</span>
+                            </div>
+                            <span class="timeline-type-pill pill-blue">AI &amp; Dev</span>
+                        </div>
+                        <p class="timeline-card-desc">
+                            Mempelajari pemanfaatan AI Agent untuk pengembangan perangkat lunak modern, AI-assisted development workflows, prompt engineering, serta integrasi teknologi kecerdasan buatan pada alur rekayasa aplikasi.
+                        </p>
+                        <div class="timeline-tech-tags">
+                            <span class="t-tag">AI Agents</span>
+                            <span class="t-tag">Python</span>
+                            <span class="t-tag">Prompt Engineering</span>
+                            <span class="t-tag">LLM Integration</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 (Left - 2026: MSIB Batch 4 Ethical Hacking) -->
+                <div class="timeline-item timeline-left" data-year="2026">
+                    <div class="timeline-year-node">
+                        <span class="year-badge badge-lime">2026</span>
+                    </div>
+                    <div class="timeline-card-box card-accent-lime">
+                        <div class="timeline-card-top">
+                            <div class="timeline-role-info">
+                                <h3 class="timeline-role-title">MSIB 4 — Ethical Hacking</h3>
+                                <span class="timeline-company-name">PT Vinix Seven Aurum</span>
+                            </div>
+                            <span class="timeline-type-pill pill-lime">Cyber Security</span>
+                        </div>
+                        <p class="timeline-card-desc">
+                            Trainee Ethical Hacking Division. Melakukan vulnerability assessment (OpenVAS, Burp Suite), asset discovery (Nmap), SIEM Wazuh monitoring, analisis malware, dan STRIDE threat modeling untuk pengujian penetrasi keamanan siber.
+                        </p>
+                        <div class="timeline-tech-tags">
+                            <span class="t-tag">Ethical Hacking</span>
+                            <span class="t-tag">Nmap</span>
+                            <span class="t-tag">Burp Suite</span>
+                            <span class="t-tag">SIEM Wazuh</span>
+                            <span class="t-tag">OpenVAS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 4 (Right - 2023 - Sekarang: S1 Universitas Pancasila) -->
+                <div class="timeline-item timeline-right" data-year="2023">
+                    <div class="timeline-year-node">
+                        <span class="year-badge badge-cyan">2023</span>
+                    </div>
+                    <div class="timeline-card-box card-accent-cyan">
+                        <div class="timeline-card-top">
+                            <div class="timeline-role-info">
+                                <h3 class="timeline-role-title">S1 Teknik Informatika (NCS)</h3>
+                                <span class="timeline-company-name">Universitas Pancasila</span>
+                            </div>
+                            <span class="timeline-type-pill pill-cyan">Formal Education</span>
+                        </div>
+                        <p class="timeline-card-desc">
+                            Mahasiswa Teknik Informatika Universitas Pancasila peminatan Network Cyber Security (NCS) angkatan 2023. Berfokus pada arsitektur jaringan komputer, administrasi sistem Linux, security assessment, dan wawasan cloud computing.
+                        </p>
+                        <div class="timeline-tech-tags">
+                            <span class="t-tag">Network Architecture</span>
+                            <span class="t-tag">Cyber Security</span>
+                            <span class="t-tag">Linux Admin</span>
+                            <span class="t-tag">Cloud Foundations</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Section 02: Projects (Bright Canvas Background + Dark Contrast Cards) -->
+        <section id="projects" class="projects-section-bright reveal">
+            <div class="modern-section-header">
+                <span class="modern-section-overline projects-dark-overline">PORTFOLIO</span>
+                <h2 class="modern-section-title projects-dark-title">Featured Projects</h2>
             </div>
 
             <!-- Carousel Wrapper -->
@@ -375,479 +604,230 @@
         </section>
 
 
-        <!-- Section 03: Certifications -->
-        <section id="certifications" class="section reveal">
-            <div class="section-header">
-                <span class="section-number">03</span>
-                <span class="section-line"></span>
-                <span class="section-title">Certifications</span>
+        <!-- Section 03: Certifications (5 Cards Per Row on Desktop, Image + Title Only) -->
+        <section id="certifications" class="certifications-modern-section reveal">
+            <div class="modern-section-header">
+                <span class="modern-section-overline">CREDENTIALS</span>
+                <h2 class="modern-section-title">Certifications &amp; Badges</h2>
             </div>
             <div class="certifications-grid">
-                <!-- Cert 0: IBM SkillsBuild & Hacktiv8 AI Agent -->
-                <div class="cert-card reveal">
-                    <div class="cert-card-accent"></div>
+                <!-- Cert 1: IBM SkillsBuild & Hacktiv8 AI Agent -->
+                <a href="Certificate/BuildanAIAgent_Badge20260729-8-idrwxr.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="IT AI Agent For Programming &amp; Build an AI Agent">
                     <div class="cert-img-container">
-                        <img src="Certificate/images/ibm_skillsbuild.png" alt="Sertifikat IBM SkillsBuild &amp; Hacktiv8" class="cert-img" />
+                        <img src="Certificate/images/ibm_skillsbuild.png" alt="IT AI Agent For Programming &amp; Build an AI Agent" class="cert-img" loading="lazy" />
                     </div>
                     <div class="cert-info">
-                        <div class="cert-header">
-                            <span class="cert-issuer">IBM SkillsBuild &amp; Hacktiv8</span>
-                            <span class="cert-badge active">Jul 2026</span>
-                        </div>
-                        <div class="cert-body">
-                            <h3 class="cert-title">IT AI Agent For Programming &amp; Build an AI Agent</h3>
-                            <p class="cert-desc">Pelatihan intensif pemanfaatan AI Agent dalam alur kerja pemrograman serta memperoleh Credly Verified Badge 'Build an AI Agent'.</p>
-                        </div>
-                        <div class="cert-footer">
-                            <span class="cert-id">IBM SkillsBuild &amp; Credly</span>
-                            <a href="Certificate/BuildanAIAgent_Badge20260729-8-idrwxr.pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
-                        </div>
+                        <h3 class="cert-title">IT AI Agent For Programming</h3>
                     </div>
-                </div>
+                </a>
 
-                <!-- Cert 0B: IBM SkillsBuild AI Foundations -->
-                <div class="cert-card reveal">
-                    <div class="cert-card-accent"></div>
+                <!-- Cert 2: IBM SkillsBuild AI Foundations -->
+                <a href="Certificate/Completion Certificate _ SkillsBuild.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="IBM SkillsBuild: Artificial Intelligence Foundations">
                     <div class="cert-img-container">
-                        <img src="Certificate/images/ibm_skillsbuild_2.png" alt="Sertifikat IBM SkillsBuild AI Foundations" class="cert-img" />
+                        <img src="Certificate/images/ibm_skillsbuild_2.png" alt="IBM SkillsBuild AI Foundations" class="cert-img" loading="lazy" />
                     </div>
                     <div class="cert-info">
-                        <div class="cert-header">
-                            <span class="cert-issuer">IBM SkillsBuild</span>
-                            <span class="cert-badge active">Jul 2026</span>
-                        </div>
-                        <div class="cert-body">
-                            <h3 class="cert-title">IBM SkillsBuild: Artificial Intelligence Foundations</h3>
-                            <p class="cert-desc">Sertifikat kelulusan pemahaman dasar AI, etika AI, machine learning, dan arsitektur AI Agent dari IBM.</p>
-                        </div>
-                        <div class="cert-footer">
-                            <span class="cert-id">SkillsBuild Credential</span>
-                            <a href="Certificate/Completion Certificate _ SkillsBuild.pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
-                        </div>
+                        <h3 class="cert-title">IBM: AI Foundations</h3>
                     </div>
-                </div>
+                </a>
 
-                <!-- Cert 0C: AWS Builder Dicoding 1 -->
-                <div class="cert-card reveal">
-                    <div class="cert-card-accent"></div>
+                <!-- Cert 3: AWS Builder Dicoding 1 -->
+                <a href="Certificate/sertifikat_course_902_5631887_190726141626.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="AWS Builder: Cloud Practitioner &amp; Architecture">
                     <div class="cert-img-container">
-                        <img src="Certificate/images/aws_builder_1.png" alt="Sertifikat AWS Builder Cloud Architecture" class="cert-img" />
+                        <img src="Certificate/images/aws_builder_1.png" alt="AWS Builder Cloud Practitioner" class="cert-img" loading="lazy" />
                     </div>
                     <div class="cert-info">
-                        <div class="cert-header">
-                            <span class="cert-issuer">AWS &amp; Dicoding</span>
-                            <span class="cert-badge active">AWS Builder</span>
-                        </div>
-                        <div class="cert-body">
-                            <h3 class="cert-title">AWS Builder: Cloud Practitioner &amp; Architecture</h3>
-                            <p class="cert-desc">Sertifikat kelulusan kelas AWS Cloud Practitioner, dasar infrastruktur cloud, VPC, dan EC2 di platform Dicoding.</p>
-                        </div>
-                        <div class="cert-footer">
-                            <span class="cert-id">Dicoding AWS Course</span>
-                            <a href="Certificate/sertifikat_course_902_5631887_190726141626.pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
-                        </div>
+                        <h3 class="cert-title">AWS: Cloud Practitioner</h3>
                     </div>
-                </div>
+                </a>
 
-                <!-- Cert 0D: AWS Builder Dicoding 2 -->
-                <div class="cert-card reveal">
-                    <div class="cert-card-accent"></div>
+                <!-- Cert 4: AWS Builder Dicoding 2 -->
+                <a href="Certificate/sertifikat_course_929_5631887_190726141444.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="AWS Builder: Cloud Services &amp; Infrastructure">
                     <div class="cert-img-container">
-                        <img src="Certificate/images/aws_builder_2.png" alt="Sertifikat AWS Builder Services" class="cert-img" />
+                        <img src="Certificate/images/aws_builder_2.png" alt="AWS Builder Cloud Services" class="cert-img" loading="lazy" />
                     </div>
                     <div class="cert-info">
-                        <div class="cert-header">
-                            <span class="cert-issuer">AWS &amp; Dicoding</span>
-                            <span class="cert-badge active">AWS Builder</span>
-                        </div>
-                        <div class="cert-body">
-                            <h3 class="cert-title">AWS Builder: Cloud Services &amp; Infrastructure</h3>
-                            <p class="cert-desc">Pendalaman implementasi layanan AWS S3, IAM security, AWS CloudWatch, dan deployment aplikasi cloud.</p>
-                        </div>
-                        <div class="cert-footer">
-                            <span class="cert-id">Dicoding AWS Course</span>
-                            <a href="Certificate/sertifikat_course_929_5631887_190726141444.pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
-                        </div>
+                        <h3 class="cert-title">AWS: Cloud Services &amp; Infra</h3>
                     </div>
-                </div>
+                </a>
 
-                <!-- Cert 0E: AWS Builder Official Certificate -->
-                <div class="cert-card reveal">
-                    <div class="cert-card-accent"></div>
+                <!-- Cert 5: AWS Builder Official Certificate -->
+                <a href="Certificate/awsbuilder.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="AWS Cloud Practitioner &amp; Infrastructure Builder">
                     <div class="cert-img-container">
-                        <img src="Certificate/images/awsbuilder_main.png" alt="Sertifikat AWS Builder Official" class="cert-img" />
+                        <img src="Certificate/images/awsbuilder_main.png" alt="AWS Cloud Practitioner Builder" class="cert-img" loading="lazy" />
                     </div>
                     <div class="cert-info">
-                        <div class="cert-header">
-                            <span class="cert-issuer">AWS &amp; Dicoding</span>
-                            <span class="cert-badge active">AWS Builder</span>
-                        </div>
-                        <div class="cert-body">
-                            <h3 class="cert-title">AWS Cloud Practitioner &amp; Infrastructure Builder</h3>
-                            <p class="cert-desc">Sertifikat resmi kompetensi arsitektur dan manajemen infrastruktur Amazon Web Services.</p>
-                        </div>
-                        <div class="cert-footer">
-                            <span class="cert-id">AWS Builder Credential</span>
-                            <a href="Certificate/awsbuilder.pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
-                        </div>
+                        <h3 class="cert-title">AWS: Infrastructure Builder</h3>
                     </div>
-                </div>
+                </a>
 
-                <!-- Cert 0F: AWS Builder Specialized Certificate -->
-                <div class="cert-card reveal">
-                    <div class="cert-card-accent"></div>
+                <!-- Cert 6: AWS Builder Specialized Certificate -->
+                <a href="Certificate/awsbuilder2.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="AWS Cloud Security &amp; Deployment Specialist">
                     <div class="cert-img-container">
-                        <img src="Certificate/images/awsbuilder_alt.png" alt="Sertifikat AWS Builder Specialized" class="cert-img" />
+                        <img src="Certificate/images/awsbuilder_alt.png" alt="AWS Cloud Security Specialist" class="cert-img" loading="lazy" />
                     </div>
                     <div class="cert-info">
-                        <div class="cert-header">
-                            <span class="cert-issuer">AWS &amp; Dicoding</span>
-                            <span class="cert-badge active">AWS Builder</span>
-                        </div>
-                        <div class="cert-body">
-                            <h3 class="cert-title">AWS Cloud Security &amp; Deployment Specialist</h3>
-                            <p class="cert-desc">Sertifikat kelulusan spesialisasi implementasi keamanan cloud, IAM, dan deployment AWS.</p>
-                        </div>
-                        <div class="cert-footer">
-                            <span class="cert-id">AWS Builder Specialist</span>
-                            <a href="Certificate/awsbuilder2.pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
-                        </div>
+                        <h3 class="cert-title">AWS: Cloud Security Specialist</h3>
                     </div>
-                </div>
+                </a>
 
-                <!-- Cert 1: MSIB PT Vinix Utama -->
-                <div class="cert-card reveal">
-                    <div class="cert-card-accent"></div>
+                <!-- Cert 7: MSIB PT Vinix Utama -->
+                <a href="Certificate/aditya4523003@univpancasila.ac.id_Sertifikat Utama (1).pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="MSIB Batch 4: Cybersecurity Ethical Hackers">
                     <div class="cert-img-container">
-                        <img src="Certificate/images/aditya4523003@univpancasila.ac.id_Sertifikat Utama (1).png" alt="Sertifikat Utama MSIB Batch 4" class="cert-img" />
+                        <img src="Certificate/images/aditya4523003@univpancasila.ac.id_Sertifikat Utama (1).png" alt="MSIB 4 Cybersecurity Ethical Hackers" class="cert-img" loading="lazy" />
                     </div>
                     <div class="cert-info">
-                        <div class="cert-header">
-                            <span class="cert-issuer">PT Vinix Seven Aurum</span>
-                            <span class="cert-badge active">MSIB Batch 4</span>
-                        </div>
-                        <div class="cert-body">
-                            <h3 class="cert-title">Studi Independen: Cybersecurity Ethical Hackers</h3>
-                            <p class="cert-desc">Menyelesaikan program studi independen selama 4 bulan pada divisi Ethical Hacker.</p>
-                        </div>
-                        <div class="cert-footer">
-                            <span class="cert-id">No: 007/Batch-IV-MSIB/VINIX7</span>
-                            <a href="Certificate/aditya4523003@univpancasila.ac.id_Sertifikat Utama (1).pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
-                        </div>
+                        <h3 class="cert-title">MSIB 4: Ethical Hackers</h3>
                     </div>
-                </div>
+                </a>
 
-                <!-- Cert 2A: IBM SkillsBuild AI Agent Assistant -->
-                <div class="cert-card reveal">
-                    <div class="cert-card-accent"></div>
+                <!-- Cert 8: IBM SkillsBuild AI Agent Assistant -->
+                <a href="Certificate/aiagent.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="IBM SkillsBuild: AI Agent Assistant &amp; Prompting">
                     <div class="cert-img-container">
-                        <img src="Certificate/images/ibm_aiagent.png" alt="Sertifikat IBM SkillsBuild AI Agent" class="cert-img" />
+                        <img src="Certificate/images/ibm_aiagent.png" alt="IBM SkillsBuild AI Agent Assistant" class="cert-img" loading="lazy" />
                     </div>
                     <div class="cert-info">
-                        <div class="cert-header">
-                            <span class="cert-issuer">IBM SkillsBuild</span>
-                            <span class="cert-badge active">Jul 2026</span>
-                        </div>
-                        <div class="cert-body">
-                            <h3 class="cert-title">IBM SkillsBuild: AI Agent Assistant &amp; Prompting</h3>
-                            <p class="cert-desc">Sertifikat kelulusan perancangan AI Agent, prompt engineering, dan otomasi alur kerja AI.</p>
-                        </div>
-                        <div class="cert-footer">
-                            <span class="cert-id">SkillsBuild Credential</span>
-                            <a href="Certificate/aiagent.pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
-                        </div>
+                        <h3 class="cert-title">IBM: AI Agent Assistant</h3>
                     </div>
-                </div>
+                </a>
 
-                <!-- Cert 2B: IBM SkillsBuild AI Specialization -->
-                <div class="cert-card reveal">
-                    <div class="cert-card-accent"></div>
+                <!-- Cert 9: IBM SkillsBuild AI Specialization -->
+                <a href="Certificate/Completion Certificate _ SkillsBuild2.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="IBM SkillsBuild: Artificial Intelligence Specialization">
                     <div class="cert-img-container">
-                        <img src="Certificate/images/ibm_skillsbuild_3.png" alt="Sertifikat IBM SkillsBuild AI Specialization" class="cert-img" />
+                        <img src="Certificate/images/ibm_skillsbuild_3.png" alt="IBM SkillsBuild AI Specialization" class="cert-img" loading="lazy" />
                     </div>
                     <div class="cert-info">
-                        <div class="cert-header">
-                            <span class="cert-issuer">IBM SkillsBuild</span>
-                            <span class="cert-badge active">Jul 2026</span>
-                        </div>
-                        <div class="cert-body">
-                            <h3 class="cert-title">IBM SkillsBuild: Artificial Intelligence Specialization</h3>
-                            <p class="cert-desc">Sertifikat tingkat lanjut pengembangan model AI, penerapan Generative AI, dan etika kecerdasan buatan.</p>
-                        </div>
-                        <div class="cert-footer">
-                            <span class="cert-id">SkillsBuild Specialization</span>
-                            <a href="Certificate/Completion Certificate _ SkillsBuild2.pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
-                        </div>
+                        <h3 class="cert-title">IBM: AI Specialization</h3>
                     </div>
-                </div>
+                </a>
 
-                <!-- Cert 3: Proyek Berdampak PT Vinix -->
-                <div class="cert-card reveal">
-                    <div class="cert-card-accent"></div>
+                <!-- Cert 10: Proyek Berdampak PT Vinix -->
+                <a href="Certificate/aditya4523003@univpancasila.ac.id_Sertifikat Proyek (1).pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="Sertifikat Proyek Berdampak: Threat Modeling">
                     <div class="cert-img-container">
-                        <img src="Certificate/images/aditya4523003@univpancasila.ac.id_Sertifikat Proyek (1).png" alt="Sertifikat Proyek Berdampak" class="cert-img" />
+                        <img src="Certificate/images/aditya4523003@univpancasila.ac.id_Sertifikat Proyek (1).png" alt="Proyek Threat Modeling" class="cert-img" loading="lazy" />
                     </div>
                     <div class="cert-info">
-                        <div class="cert-header">
-                            <span class="cert-issuer">PT Vinix Seven Aurum</span>
-                            <span class="cert-badge active">Skor: 95</span>
-                        </div>
-                        <div class="cert-body">
-                            <h3 class="cert-title">Sertifikat Proyek Berdampak: Threat Modeling</h3>
-                            <p class="cert-desc">Pengerjaan proyek analisis STRIDE, area ancaman, attack factors, dan mitigasi sistem perangkat lunak.</p>
-                        </div>
-                        <div class="cert-footer">
-                            <span class="cert-id">Divisi: Ethical Hacker</span>
-                            <a href="Certificate/aditya4523003@univpancasila.ac.id_Sertifikat Proyek (1).pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
-                        </div>
+                        <h3 class="cert-title">Vinix: Threat Modeling</h3>
                     </div>
-                </div>
+                </a>
 
-                <!-- Cert 4: TryHackMe Cyber Security 101 -->
-                <div class="cert-card reveal">
-                    <div class="cert-card-accent"></div>
+                <!-- Cert 11: TryHackMe Cyber Security 101 -->
+                <a href="Certificate/THM-7PKEKLLYLE.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="TryHackMe: Cyber Security 101 Path Completion">
                     <div class="cert-img-container">
-                        <img src="Certificate/images/THM-7PKEKLLYLE.png" alt="Sertifikat TryHackMe Cyber Security 101" class="cert-img" />
+                        <img src="Certificate/images/THM-7PKEKLLYLE.png" alt="TryHackMe Cyber Security 101" class="cert-img" loading="lazy" />
                     </div>
                     <div class="cert-info">
-                        <div class="cert-header">
-                            <span class="cert-issuer">TryHackMe</span>
-                            <span class="cert-badge active">45 Hours</span>
-                        </div>
-                        <div class="cert-body">
-                            <h3 class="cert-title">Cyber Security 101 Path Completion</h3>
-                            <p class="cert-desc">Keahlian dasar keamanan siber, analisis lalu lintas jaringan, dan web hacking.</p>
-                        </div>
-                        <div class="cert-footer">
-                            <span class="cert-id">ID: THM-7PKEKLLYLE</span>
-                            <a href="Certificate/THM-7PKEKLLYLE.pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
-                        </div>
+                        <h3 class="cert-title">TryHackMe: Cyber Security 101</h3>
                     </div>
-                </div>
+                </a>
 
-                <!-- Cert 5: TryHackMe Pre Security -->
-                <div class="cert-card reveal">
-                    <div class="cert-card-accent"></div>
+                <!-- Cert 12: TryHackMe Pre Security -->
+                <a href="Certificate/THM-8WKKI3COQN.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="TryHackMe: Pre Security Path Completion">
                     <div class="cert-img-container">
-                        <img src="Certificate/images/THM-8WKKI3COQN.png" alt="Sertifikat TryHackMe Pre Security" class="cert-img" />
+                        <img src="Certificate/images/THM-8WKKI3COQN.png" alt="TryHackMe Pre Security" class="cert-img" loading="lazy" />
                     </div>
                     <div class="cert-info">
-                        <div class="cert-header">
-                            <span class="cert-issuer">TryHackMe</span>
-                            <span class="cert-badge active">19 Hours</span>
-                        </div>
-                        <div class="cert-body">
-                            <h3 class="cert-title">Pre Security Path Completion</h3>
-                            <p class="cert-desc">Menguasai dasar jaringan komputer, protokol web, Linux, dan terminologi keamanan.</p>
-                        </div>
-                        <div class="cert-footer">
-                            <span class="cert-id">ID: THM-8WKKI3COQN</span>
-                            <a href="Certificate/THM-8WKKI3COQN.pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
-                        </div>
+                        <h3 class="cert-title">TryHackMe: Pre Security</h3>
                     </div>
-                </div>
+                </a>
 
-                <!-- Cert 6: Dicoding AWS Cloud & Gen AI -->
-                <div class="cert-card reveal">
-                    <div class="cert-card-accent"></div>
+                <!-- Cert 13: Dicoding AWS Cloud & Gen AI -->
+                <a href="Certificate/sertifikat_course_251_5631887_170726013548.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="Dicoding: Belajar Dasar Cloud &amp; Gen AI di AWS">
                     <div class="cert-img-container">
-                        <img src="Certificate/images/sertifikat_course_251_5631887_170726013548.png" alt="Sertifikat Dicoding AWS" class="cert-img" />
+                        <img src="Certificate/images/sertifikat_course_251_5631887_170726013548.png" alt="Dicoding Dasar Cloud Gen AI" class="cert-img" loading="lazy" />
                     </div>
                     <div class="cert-info">
-                        <div class="cert-header">
-                            <span class="cert-issuer">Dicoding</span>
-                            <span class="cert-badge active">AWS Cloud</span>
-                        </div>
-                        <div class="cert-body">
-                            <h3 class="cert-title">Belajar Dasar Cloud & Gen AI di AWS</h3>
-                            <p class="cert-desc">Memahami AWS global infrastructure, core services, IAM, EC2, S3, dan kecerdasan generatif AWS.</p>
-                        </div>
-                        <div class="cert-footer">
-                            <span class="cert-id">ID: MRZMW930LPYQ</span>
-                            <a href="Certificate/sertifikat_course_251_5631887_170726013548.pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
-                        </div>
+                        <h3 class="cert-title">Dicoding: Cloud &amp; Gen AI AWS</h3>
                     </div>
-                </div>
+                </a>
 
-                <!-- Cert 7: Softskill PT Vinix -->
-                <div class="cert-card reveal">
-                    <div class="cert-card-accent"></div>
+                <!-- Cert 14: Softskill PT Vinix -->
+                <a href="Certificate/aditya4523003@univpancasila.ac.id_Sertifikat Softskill.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="Professional Communication di Tempat Kerja">
                     <div class="cert-img-container">
-                        <img src="Certificate/images/aditya4523003@univpancasila.ac.id_Sertifikat Softskill.png" alt="Sertifikat Softskill MSIB" class="cert-img" />
+                        <img src="Certificate/images/aditya4523003@univpancasila.ac.id_Sertifikat Softskill.png" alt="Professional Communication" class="cert-img" loading="lazy" />
                     </div>
                     <div class="cert-info">
-                        <div class="cert-header">
-                            <span class="cert-issuer">PT Vinix Seven Aurum</span>
-                            <span class="cert-badge active">Apresiasi</span>
-                        </div>
-                        <div class="cert-body">
-                            <h3 class="cert-title">Professional Communication di Tempat Kerja</h3>
-                            <p class="cert-desc">Apresiasi keterlibatan aktif dalam pelatihan komunikasi profesional kerja.</p>
-                        </div>
-                        <div class="cert-footer">
-                            <span class="cert-id">No: 007/Batch-IV-SF/VINIX7</span>
-                            <a href="Certificate/aditya4523003@univpancasila.ac.id_Sertifikat Softskill.pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
-                        </div>
+                        <h3 class="cert-title">Vinix: Professional Communication</h3>
                     </div>
-                </div>
+                </a>
 
-                <!-- Cert 8: IDN Webinar Pentesting -->
-                <div class="cert-card reveal">
-                    <div class="cert-card-accent"></div>
+                <!-- Cert 15: IDN Webinar Pentesting -->
+                <a href="Certificate/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 27 Januari 2026.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="IDN: Basic Mobile Pentesting Participant">
                     <div class="cert-img-container">
-                        <img src="Certificate/images/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 27 Januari 2026.png" alt="Sertifikat Webinar Pentesting" class="cert-img" />
+                        <img src="Certificate/images/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 27 Januari 2026.png" alt="IDN Basic Mobile Pentesting" class="cert-img" loading="lazy" />
                     </div>
                     <div class="cert-info">
-                        <div class="cert-header">
-                            <span class="cert-issuer">ID-Networkers (IDN.ID)</span>
-                            <span class="cert-badge active">Webinar</span>
-                        </div>
-                        <div class="cert-body">
-                            <h3 class="cert-title">Basic Mobile Pentesting Participant</h3>
-                            <p class="cert-desc">Webinar pengenalan analisis keamanan dan pentesting aplikasi mobile Android.</p>
-                        </div>
-                        <div class="cert-footer">
-                            <span class="cert-id">Tanggal: 27 Januari 2026</span>
-                            <a href="Certificate/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 27 Januari 2026.pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
-                        </div>
+                        <h3 class="cert-title">IDN: Mobile Pentesting</h3>
                     </div>
-                </div>
+                </a>
 
-                <!-- Cert 9: IDN Webinar Sistem Keamanan -->
-                <div class="cert-card reveal">
-                    <div class="cert-card-accent"></div>
+                <!-- Cert 16: IDN Webinar Sistem Keamanan -->
+                <a href="Certificate/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 29 Januari 2026.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="IDN: Membangun Sistem Keamanan Dari Nol">
                     <div class="cert-img-container">
-                        <img src="Certificate/images/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 29 Januari 2026.png" alt="Sertifikat Webinar Keamanan" class="cert-img" />
+                        <img src="Certificate/images/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 29 Januari 2026.png" alt="IDN Membangun Sistem Keamanan" class="cert-img" loading="lazy" />
                     </div>
                     <div class="cert-info">
-                        <div class="cert-header">
-                            <span class="cert-issuer">ID-Networkers (IDN.ID)</span>
-                            <span class="cert-badge active">Webinar</span>
-                        </div>
-                        <div class="cert-body">
-                            <h3 class="cert-title">Membangun Sistem Keamanan Dari Nol</h3>
-                            <p class="cert-desc">Solusi praktis merancang sistem keamanan jaringan, server, dan hak akses dari dasar.</p>
-                        </div>
-                        <div class="cert-footer">
-                            <span class="cert-id">Tanggal: 29 Januari 2026</span>
-                            <a href="Certificate/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 29 Januari 2026.pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
-                        </div>
+                        <h3 class="cert-title">IDN: Sistem Keamanan Dari Nol</h3>
                     </div>
-                </div>
-                <!-- Cert 10: Kuliah Umum AI Geospasial -->
-                <div class="cert-card reveal">
-                    <div class="cert-card-accent"></div>
+                </a>
+
+                <!-- Cert 17: Kuliah Umum AI Geospasial -->
+                <a href="Certificate/sertifikat_geospasial.jpeg" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="Peserta Kuliah Umum: AI Geospasial">
                     <div class="cert-img-container">
-                        <img src="Certificate/sertifikat_geospasial.jpeg" alt="Sertifikat Peserta Kuliah Umum" class="cert-img" />
+                        <img src="Certificate/sertifikat_geospasial.jpeg" alt="Kuliah Umum AI Geospasial" class="cert-img" loading="lazy" />
                     </div>
                     <div class="cert-info">
-                        <div class="cert-header">
-                            <span class="cert-issuer">Universitas Pancasila</span>
-                            <span class="cert-badge active">Kuliah Umum</span>
-                        </div>
-                        <div class="cert-body">
-                            <h3 class="cert-title">Peserta Kuliah Umum</h3>
-                            <p class="cert-desc">Tema "Interpretasi Data Geospasial Berbasis Artificial Intelligence"</p>
-                        </div>
-                        <div class="cert-footer">
-                            <span class="cert-id">Tanggal: 04 Juni 2025</span>
-                            <a href="Certificate/sertifikat_geospasial.jpeg" target="_blank" class="cert-btn">Lihat Gambar ↗</a>
-                        </div>
+                        <h3 class="cert-title">Kuliah Umum: AI Geospasial</h3>
                     </div>
-                </div>
-                <!-- Cert 11: Kuliah Tamu Internasional -->
-                <div class="cert-card reveal">
-                    <div class="cert-card-accent"></div>
+                </a>
+
+                <!-- Cert 18: Kuliah Tamu Internasional -->
+                <a href="Certificate/4523210003 Aditya Nur Lintang - Sertifikat Kuliah Tamu Internasional 10 Sep 25.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="Kuliah Tamu Internasional Magang Global">
                     <div class="cert-img-container">
-                        <img src="Certificate/images/pancasila1.jpg" alt="Sertifikat Kuliah Tamu" class="cert-img" />
+                        <img src="Certificate/images/pancasila1.jpg" alt="Kuliah Tamu Internasional" class="cert-img" loading="lazy" />
                     </div>
                     <div class="cert-info">
-                        <div class="cert-header">
-                            <span class="cert-issuer">Fakultas Teknik Universitas Pancasila</span>
-                            <span class="cert-badge active">Kuliah Tamu</span>
-                        </div>
-                        <div class="cert-body">
-                            <h3 class="cert-title">Kuliah Tamu Internasional</h3>
-                            <p class="cert-desc">Tema "Dari Kampus ke Dunia Kerja Global: Pengembangan Hard Skill dan Soft Skill lewat Magang Internasional"</p>
-                        </div>
-                        <div class="cert-footer">
-                            <span class="cert-id">Tanggal: 10 September 2025</span>
-                            <a href="Certificate/4523210003 Aditya Nur Lintang - Sertifikat Kuliah Tamu Internasional 10 Sep 25.pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
-                        </div>
+                        <h3 class="cert-title">Kuliah Tamu: Magang Global</h3>
                     </div>
-                </div>
-                <!-- Cert 12: Dicoding SDD Kiro -->
-                <div class="cert-card reveal">
-                    <div class="cert-card-accent"></div>
+                </a>
+
+                <!-- Cert 19: Dicoding SDD Kiro -->
+                <a href="Certificate/dicoding2.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="Dicoding: Spec-Driven Development dengan Kiro">
                     <div class="cert-img-container">
-                        <img src="Certificate/images/dicoding2.jpg" alt="Sertifikat Dicoding SDD Kiro" class="cert-img" />
+                        <img src="Certificate/images/dicoding2.jpg" alt="Dicoding Spec-Driven Development Kiro" class="cert-img" loading="lazy" />
                     </div>
                     <div class="cert-info">
-                        <div class="cert-header">
-                            <span class="cert-issuer">Dicoding</span>
-                            <span class="cert-badge active">Kiro</span>
-                        </div>
-                        <div class="cert-body">
-                            <h3 class="cert-title">Spec-Driven Development dengan Kiro</h3>
-                            <p class="cert-desc">Memahami Spec-Driven Development (SDD), penggunaan Kiro, perancangan spesifikasi aplikasi, dan pengembangan aplikasi berbasis AI.</p>
-                        </div>
-                        <div class="cert-footer">
-                            <span class="cert-id">ID: 72ZDJ1QWJZYW</span>
-                            <a href="Certificate/dicoding2.pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
-                        </div>
+                        <h3 class="cert-title">Dicoding: SDD dengan Kiro</h3>
                     </div>
-                </div>
-                <!-- Cert 13: Dicoding Data Science Microsoft Fabric -->
-                <div class="cert-card reveal">
-                    <div class="cert-card-accent"></div>
+                </a>
+
+                <!-- Cert 20: Dicoding Data Science Microsoft Fabric -->
+                <a href="Certificate/dicoding3.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="Dicoding: Belajar Penerapan Data Science dengan Microsoft Fabric">
                     <div class="cert-img-container">
-                        <img src="Certificate/images/dicoding3.jpg" alt="Sertifikat Dicoding Microsoft Fabric" class="cert-img" />
+                        <img src="Certificate/images/dicoding3.jpg" alt="Dicoding Data Science Microsoft Fabric" class="cert-img" loading="lazy" />
                     </div>
                     <div class="cert-info">
-                        <div class="cert-header">
-                            <span class="cert-issuer">Dicoding</span>
-                            <span class="cert-badge active">Microsoft Fabric</span>
-                        </div>
-                        <div class="cert-body">
-                            <h3 class="cert-title">Belajar Penerapan Data Science dengan Microsoft Fabric</h3>
-                            <p class="cert-desc">Mempelajari Microsoft Fabric untuk analitik end-to-end, eksplorasi dan preprocessing data, serta pengembangan dan deployment model machine learning.</p>
-                        </div>
-                        <div class="cert-footer">
-                            <span class="cert-id">ID: MRZMW0533PYQ</span>
-                            <a href="Certificate/dicoding3.pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
-                        </div>
+                        <h3 class="cert-title">Dicoding: Microsoft Fabric</h3>
                     </div>
-                </div>
-                <!-- Cert 14: Dunia Coding Website Aman AI -->
-                <div class="cert-card reveal">
-                    <div class="cert-card-accent"></div>
+                </a>
+
+                <!-- Cert 21: Dunia Coding Website Aman AI -->
+                <a href="Certificate/duniacoding.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="Dunia Coding: Website Aman di Era AI">
                     <div class="cert-img-container">
-                        <img src="Certificate/images/duniacoding.jpg" alt="Sertifikat Dunia Coding" class="cert-img" />
+                        <img src="Certificate/images/duniacoding.jpg" alt="Dunia Coding Website Aman AI" class="cert-img" loading="lazy" />
                     </div>
                     <div class="cert-info">
-                        <div class="cert-header">
-                            <span class="cert-issuer">Dunia Coding</span>
-                            <span class="cert-badge active">Webinar</span>
-                        </div>
-                        <div class="cert-body">
-                            <h3 class="cert-title">Website Aman di Era AI: Cara Developer Bertahan dari Serangan Hacker Modern</h3>
-                            <p class="cert-desc">Memahami praktik pengembangan website yang aman serta strategi menghadapi serangan siber modern dengan bantuan AI.</p>
-                        </div>
-                        <div class="cert-footer">
-                            <span class="cert-id">Tanggal: 12 Mei 2026</span>
-                            <a href="Certificate/duniacoding.pdf" target="_blank" class="cert-btn">Lihat PDF ↗</a>
-                        </div>
+                        <h3 class="cert-title">Dunia Coding: Website Aman AI</h3>
                     </div>
-                </div>
+                </a>
             </div>
         </section>
 
-        <!-- Section 04: Skills (2 Opposite Running Marquee Tracks: Row 1 Left to Right, Row 2 Right to Left) -->
-        <section id="skills" class="section reveal">
-            <div class="section-header">
-                <span class="section-number">04</span>
-                <span class="section-line"></span>
-                <span class="section-title">Skills</span>
+        <!-- Section 04: Skills (Bright Canvas Background + Dark Font & Badges) -->
+        <section id="skills" class="skills-section-bright reveal">
+            <div class="modern-section-header">
+                <span class="modern-section-overline skills-dark-overline">TECH STACK</span>
+                <h2 class="modern-section-title skills-dark-title">Skills &amp; Technologies</h2>
             </div>
             
             <div class="skills-marquee-container">
@@ -995,23 +975,22 @@
             </div>
         </section>
 
-        <!-- Section 05: Contact -->
-        <section id="contact" class="section reveal">
-            <div class="section-header">
-                <span class="section-number">05</span>
-                <span class="section-line"></span>
-                <span class="section-title">Contact</span>
+        <!-- Section 05: Contact (Dark Studio Background + Light Font) -->
+        <section id="contact" class="contact-section-dark reveal">
+            <div class="modern-section-header">
+                <span class="modern-section-overline">GET IN TOUCH</span>
+                <h2 class="modern-section-title">Let's Connect &amp; Collaborate</h2>
             </div>
             <div class="contact-grid">
-                <a href="https://github.com/unaware22" target="_blank" class="contact-link link-blue">
+                <a href="https://github.com/unaware22" target="_blank" rel="noopener noreferrer" class="contact-link">
                     <svg class="contact-svg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                     <span>GitHub</span>
                 </a>
-                <a href="https://www.linkedin.com/in/aditya-nur-lintang-b8483333a/" target="_blank" class="contact-link link-red">
+                <a href="https://www.linkedin.com/in/aditya-nur-lintang-b8483333a/" target="_blank" rel="noopener noreferrer" class="contact-link">
                     <svg class="contact-svg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
                     <span>LinkedIn</span>
                 </a>
-                <a href="mailto:adityanurlintang211@gmail.com" class="contact-link link-yellow">
+                <a href="mailto:adityanurlintang211@gmail.com" class="contact-link">
                     <svg class="contact-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                     <span>Email</span>
                 </a>
@@ -1037,8 +1016,6 @@
                 <a href="#" class="back-to-top">Kembali ke atas ↑</a>
             </div>
         </footer>
-
-    </div>
 
     <!-- Interactive Location Modal Popup (No API Key Required) -->
     <div id="location-modal" class="modal-overlay" aria-hidden="true">

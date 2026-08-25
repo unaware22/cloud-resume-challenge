@@ -4,16 +4,336 @@
  */
 
 document.addEventListener("DOMContentLoaded", () => {
+    initIrisPreloader();
+    initHeroRive();
+    initScrollNavbar();
     initThemeSwitcher();
     initScrollReveal();
     initVisitorCounter();
     initTypewriter();
-    initAsciiCloud();
+    initExperienceCountUp();
     initLocationModal();
     initProjectCarousel();
-    // Particle background removed for a cleaner look
-
+    initBadgeCardTilt();
+    initPageTransitions();
 });
+
+/**
+ * Hero Interactive Rive Cat Initializer (interactive/cat/cat_follow_cursor_demo.riv)
+ * Uses Rive ViewModelInstance and Data Binding (Artboard 2, xPos / yPos)
+ * to smoothly track cursor position across the entire viewport
+ */
+let heroRiveInstance = null;
+
+function initHeroRive() {
+    const canvas = document.getElementById("hero-rive-canvas");
+    if (!canvas) return;
+
+    if (typeof rive === "undefined") {
+        setTimeout(initHeroRive, 50);
+        return;
+    }
+
+    function base64ToArrayBuffer(base64) {
+        try {
+            const binaryString = window.atob(base64);
+            const len = binaryString.length;
+            const bytes = new Uint8Array(len);
+            for (let i = 0; i < len; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+            }
+            return bytes.buffer;
+        } catch (e) {
+            console.error("Base64 decode error:", e);
+            return null;
+        }
+    }
+
+    try {
+        const riveConfig = {
+            canvas: canvas,
+            artboard: "Artboard 2",
+            stateMachines: "State Machine 1",
+            autoplay: true,
+            autoBind: true,
+            layout: new rive.Layout({
+                fit: rive.Fit.Contain,
+                alignment: rive.Alignment.Center,
+            }),
+            onLoad: () => {
+                if (!heroRiveInstance) return;
+
+                heroRiveInstance.resizeDrawingSurfaceToCanvas();
+
+                // Get ViewModelInstance properties (Data Binding for xPos & yPos)
+                const vmi = heroRiveInstance.viewModelInstance;
+                let xProperty = null;
+                let yProperty = null;
+
+                if (vmi) {
+                    xProperty = vmi.number("xPos") || vmi.number("x") || vmi.number("X value");
+                    yProperty = vmi.number("yPos") || vmi.number("y") || vmi.number("Y value");
+                }
+
+                // Initial forward-looking gaze (centered at 50, 50)
+                if (xProperty) xProperty.value = 50;
+                if (yProperty) yProperty.value = 50;
+
+                // Also get direct State Machine inputs if available
+                const smInputs = heroRiveInstance.stateMachineInputs("State Machine 1") || [];
+
+                // Convert cursor coordinates to 0-100 range relative to canvas bounds
+                const mapCursorToRange = (position, dimension) => {
+                    const clampedPosition = Math.max(0, Math.min(position, dimension));
+                    return (clampedPosition / dimension) * 100;
+                };
+
+                const updatePosition = (clientX, clientY) => {
+                    const rect = canvas.getBoundingClientRect();
+
+                    // Calculate position relative to canvas
+                    const canvasX = clientX - rect.left;
+                    const canvasY = clientY - rect.top;
+
+                    // Map to 0-100 range based on canvas dimensions
+                    const xValue = mapCursorToRange(canvasX, rect.width);
+                    const yValue = mapCursorToRange(canvasY, rect.height);
+
+                    // Update ViewModel properties (Data Binding)
+                    if (xProperty) xProperty.value = xValue;
+                    if (yProperty) yProperty.value = yValue;
+
+                    // Also update State Machine number inputs for full compatibility
+                    smInputs.forEach(input => {
+                        const name = input.name.toLowerCase();
+                        if (input.type === rive.StateMachineInputType.Number) {
+                            if (name.includes("x") || name.includes("horiz") || name.includes("ltor")) {
+                                input.value = xValue;
+                            } else if (name.includes("y") || name.includes("vert") || name.includes("utod")) {
+                                input.value = yValue;
+                            }
+                        }
+                    });
+                };
+
+                // Mouse movement on entire window
+                const handleMouseMove = (event) => {
+                    updatePosition(event.clientX, event.clientY);
+                };
+
+                // Touch movement on mobile devices
+                const handleTouchMove = (event) => {
+                    if (event.touches && event.touches.length > 0) {
+                        const touch = event.touches[0];
+                        updatePosition(touch.clientX, touch.clientY);
+                    }
+                };
+
+                // Reset eyes to forward gaze when cursor leaves window or touch ends
+                const handleReset = () => {
+                    if (xProperty) xProperty.value = 50;
+                    if (yProperty) yProperty.value = 50;
+                    smInputs.forEach(input => {
+                        if (input.type === rive.StateMachineInputType.Number) {
+                            input.value = 50;
+                        }
+                    });
+                };
+
+                window.addEventListener("mousemove", handleMouseMove);
+                window.addEventListener("touchmove", handleTouchMove, { passive: true });
+                window.addEventListener("touchend", handleReset);
+                document.addEventListener("mouseleave", handleReset);
+            },
+            onLoadError: (err) => {
+                console.warn("Rive load error, retrying with fallback:", err);
+                if (heroRiveInstance) {
+                    heroRiveInstance.load({
+                        src: "interactive/cat/cat_follow_cursor_demo.riv",
+                        artboard: "Artboard 2",
+                        stateMachines: "State Machine 1",
+                        autoplay: true,
+                        autoBind: true,
+                    });
+                }
+            }
+        };
+
+        // If Base64 string is available, use binary buffer (works offline & on file://)
+        if (typeof CAT_RIV_BASE64 !== "undefined" && CAT_RIV_BASE64) {
+            const buffer = base64ToArrayBuffer(CAT_RIV_BASE64);
+            if (buffer) {
+                riveConfig.buffer = buffer;
+            } else {
+                riveConfig.src = "interactive/cat/cat_follow_cursor_demo.riv";
+            }
+        } else {
+            riveConfig.src = "interactive/cat/cat_follow_cursor_demo.riv";
+        }
+
+        heroRiveInstance = new rive.Rive(riveConfig);
+
+        // Resize handler for responsive crisp rendering
+        window.addEventListener("resize", () => {
+            if (heroRiveInstance) {
+                heroRiveInstance.resizeDrawingSurfaceToCanvas();
+            }
+        });
+
+        // Click / tap trigger on cat stage & canvas
+        const catStages = document.querySelectorAll(".hero-cat-stage, .hero-skull-stage, .hero-studio-card");
+        const fireInteractiveAction = () => {
+            if (heroRiveInstance) {
+                const inputs = heroRiveInstance.stateMachineInputs("State Machine 1");
+                if (inputs && inputs.length > 0) {
+                    inputs.forEach(input => {
+                        if (input.type === rive.StateMachineInputType.Trigger || typeof input.fire === "function") {
+                            input.fire();
+                        } else if (input.type === rive.StateMachineInputType.Boolean) {
+                            input.value = !input.value;
+                        }
+                    });
+                }
+            }
+        };
+
+        catStages.forEach(stage => {
+            stage.addEventListener("click", fireInteractiveAction);
+        });
+        canvas.addEventListener("click", fireInteractiveAction);
+    } catch (e) {
+        console.error("Error initializing Rive cat:", e);
+    }
+}
+
+/**
+ * Scroll-triggered Header Collapse and Floating Burger Menu
+ */
+function initScrollNavbar() {
+    const header = document.getElementById("site-header");
+    const burgerBtn = document.getElementById("floating-burger-btn");
+    const drawer = document.getElementById("floating-nav-drawer");
+    const closeBtn = document.getElementById("drawer-close-btn");
+    const backdrop = document.getElementById("drawer-backdrop");
+    const drawerLinks = document.querySelectorAll(".drawer-nav-link");
+
+    if (!header || !burgerBtn || !drawer) return;
+
+    let isDrawerOpen = false;
+
+    function openDrawer() {
+        isDrawerOpen = true;
+        drawer.classList.add("is-open");
+        drawer.setAttribute("aria-hidden", "false");
+        burgerBtn.classList.add("is-active");
+    }
+
+    function closeDrawer() {
+        isDrawerOpen = false;
+        drawer.classList.remove("is-open");
+        drawer.setAttribute("aria-hidden", "true");
+        burgerBtn.classList.remove("is-active");
+    }
+
+    burgerBtn.addEventListener("click", () => {
+        if (isDrawerOpen) {
+            closeDrawer();
+        } else {
+            openDrawer();
+        }
+    });
+
+    if (closeBtn) closeBtn.addEventListener("click", closeDrawer);
+    if (backdrop) backdrop.addEventListener("click", closeDrawer);
+
+    drawerLinks.forEach(link => {
+        link.addEventListener("click", closeDrawer);
+    });
+
+    const handleScroll = () => {
+        const scrollY = window.scrollY || window.pageYOffset;
+        if (scrollY > 70) {
+            header.classList.add("is-scrolled");
+            burgerBtn.classList.add("is-visible");
+        } else {
+            header.classList.remove("is-scrolled");
+            burgerBtn.classList.remove("is-visible");
+            if (isDrawerOpen) {
+                closeDrawer();
+            }
+        }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+}
+
+/**
+ * Iris Greeting Preloader (Apple iOS-Style Cinematic Preloader)
+ * Pure black background (#000000) & pure white typography (#FFFFFF)
+ * Cycles through greetings: ["hello", "你好", "こんにちは", "안녕하세요", "hola", "bonjour"]
+ * Smooth word reveal and Apple-style curtain slide up exit
+ */
+function initIrisPreloader() {
+    const preloader = document.getElementById("iris-preloader");
+    const textEl = document.getElementById("iris-greeting-text");
+    if (!preloader || !textEl) return;
+
+    document.body.classList.add("preloader-active");
+
+    const greetings = ["hello", "你好", "こんにちは", "안녕하세요", "hola", "bonjour"];
+    const greetingDuration = 380; // ms per word
+    let currentIndex = 0;
+
+    // Show initial greeting
+    textEl.textContent = greetings[currentIndex];
+    textEl.className = "iris-greeting-text anim-init";
+    requestAnimationFrame(() => {
+        textEl.className = "iris-greeting-text anim-in";
+    });
+
+    // Function to trigger exit
+    function triggerExit() {
+        textEl.className = "iris-greeting-text anim-out";
+        setTimeout(() => {
+            textEl.textContent = "";
+            textEl.innerHTML = "";
+            preloader.classList.add("is-exiting");
+
+            setTimeout(() => {
+                document.body.classList.remove("preloader-active");
+                preloader.style.display = "none";
+                if (preloader.parentNode) {
+                    preloader.parentNode.removeChild(preloader);
+                }
+            }, 850);
+        }, 150);
+    }
+
+    // Step-by-step greeting progression (each word shown exactly once)
+    function nextGreeting() {
+        currentIndex++;
+        if (currentIndex >= greetings.length) {
+            // Reached the end of the list ("bonjour"), exit immediately
+            setTimeout(triggerExit, 300);
+            return;
+        }
+
+        textEl.className = "iris-greeting-text anim-out";
+        setTimeout(() => {
+            textEl.textContent = greetings[currentIndex];
+            textEl.className = "iris-greeting-text anim-init";
+            requestAnimationFrame(() => {
+                textEl.className = "iris-greeting-text anim-in";
+            });
+
+            setTimeout(nextGreeting, greetingDuration);
+        }, 100);
+    }
+
+    // Start progression after initial word duration
+    setTimeout(nextGreeting, greetingDuration);
+}
 
 /**
  * Typewriter Typing Animation for Hero Badge
@@ -65,6 +385,106 @@ function initTypewriter() {
 }
 
 /**
+ * Experience Stat Counter Animation (Rolling / Count-up from 0 to Target)
+ * Triggers every time the user scrolls / navigates to the Experience section
+ */
+function initExperienceCountUp() {
+    const statCards = document.querySelectorAll(".count-up-stat");
+    if (!statCards.length) return;
+
+    function animateStats() {
+        statCards.forEach((statEl) => {
+            const target = parseInt(statEl.getAttribute("data-target"), 10);
+            const suffix = statEl.getAttribute("data-suffix") || "";
+            const prefix = statEl.getAttribute("data-prefix") || "";
+            const duration = target > 50 ? 1400 : 900;
+            const startTime = performance.now();
+
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                // Ease-out cubic curve for natural deceleration
+                const easeProgress = 1 - Math.pow(1 - progress, 3);
+                const currentVal = Math.floor(easeProgress * target);
+
+                statEl.textContent = `${prefix}${currentVal}${suffix}`;
+
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    statEl.textContent = `${prefix}${target}${suffix}`;
+                }
+            }
+
+            requestAnimationFrame(update);
+        });
+    }
+
+    if ("IntersectionObserver" in window) {
+        const experienceSection = document.getElementById("experience");
+        if (experienceSection) {
+            let wasIntersecting = false;
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting && !wasIntersecting) {
+                        wasIntersecting = true;
+                        animateStats();
+                    } else if (!entry.isIntersecting) {
+                        wasIntersecting = false; // Reset so scrolling back triggers it again!
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: "0px 0px -40px 0px"
+            });
+
+            observer.observe(experienceSection);
+        }
+    } else {
+        animateStats();
+    }
+
+    // Trigger when clicking any anchor link pointing to #experience
+    const expLinks = document.querySelectorAll('a[href="#experience"]');
+    expLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+            setTimeout(animateStats, 350);
+        });
+    });
+
+    // Also replay on hovering over any stat card
+    document.querySelectorAll(".journey-stat-card").forEach((card) => {
+        card.addEventListener("mouseenter", () => {
+            const stat = card.querySelector(".count-up-stat");
+            if (stat) {
+                const target = parseInt(stat.getAttribute("data-target"), 10);
+                const suffix = stat.getAttribute("data-suffix") || "";
+                const prefix = stat.getAttribute("data-prefix") || "";
+                const duration = target > 50 ? 900 : 600;
+                const startTime = performance.now();
+
+                function update(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easeProgress = 1 - Math.pow(1 - progress, 3);
+                    const currentVal = Math.floor(easeProgress * target);
+
+                    stat.textContent = `${prefix}${currentVal}${suffix}`;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    } else {
+                        stat.textContent = `${prefix}${target}${suffix}`;
+                    }
+                }
+
+                requestAnimationFrame(update);
+            }
+        });
+    });
+}
+
+/**
  * 5. Authentic Pixel Art AWS Cloud Logo Canvas Renderer
  * High-definition pixel art AWS Cloud Logo object matching the user's uploaded image:
  * - Crisp pixel grid rasterizer (8px pixel block step)
@@ -80,27 +500,9 @@ function initTypewriter() {
  * Detects user saved preference or system preference and toggles theme
  */
 function initThemeSwitcher() {
-    const themeToggleBtn = document.getElementById("theme-toggle");
-    if (!themeToggleBtn) return;
-
-    // Check for saved theme preference in localStorage, fallback to system preference
-    const savedTheme = localStorage.getItem("portfolio-theme");
-    const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-    // Default to dark theme if user prefers it and has no saved preference
-    if (savedTheme === "dark" || (!savedTheme && systemPrefersDark)) {
-        document.body.classList.add("dark-theme");
-    } else {
-        document.body.classList.remove("dark-theme");
-    }
-
-    // Toggle theme on button click
-    themeToggleBtn.addEventListener("click", () => {
-        const isDark = document.body.classList.toggle("dark-theme");
-
-        // Save choice in localStorage
-        localStorage.setItem("portfolio-theme", isDark ? "dark" : "light");
-    });
+    // Lock site permanently to Clean Light Mode as requested
+    document.body.classList.remove("dark-theme");
+    localStorage.setItem("portfolio-theme", "light");
 }
 
 /**
@@ -139,6 +541,283 @@ function initScrollReveal() {
             element.classList.add("active");
         });
     }, 1200);
+}
+
+/**
+ * Realistic Interactive Draggable & Spring Pendulum Physics for Lanyard ID Badge
+ * Allows user to pull, drag, and swing the ID card with physical spring momentum
+ */
+function initBadgeCardTilt() {
+    const cardAssembly = document.getElementById("id-card-assembly") || document.getElementById("id-badge-card");
+    const stageWrap = document.getElementById("badge-stage-wrap");
+    const lanyardRibbon = document.getElementById("lanyard-ribbon");
+    const dragHint = document.getElementById("badge-drag-hint");
+    if (!cardAssembly || !stageWrap) return;
+
+    let isDragging = false;
+    let startX = 0, startY = 0;
+    let currentX = 0, currentY = 0;
+    let vx = 0, vy = 0;
+    let rot = 0, vRot = 0;
+    let animId = null;
+
+    const stiffness = 0.055; // Spring force pulling back to vertical origin
+    const damping = 0.86;    // Air / lanyard ribbon friction
+    const maxPullRadius = 150; // Max pull radius in px
+    const baseRibbonHeight = 95; // Shortened clean lanyard strap length connecting top anchor to card clip
+
+    function applyTransforms(x, y, rotationDeg) {
+        // Transform the entire card assembly (Clip + Card moving together)
+        cardAssembly.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0) rotate(${rotationDeg.toFixed(2)}deg)`;
+
+        // Calculate ribbon angle & stretch from top anchor
+        const totalY = baseRibbonHeight + y;
+        const ribbonAngle = Math.atan2(x, totalY) * (180 / Math.PI);
+        const distance = Math.sqrt(x * x + totalY * totalY);
+        const scaleY = distance / baseRibbonHeight;
+        const scaleX = 1 / Math.sqrt(Math.max(0.5, scaleY)); // Elastic thickness thinning
+
+        if (lanyardRibbon) {
+            lanyardRibbon.style.transform = `rotate(${ribbonAngle.toFixed(2)}deg) scaleY(${scaleY.toFixed(3)}) scaleX(${Math.max(0.7, scaleX).toFixed(3)})`;
+        }
+    }
+
+    function springPhysicsLoop() {
+        if (isDragging) return;
+
+        // Acceleration towards (0, 0) and (0 deg)
+        const ax = -stiffness * currentX;
+        const ay = -stiffness * currentY;
+        const aRot = -stiffness * rot;
+
+        vx = (vx + ax) * damping;
+        vy = (vy + ay) * damping;
+        vRot = (vRot + aRot) * damping;
+
+        currentX += vx;
+        currentY += vy;
+        rot += vRot;
+
+        applyTransforms(currentX, currentY, rot);
+
+        // Continue until motion settles down to zero
+        if (Math.abs(currentX) > 0.1 || Math.abs(currentY) > 0.1 || Math.abs(vx) > 0.1 || Math.abs(vy) > 0.1 || Math.abs(rot) > 0.1) {
+            animId = requestAnimationFrame(springPhysicsLoop);
+        } else {
+            currentX = 0;
+            currentY = 0;
+            rot = 0;
+            vx = 0;
+            vy = 0;
+            vRot = 0;
+            applyTransforms(0, 0, 0);
+            animId = null;
+        }
+    }
+
+    // Pointer Down (Mouse Click or Touch Start)
+    function onPointerDown(e) {
+        isDragging = true;
+        if (animId) {
+            cancelAnimationFrame(animId);
+            animId = null;
+        }
+
+        cardAssembly.classList.add("is-dragging");
+        if (dragHint) {
+            dragHint.style.opacity = "0";
+            dragHint.style.pointerEvents = "none";
+        }
+
+        const clientX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+        const clientY = e.clientY || (e.touches && e.touches[0] ? e.touches[0].clientY : 0);
+
+        startX = clientX - currentX;
+        startY = clientY - currentY;
+
+        window.addEventListener("pointermove", onPointerMove, { passive: false });
+        window.addEventListener("pointerup", onPointerUp);
+        window.addEventListener("pointercancel", onPointerUp);
+    }
+
+    // Pointer Move (Dragging)
+    function onPointerMove(e) {
+        if (!isDragging) return;
+        e.preventDefault();
+
+        const clientX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+        const clientY = e.clientY || (e.touches && e.touches[0] ? e.touches[0].clientY : 0);
+
+        let rawX = clientX - startX;
+        let rawY = clientY - startY;
+
+        // Apply elastic circular resistance when pulling far
+        const dist = Math.sqrt(rawX * rawX + rawY * rawY);
+        if (dist > maxPullRadius) {
+            const factor = maxPullRadius + (dist - maxPullRadius) * 0.35;
+            rawX = (rawX / dist) * factor;
+            rawY = (rawY / dist) * factor;
+        }
+
+        // Calculate velocity for natural release momentum
+        vx = (rawX - currentX) * 0.6;
+        vy = (rawY - currentY) * 0.6;
+
+        currentX = rawX;
+        currentY = rawY;
+
+        // Card tilts naturally with drag displacement
+        rot = (currentX / maxPullRadius) * 24;
+
+        applyTransforms(currentX, currentY, rot);
+    }
+
+    // Pointer Up (Release) -> Trigger Spring Pendulum Physics
+    function onPointerUp() {
+        if (!isDragging) return;
+        isDragging = false;
+
+        cardAssembly.classList.remove("is-dragging");
+        window.removeEventListener("pointermove", onPointerMove);
+        window.removeEventListener("pointerup", onPointerUp);
+        window.removeEventListener("pointercancel", onPointerUp);
+
+        // Add initial rotational momentum based on horizontal release speed
+        vRot = (vx * 0.8) + (currentX * 0.05);
+
+        if (!animId) {
+            animId = requestAnimationFrame(springPhysicsLoop);
+        }
+    }
+
+    cardAssembly.addEventListener("pointerdown", onPointerDown);
+
+    // Subtle 3D perspective tilt on hover when not dragging
+    stageWrap.addEventListener("mousemove", (e) => {
+        if (isDragging || currentX !== 0 || currentY !== 0) return;
+        const rect = cardAssembly.getBoundingClientRect();
+        const cardCenterX = rect.left + rect.width / 2;
+        const cardCenterY = rect.top + rect.height / 2;
+        const deltaX = (e.clientX - cardCenterX) / (rect.width / 2);
+        const deltaY = (e.clientY - cardCenterY) / (rect.height / 2);
+
+        const tiltX = -deltaY * 5;
+        const tiltY = deltaX * 5;
+        cardAssembly.style.transform = `perspective(800px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg) translateY(-3px)`;
+    });
+
+    stageWrap.addEventListener("mouseleave", () => {
+        if (isDragging || currentX !== 0 || currentY !== 0) return;
+        cardAssembly.style.transform = "perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0)";
+    });
+}
+
+/**
+ * Smooth Navigation & Scroll-Driven Morphing Transitions for Page 2 & Page 3
+ */
+function initPageTransitions() {
+    const scrollLinks = document.querySelectorAll('a[href^="#"]');
+    const pageTwo = document.getElementById("editorial-statement");
+    const heroCenter = document.querySelector(".hero-center-stage");
+    const heroHeadline = document.querySelector(".about-editorial-heading");
+    const heroSubtext = document.querySelector(".about-editorial-subtext");
+    const heroCta = document.querySelector(".about-action-row");
+
+    // Click handlers for smooth anchor link navigation
+    scrollLinks.forEach(link => {
+        const targetId = link.getAttribute("href");
+        if (targetId && targetId.startsWith("#") && targetId.length > 1) {
+            link.addEventListener("click", (e) => {
+                const targetElem = document.querySelector(targetId);
+                if (targetElem) {
+                    e.preventDefault();
+                    const headerOffset = targetId === "#editorial-statement" ? 0 : 30;
+                    const elementPosition = targetElem.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        }
+    });
+
+    // Scroll-driven Parallax & Dynamic Arch Morphing Animation for Page 2
+    let isTicking = false;
+    function onScrollTransition() {
+        if (!isTicking) {
+            requestAnimationFrame(() => {
+                const scrollY = window.scrollY;
+                const vh = window.innerHeight;
+
+                if (scrollY <= 0) {
+                    if (pageTwo) {
+                        pageTwo.style.borderRadius = "0 0 0 0";
+                        pageTwo.style.marginTop = "0px";
+                    }
+                    if (heroCenter) {
+                        heroCenter.style.transform = "none";
+                        heroCenter.style.opacity = "1";
+                    }
+                    if (heroHeadline) {
+                        heroHeadline.style.opacity = "0.3";
+                        heroHeadline.style.transform = "translateY(16px)";
+                    }
+                    if (heroSubtext) {
+                        heroSubtext.style.opacity = "0.2";
+                        heroSubtext.style.transform = "translateY(12px)";
+                    }
+                    if (heroCta) {
+                        heroCta.style.opacity = "0.2";
+                        heroCta.style.transform = "translateY(8px) scale(0.95)";
+                    }
+                } else {
+                    const progress = Math.min(1, scrollY / (vh * 0.75));
+
+                    // 1. Hero Pullback & Fade effect
+                    if (heroCenter) {
+                        const scale = 1 - progress * 0.06;
+                        const translateY = progress * -35;
+                        const opacity = Math.max(0, 1 - progress * 1.15);
+                        heroCenter.style.transform = `translateY(${translateY}px) scale(${scale})`;
+                        heroCenter.style.opacity = `${opacity}`;
+                    }
+
+                    // 2. Page 2 Morphing into Arched Dome Curve
+                    if (pageTwo) {
+                        const archCurve = Math.min(80, progress * 80);
+                        const overlap = Math.min(40, progress * 40);
+                        pageTwo.style.borderRadius = `50% 50% 0 0 / ${archCurve}px ${archCurve}px 0 0`;
+                        pageTwo.style.marginTop = `-${overlap}px`;
+                    }
+
+                    // 3. Staggered Headline & Button Reveal
+                    if (heroHeadline) {
+                        const headProgress = Math.min(1, Math.max(0, (progress - 0.08) * 1.5));
+                        heroHeadline.style.opacity = `${0.3 + headProgress * 0.7}`;
+                        heroHeadline.style.transform = `translateY(${(1 - headProgress) * 16}px)`;
+                    }
+                    if (heroSubtext) {
+                        const subProgress = Math.min(1, Math.max(0, (progress - 0.15) * 1.5));
+                        heroSubtext.style.opacity = `${0.2 + subProgress * 0.8}`;
+                        heroSubtext.style.transform = `translateY(${(1 - subProgress) * 12}px)`;
+                    }
+                    if (heroCta) {
+                        const ctaProgress = Math.min(1, Math.max(0, (progress - 0.22) * 1.5));
+                        heroCta.style.opacity = `${0.2 + ctaProgress * 0.8}`;
+                        heroCta.style.transform = `translateY(${(1 - ctaProgress) * 8}px) scale(${0.95 + ctaProgress * 0.05})`;
+                    }
+                }
+                isTicking = false;
+            });
+            isTicking = true;
+        }
+    }
+
+    window.addEventListener("scroll", onScrollTransition, { passive: true });
+    onScrollTransition();
 }
 
 /**
