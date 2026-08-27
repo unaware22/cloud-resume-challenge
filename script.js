@@ -468,6 +468,13 @@ function initIrisPreloader() {
 
     // Start progression after initial word duration
     setTimeout(nextGreeting, greetingDuration);
+
+    // Hard failsafe: Ensure preloader always dismisses even if timers get delayed
+    setTimeout(() => {
+        if (preloader && document.body.classList.contains("preloader-active")) {
+            triggerExit();
+        }
+    }, 3200);
 }
 
 /**
@@ -1725,9 +1732,8 @@ function initProjectCarousel() {
         const slideW    = slide.offsetWidth;
         // offsetLeft is the slide's left edge relative to the track
         const slideLeft = slide.offsetLeft;
-        // We want: viewportCenter = slideLeft + slideW/2 - offset
-        // => offset = slideLeft + slideW/2 - viewportW/2
-        return Math.max(0, slideLeft + slideW / 2 - viewportW / 2);
+        // Active slide center matches the viewport center exactly
+        return slideLeft + slideW / 2 - viewportW / 2;
     }
 
     function render(animate) {
@@ -1742,7 +1748,10 @@ function initProjectCarousel() {
             d.setAttribute("aria-selected", String(i === current));
         });
 
+        // Hide left button on slide 1 (current === 0), reveal when moved to slide 2+
+        prevBtn.classList.toggle("is-hidden", current === 0);
         prevBtn.disabled = current === 0;
+        nextBtn.classList.toggle("is-hidden", current === total - 1);
         nextBtn.disabled = current === total - 1;
     }
 
@@ -1778,6 +1787,21 @@ function initProjectCarousel() {
         if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40)
             goTo(dx < 0 ? current + 1 : current - 1);
     }, { passive: true });
+
+    // Dynamic project section atmosphere hover interaction (Active card only)
+    const projectSection = document.getElementById("projects");
+    if (projectSection) {
+        slides.forEach(slide => {
+            slide.addEventListener("mouseenter", () => {
+                if (slide.classList.contains("active")) {
+                    projectSection.classList.add("is-card-hovered");
+                }
+            });
+            slide.addEventListener("mouseleave", () => {
+                projectSection.classList.remove("is-card-hovered");
+            });
+        });
+    }
 
     // Debounced resize
     let rt;

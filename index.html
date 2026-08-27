@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,12 +8,15 @@
     <!-- Google Fonts: Instrument Serif, Playfair Display, Plus Jakarta Sans, Pixelify Sans, Press Start 2P -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&family=Pixelify+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Press+Start+2P&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=41" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&family=Pixelify+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Press+Start+2P&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=64" />
     <script src="interactive/rive_lite.js"></script>
     <script src="interactive/cat_data.js"></script>
-    <script src="script.js?v=41" defer></script>
+    <script src="script.js?v=64" defer></script>
 </head>
+
 <body>
 
     <!-- Iris Greeting Preloader (Apple iOS-Style Cinematic Preloader) -->
@@ -39,7 +43,8 @@
                 </div>
                 <div class="drawer-header-actions">
                     <button id="drawer-close-btn" class="drawer-close-btn" aria-label="Close Menu">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#FFFFFF" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round">
                             <line x1="18" y1="6" x2="6" y2="18"></line>
                             <line x1="6" y1="6" x2="18" y2="18"></line>
                         </svg>
@@ -66,14 +71,14 @@
                     <img src="logo.png" alt="Logo" class="brand-logo-img" />
                 </a>
             </div>
-            
+
             <div class="nav-right-group">
                 <nav class="nav-links">
                     <a href="#projects" class="nav-link-item">PROJECTS</a>
                     <a href="#about" class="nav-link-item active">ABOUT</a>
                     <a href="#experience" class="nav-link-item">EXPERIENCE</a>
                 </nav>
-                
+
                 <div class="nav-actions">
                     <a href="#contact" class="btn-contact-pill">
                         <span>CONTACT</span>
@@ -95,14 +100,25 @@
         <div class="hero-social-sidebar">
             <div class="hero-social-line"></div>
             <div class="hero-social-icons">
-                <a href="https://www.linkedin.com/in/adityanurlintang" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="LinkedIn" title="LinkedIn">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.65 1.65 0 0 0 0-3.3 1.65 1.65 0 0 0 0 3.3m1.4 9.74v-8.37H5.06v8.37h2.8z"/></svg>
+                <a href="https://www.linkedin.com/in/adityanurlintang" target="_blank" rel="noopener noreferrer"
+                    class="social-icon-link" aria-label="LinkedIn" title="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.65 1.65 0 0 0 0-3.3 1.65 1.65 0 0 0 0 3.3m1.4 9.74v-8.37H5.06v8.37h2.8z" />
+                    </svg>
                 </a>
-                <a href="https://github.com/unaware22" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="GitHub" title="GitHub">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                <a href="https://github.com/unaware22" target="_blank" rel="noopener noreferrer"
+                    class="social-icon-link" aria-label="GitHub" title="GitHub">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                    </svg>
                 </a>
                 <a href="mailto:adityanurlintang22@gmail.com" class="social-icon-link" aria-label="Email" title="Email">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                    </svg>
                 </a>
             </div>
         </div>
@@ -130,7 +146,8 @@
         <div class="hero-bottom-bar">
             <!-- Center: Scroll Down with Vertical Line Indicator -->
             <div class="hero-bottom-center">
-                <a href="#editorial-statement" class="hero-scroll-indicator" aria-label="Scroll down to editorial statement">
+                <a href="#editorial-statement" class="hero-scroll-indicator"
+                    aria-label="Scroll down to editorial statement">
                     <span class="scroll-label">scroll down</span>
                     <span class="scroll-line-indicator"></span>
                 </a>
@@ -150,12 +167,14 @@
             <div class="about-editorial-card">
                 <!-- Big Editorial Statement -->
                 <h2 class="about-editorial-heading">
-                    I'm Aditya Nur Lintang — a Software Engineer &amp; Cloud Enthusiast crafting fast, scalable, and secure AI-native applications that merge creativity with engineering precision.
+                    I'm Aditya Nur Lintang — a Software Engineer &amp; Cloud Enthusiast crafting fast, scalable, and
+                    secure AI-native applications that merge creativity with engineering precision.
                 </h2>
-                
+
                 <!-- Subtitle / Bio summary -->
                 <p class="about-editorial-subtext">
-                    Saya adalah mahasiswa Teknik Informatika Universitas Pancasila angkatan 2023 yang berfokus pada logika, struktur, dan arsitektur aplikasi AI-native, cloud AWS, serta Network &amp; Cyber Security.
+                    Saya adalah mahasiswa Teknik Informatika Universitas Pancasila angkatan 2023 yang berfokus pada
+                    logika, struktur, dan arsitektur aplikasi AI-native, cloud AWS, serta Network &amp; Cyber Security.
                 </p>
 
                 <!-- Lime Green Action Button Row (Scrolls Smoothly to Page 3 About Me) -->
@@ -164,7 +183,8 @@
                         <span>About Me</span>
                     </a>
                     <a href="#about" class="btn-lime-circle" aria-label="Scroll to About Me Details">
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <line x1="7" y1="17" x2="17" y2="7"></line>
                             <polyline points="7 7 17 7 17 17"></polyline>
                         </svg>
@@ -185,7 +205,8 @@
                     <div class="lanyard-ribbon" id="lanyard-ribbon"></div>
 
                     <!-- Draggable Card Assembly (Card + Clamped Metal Clip Moving Together) -->
-                    <div class="id-card-assembly" id="id-card-assembly" role="button" tabindex="0" aria-label="Interactive Employee ID Card - Drag and pull to swing">
+                    <div class="id-card-assembly" id="id-card-assembly" role="button" tabindex="0"
+                        aria-label="Interactive Employee ID Card - Drag and pull to swing">
                         <!-- Metallic Ring & Hook Clip (Firmly Clamped onto the Card) -->
                         <div class="lanyard-metal-clip" id="lanyard-metal-clip">
                             <div class="clip-loop"></div>
@@ -210,16 +231,26 @@
 
                             <!-- Realistic Barcode Scanner Graphic -->
                             <div class="id-badge-barcode" aria-hidden="true">
-                                <span class="b-line b-w1"></span><span class="b-line b-w3"></span><span class="b-line b-w2"></span>
-                                <span class="b-line b-w1"></span><span class="b-line b-w4"></span><span class="b-line b-w2"></span>
-                                <span class="b-line b-w3"></span><span class="b-line b-w1"></span><span class="b-line b-w2"></span>
-                                <span class="b-line b-w4"></span><span class="b-line b-w1"></span><span class="b-line b-w3"></span>
-                                <span class="b-line b-w2"></span><span class="b-line b-w1"></span><span class="b-line b-w3"></span>
-                                <span class="b-line b-w2"></span><span class="b-line b-w4"></span><span class="b-line b-w1"></span>
-                                <span class="b-line b-w2"></span><span class="b-line b-w3"></span><span class="b-line b-w1"></span>
-                                <span class="b-line b-w4"></span><span class="b-line b-w2"></span><span class="b-line b-w1"></span>
-                                <span class="b-line b-w3"></span><span class="b-line b-w2"></span><span class="b-line b-w4"></span>
-                                <span class="b-line b-w1"></span><span class="b-line b-w2"></span><span class="b-line b-w3"></span>
+                                <span class="b-line b-w1"></span><span class="b-line b-w3"></span><span
+                                    class="b-line b-w2"></span>
+                                <span class="b-line b-w1"></span><span class="b-line b-w4"></span><span
+                                    class="b-line b-w2"></span>
+                                <span class="b-line b-w3"></span><span class="b-line b-w1"></span><span
+                                    class="b-line b-w2"></span>
+                                <span class="b-line b-w4"></span><span class="b-line b-w1"></span><span
+                                    class="b-line b-w3"></span>
+                                <span class="b-line b-w2"></span><span class="b-line b-w1"></span><span
+                                    class="b-line b-w3"></span>
+                                <span class="b-line b-w2"></span><span class="b-line b-w4"></span><span
+                                    class="b-line b-w1"></span>
+                                <span class="b-line b-w2"></span><span class="b-line b-w3"></span><span
+                                    class="b-line b-w1"></span>
+                                <span class="b-line b-w4"></span><span class="b-line b-w2"></span><span
+                                    class="b-line b-w1"></span>
+                                <span class="b-line b-w3"></span><span class="b-line b-w2"></span><span
+                                    class="b-line b-w4"></span>
+                                <span class="b-line b-w1"></span><span class="b-line b-w2"></span><span
+                                    class="b-line b-w3"></span>
                             </div>
                         </div>
                     </div>
@@ -233,25 +264,31 @@
                     </div>
 
                     <p class="about-paragraph">
-                        Saya adalah Aditya Nur Lintang, seorang Software Engineer yang bersemangat tentang cloud computing dan arsitektur scalable. Saya percaya bahwa kode yang baik adalah kode yang tidak hanya menyelesaikan masalah, tetapi juga elegan dan mudah dipelihara.
+                        Saya adalah Aditya Nur Lintang, seorang Software Engineer yang bersemangat tentang cloud
+                        computing dan arsitektur scalable. Saya percaya bahwa kode yang baik adalah kode yang tidak
+                        hanya menyelesaikan masalah, tetapi juga elegan dan mudah dipelihara.
                     </p>
 
                     <p class="about-paragraph">
-                        Fokus utama saya adalah membangun aplikasi AI-native yang cepat, aman, dan dapat diandalkan, menggabungkan kreativitas dengan presisi teknik.
+                        Fokus utama saya adalah membangun aplikasi AI-native yang cepat, aman, dan dapat diandalkan,
+                        menggabungkan kreativitas dengan presisi teknik.
                     </p>
 
                     <!-- Action Buttons: Lime Pill & Arrow Circle -->
                     <div class="about-cta-row">
                         <a href="CV.pdf" target="_blank" rel="noopener noreferrer" class="btn-about-cv">
                             <span>Download CV</span>
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                                 <polyline points="7 10 12 15 17 10"></polyline>
                                 <line x1="12" y1="15" x2="12" y2="3"></line>
                             </svg>
                         </a>
-                        <a href="#projects" class="btn-about-icon-action" aria-label="Lihat Project" title="Lihat Project">
-                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <a href="#projects" class="btn-about-icon-action" aria-label="Lihat Project"
+                            title="Lihat Project">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="7" y1="17" x2="17" y2="7"></line>
                                 <polyline points="7 7 17 7 17 17"></polyline>
                             </svg>
@@ -262,7 +299,10 @@
                     <div class="about-vision-card">
                         <h3 class="about-vision-title">Visi dan Pendekatan</h3>
                         <p class="about-vision-quote">
-                            "Saya berkomitmen untuk menciptakan solusi teknologi yang tidak hanya berfungsi secara optimal, tetapi juga mendorong batasan inovasi. Melalui kombinasi logika yang ketat, struktur yang solid, dan arsitektur yang modern, tujuan saya adalah membangun aplikasi yang berdampak positif dan bertahan di masa depan."
+                            "Saya berkomitmen untuk menciptakan solusi teknologi yang tidak hanya berfungsi secara
+                            optimal, tetapi juga mendorong batasan inovasi. Melalui kombinasi logika yang ketat,
+                            struktur yang solid, dan arsitektur yang modern, tujuan saya adalah membangun aplikasi yang
+                            berdampak positif dan bertahan di masa depan."
                         </p>
                     </div>
                 </div>
@@ -319,7 +359,9 @@
                             <span class="timeline-type-pill pill-amber">Cloud Training</span>
                         </div>
                         <p class="timeline-card-desc">
-                            Mengikuti program intensif AWS re/START berfokus pada fondasi cloud computing, arsitektur AWS (EC2, S3, VPC, IAM, Lambda, DynamoDB), Linux system administration, security assessment, dan implementasi infrastruktur cloud scalable.
+                            Mengikuti program intensif AWS re/START berfokus pada fondasi cloud computing, arsitektur
+                            AWS (EC2, S3, VPC, IAM, Lambda, DynamoDB), Linux system administration, security assessment,
+                            dan implementasi infrastruktur cloud scalable.
                         </p>
                         <div class="timeline-tech-tags">
                             <span class="t-tag">AWS Cloud</span>
@@ -346,7 +388,9 @@
                             <span class="timeline-type-pill pill-blue">AI &amp; Dev</span>
                         </div>
                         <p class="timeline-card-desc">
-                            Mempelajari pemanfaatan AI Agent untuk pengembangan perangkat lunak modern, AI-assisted development workflows, prompt engineering, serta integrasi teknologi kecerdasan buatan pada alur rekayasa aplikasi.
+                            Mempelajari pemanfaatan AI Agent untuk pengembangan perangkat lunak modern, AI-assisted
+                            development workflows, prompt engineering, serta integrasi teknologi kecerdasan buatan pada
+                            alur rekayasa aplikasi.
                         </p>
                         <div class="timeline-tech-tags">
                             <span class="t-tag">AI Agents</span>
@@ -372,7 +416,9 @@
                             <span class="timeline-type-pill pill-lime">Cyber Security</span>
                         </div>
                         <p class="timeline-card-desc">
-                            Trainee Ethical Hacking Division. Melakukan vulnerability assessment (OpenVAS, Burp Suite), asset discovery (Nmap), SIEM Wazuh monitoring, analisis malware, dan STRIDE threat modeling untuk pengujian penetrasi keamanan siber.
+                            Trainee Ethical Hacking Division. Melakukan vulnerability assessment (OpenVAS, Burp Suite),
+                            asset discovery (Nmap), SIEM Wazuh monitoring, analisis malware, dan STRIDE threat modeling
+                            untuk pengujian penetrasi keamanan siber.
                         </p>
                         <div class="timeline-tech-tags">
                             <span class="t-tag">Ethical Hacking</span>
@@ -399,7 +445,9 @@
                             <span class="timeline-type-pill pill-cyan">Formal Education</span>
                         </div>
                         <p class="timeline-card-desc">
-                            Mahasiswa Teknik Informatika Universitas Pancasila angkatan 2023. Mempelajari fondasi algoritma dan pemrograman menggunakan C++, Pemrograman Berorientasi Objek (OOP) dengan Java, serta pengembangan web dinamis berbasis Framework Laravel dan basis data MySQL.
+                            Mahasiswa Teknik Informatika Universitas Pancasila angkatan 2023. Mempelajari fondasi
+                            algoritma dan pemrograman menggunakan C++, Pemrograman Berorientasi Objek (OOP) dengan Java,
+                            serta pengembangan web dinamis berbasis Framework Laravel dan basis data MySQL.
                         </p>
                         <div class="timeline-tech-tags">
                             <span class="t-tag">C++</span>
@@ -414,491 +462,664 @@
         </div>
     </section>
 
-        <!-- Section 02: Projects (Bright Canvas Background + Dark Contrast Cards) -->
-        <section id="projects" class="projects-section-bright reveal">
-            <div class="modern-section-header">
-                <span class="modern-section-overline projects-dark-overline">PORTFOLIO</span>
-                <h2 class="modern-section-title projects-dark-title">Featured Projects</h2>
-            </div>
+    <!-- Section 02: Projects (Bright Canvas Background + Dark Contrast Cards) -->
+    <section id="projects" class="projects-section-bright reveal">
+        <div class="modern-section-header">
+            <span class="modern-section-overline projects-dark-overline">PORTFOLIO</span>
+            <h2 class="modern-section-title projects-dark-title">Featured Projects</h2>
+        </div>
 
-            <!-- Carousel Wrapper -->
-            <div class="project-carousel-wrapper">
-                <button class="carousel-nav-btn carousel-prev" id="carouselPrev" aria-label="Previous project">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-                </button>
-
-                <div class="project-carousel-viewport" id="carouselViewport">
-                    <div class="project-carousel-track" id="carouselTrack">
-
-                        <!-- Slide 1: UAS Desain Web -->
-                        <div class="project-slide" data-index="0">
-                            <div class="project-slide-inner glass-card">
-                                <div class="project-slide-img-wrap">
-                                    <img src="Project/project1.png" alt="UAS Desain Web – Resto Kemang" class="project-slide-img" loading="lazy" />
-                                    <div class="project-slide-img-overlay"></div>
-                                </div>
-                                <div class="project-slide-body">
-                                    <h3 class="project-slide-title">UAS Desain Web — Resto Kemang</h3>
-                                    <p class="project-slide-desc">Website restoran modern yang dikembangkan sebagai proyek ujian akhir mata kuliah Desain Web. Menampilkan desain responsif, animasi interaktif, menu navigasi dinamis, serta halaman pemesanan yang terintegrasi.</p>
-                                    <div class="project-slide-tech">
-                                        <span>HTML</span>
-                                        <span>CSS</span>
-                                        <span>JavaScript</span>
-                                    </div>
-                                    <div class="project-slide-footer">
-                                        <span class="project-slide-status">
-                                             <span class="status-dot"></span>Completed
-                                        </span>
-                                        <a href="https://github.com/unaware22/PROJECT-UAS-DW-A" target="_blank" rel="noopener noreferrer" class="project-github-btn" aria-label="View on GitHub">
-                                            <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                                            Lihat di GitHub
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Slide 2: Cloud Resume Challenge -->
-                        <div class="project-slide" data-index="1">
-                            <div class="project-slide-inner glass-card">
-                                <div class="project-slide-img-wrap">
-                                    <img src="Project/project2.png" alt="Cloud Resume Challenge – CI/CD AWS S3" class="project-slide-img" loading="lazy" />
-                                    <div class="project-slide-img-overlay"></div>
-                                </div>
-                                <div class="project-slide-body">
-                                    <h3 class="project-slide-title">Cloud Resume Challenge — AWS S3 &amp; CI/CD</h3>
-                                    <p class="project-slide-desc">Membangun portfolio website dan men-deploy-nya ke AWS S3 dengan pipeline CI/CD otomatis menggunakan GitHub Actions. Setiap push ke repository secara otomatis memperbarui konten live di S3 bucket.</p>
-                                    <div class="project-slide-tech">
-                                        <span>AWS S3</span>
-                                        <span>GitHub Actions</span>
-                                        <span>CI/CD</span>
-                                        <span>IAM</span>
-                                    </div>
-                                    <div class="project-slide-footer">
-                                        <span class="project-slide-status">
-                                            <span class="status-dot"></span>Completed
-                                        </span>
-                                        <a href="https://github.com/unaware22/cloud-resume-challenge" target="_blank" rel="noopener noreferrer" class="project-github-btn" aria-label="View on GitHub">
-                                            <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                                            Lihat di GitHub
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Slide 3: SPK Sanitasi -->
-                        <div class="project-slide" data-index="2">
-                            <div class="project-slide-inner glass-card">
-                                <div class="project-slide-img-wrap">
-                                    <img src="Project/project3.png" alt="SPK Sanitasi Nasional – SAW &amp; SMART" class="project-slide-img" loading="lazy" />
-                                    <div class="project-slide-img-overlay"></div>
-                                </div>
-                                <div class="project-slide-body">
-                                    <h3 class="project-slide-title">SPK Sanitasi Nasional — SAW &amp; SMART</h3>
-                                    <p class="project-slide-desc">Sistem Pendukung Keputusan (SPK) untuk perangkingan kualitas sanitasi nasional menggunakan metode SAW dan SMART. Menampilkan visualisasi grafik interaktif dan perbandingan skor antar provinsi secara real-time.</p>
-                                    <div class="project-slide-tech">
-                                        <span>JavaScript</span>
-                                        <span>SAW</span>
-                                        <span>SMART</span>
-                                        <span>Data Visualization</span>
-                                    </div>
-                                    <div class="project-slide-footer">
-                                        <span class="project-slide-status">
-                                            <span class="status-dot"></span>Completed
-                                        </span>
-                                        <a href="https://github.com/unaware22/SPK-Sanitasi" target="_blank" rel="noopener noreferrer" class="project-github-btn" aria-label="View on GitHub">
-                                            <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                                            Lihat di GitHub
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Slide 4: STRIDE Ethical Hacking Kubernetes -->
-                        <div class="project-slide" data-index="3">
-                            <div class="project-slide-inner glass-card">
-                                <div class="project-slide-img-wrap">
-                                    <img src="Project/project4.png" alt="STRIDE Threat Modeling – Kubernetes Infra" class="project-slide-img" loading="lazy" />
-                                    <div class="project-slide-img-overlay"></div>
-                                </div>
-                                <div class="project-slide-body">
-                                    <h3 class="project-slide-title">STRIDE Threat Modeling pada Infrastruktur Kubernetes</h3>
-                                    <p class="project-slide-desc">Proyek akhir Studi Independen Vinix: Ethical Hacking. Menerapkan metodologi STRIDE untuk mengidentifikasi dan memodelkan ancaman keamanan pada arsitektur Kubernetes, mencakup analisis attack surface, threat actors, dan rekomendasi mitigasi.</p>
-                                    <div class="project-slide-tech">
-                                        <span>STRIDE</span>
-                                        <span>Kubernetes</span>
-                                        <span>Ethical Hacking</span>
-                                        <span>Threat Modeling</span>
-                                    </div>
-                                    <div class="project-slide-footer">
-                                        <span class="project-slide-status">
-                                            <span class="status-dot"></span>Completed
-                                        </span>
-                                        <a href="https://github.com/unaware22/StudiIndependen-Vinix7" target="_blank" rel="noopener noreferrer" class="project-github-btn" aria-label="View on GitHub">
-                                            <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                                            Lihat di GitHub
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Slide 5: Langflow Hacktiv8 -->
-                        <div class="project-slide" data-index="4">
-                            <div class="project-slide-inner glass-card">
-                                <div class="project-slide-img-wrap">
-                                    <img src="Project/project5.png" alt="Langflow – Security Awareness AI Assistant" class="project-slide-img" loading="lazy" />
-                                    <div class="project-slide-img-overlay"></div>
-                                </div>
-                                <div class="project-slide-body">
-                                    <h3 class="project-slide-title">Security Awareness AI Assistant — Langflow &amp; Hacktiv8</h3>
-                                    <p class="project-slide-desc">Membangun pipeline AI berbasis Langflow untuk membuat Security Awareness &amp; Incident Report Assistant. Menggunakan Google Generative AI Embeddings, Astra DB sebagai vector store, dan Gemini sebagai LLM untuk menjawab pertanyaan seputar keamanan siber.</p>
-                                    <div class="project-slide-tech">
-                                        <span>Langflow</span>
-                                        <span>Gemini AI</span>
-                                        <span>Astra DB</span>
-                                        <span>RAG Pipeline</span>
-                                    </div>
-                                    <div class="project-slide-footer">
-                                        <span class="project-slide-status">
-                                            <span class="status-dot"></span>Completed
-                                        </span>
-                                        <a href="https://github.com/unaware22/Langflow-Hactiv8" target="_blank" rel="noopener noreferrer" class="project-github-btn" aria-label="View on GitHub">
-                                            <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                                            Lihat di GitHub
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div><!-- /.project-carousel-track -->
-                </div><!-- /.project-carousel-viewport -->
-
-                <button class="carousel-nav-btn carousel-next" id="carouselNext" aria-label="Next project">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-                </button>
-            </div><!-- /.project-carousel-wrapper -->
-
-            <!-- Dots Indicator -->
-            <div class="carousel-dots" id="carouselDots" role="tablist" aria-label="Project navigation">
-                <button class="carousel-dot active" data-slide="0" role="tab" aria-selected="true" aria-label="Project 1"></button>
-                <button class="carousel-dot" data-slide="1" role="tab" aria-selected="false" aria-label="Project 2"></button>
-                <button class="carousel-dot" data-slide="2" role="tab" aria-selected="false" aria-label="Project 3"></button>
-                <button class="carousel-dot" data-slide="3" role="tab" aria-selected="false" aria-label="Project 4"></button>
-                <button class="carousel-dot" data-slide="4" role="tab" aria-selected="false" aria-label="Project 5"></button>
-            </div>
-
-        </section>
-
-
-        <!-- Section 03: Certifications (5 Cards Per Row on Desktop, Image + Title Only) -->
-        <section id="certifications" class="certifications-modern-section reveal">
-            <div class="modern-section-header">
-                <span class="modern-section-overline">CREDENTIALS</span>
-                <h2 class="modern-section-title">Certifications &amp; Badges</h2>
-            </div>
-            <div class="cert-swipe-hint">
-                <span>← Swipe untuk menjelajahi sertifikat →</span>
-            </div>
-            <div class="certifications-grid" id="certificationsGrid">
-                <!-- Cert 1: IBM SkillsBuild & Hacktiv8 AI Agent -->
-                <a href="Certificate/BuildanAIAgent_Badge20260729-8-idrwxr.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="IT AI Agent For Programming &amp; Build an AI Agent">
-                    <div class="cert-img-container">
-                        <img src="Certificate/images/ibm_skillsbuild.png" alt="IT AI Agent For Programming &amp; Build an AI Agent" class="cert-img" loading="lazy" />
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">IT AI Agent For Programming</h3>
-                    </div>
-                </a>
-
-                <!-- Cert 2: IBM SkillsBuild AI Foundations -->
-                <a href="Certificate/Completion Certificate _ SkillsBuild.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="IBM SkillsBuild: Artificial Intelligence Foundations">
-                    <div class="cert-img-container">
-                        <img src="Certificate/images/ibm_skillsbuild_2.png" alt="IBM SkillsBuild AI Foundations" class="cert-img" loading="lazy" />
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">IBM: AI Foundations</h3>
-                    </div>
-                </a>
-
-                <!-- Cert 3: AWS Builder Dicoding 1 -->
-                <a href="Certificate/sertifikat_course_902_5631887_190726141626.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="AWS Builder: Cloud Practitioner &amp; Architecture">
-                    <div class="cert-img-container">
-                        <img src="Certificate/images/aws_builder_1.png" alt="AWS Builder Cloud Practitioner" class="cert-img" loading="lazy" />
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">AWS: Cloud Practitioner</h3>
-                    </div>
-                </a>
-
-                <!-- Cert 4: AWS Builder Dicoding 2 -->
-                <a href="Certificate/sertifikat_course_929_5631887_190726141444.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="AWS Builder: Cloud Services &amp; Infrastructure">
-                    <div class="cert-img-container">
-                        <img src="Certificate/images/aws_builder_2.png" alt="AWS Builder Cloud Services" class="cert-img" loading="lazy" />
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">AWS: Cloud Services &amp; Infra</h3>
-                    </div>
-                </a>
-
-                <!-- Cert 5: AWS Builder Official Certificate -->
-                <a href="Certificate/awsbuilder.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="AWS Cloud Practitioner &amp; Infrastructure Builder">
-                    <div class="cert-img-container">
-                        <img src="Certificate/images/awsbuilder_main.png" alt="AWS Cloud Practitioner Builder" class="cert-img" loading="lazy" />
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">AWS: Infrastructure Builder</h3>
-                    </div>
-                </a>
-
-                <!-- Cert 6: AWS Builder Specialized Certificate -->
-                <a href="Certificate/awsbuilder2.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="AWS Cloud Security &amp; Deployment Specialist">
-                    <div class="cert-img-container">
-                        <img src="Certificate/images/awsbuilder_alt.png" alt="AWS Cloud Security Specialist" class="cert-img" loading="lazy" />
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">AWS: Cloud Security Specialist</h3>
-                    </div>
-                </a>
-
-                <!-- Cert 7: MSIB PT Vinix Utama -->
-                <a href="Certificate/aditya4523003@univpancasila.ac.id_Sertifikat Utama (1).pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="MSIB Batch 4: Cybersecurity Ethical Hackers">
-                    <div class="cert-img-container">
-                        <img src="Certificate/images/aditya4523003@univpancasila.ac.id_Sertifikat Utama (1).png" alt="MSIB 4 Cybersecurity Ethical Hackers" class="cert-img" loading="lazy" />
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">MSIB 4: Ethical Hackers</h3>
-                    </div>
-                </a>
-
-                <!-- Cert 8: IBM SkillsBuild AI Agent Assistant -->
-                <a href="Certificate/aiagent.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="IBM SkillsBuild: AI Agent Assistant &amp; Prompting">
-                    <div class="cert-img-container">
-                        <img src="Certificate/images/ibm_aiagent.png" alt="IBM SkillsBuild AI Agent Assistant" class="cert-img" loading="lazy" />
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">IBM: AI Agent Assistant</h3>
-                    </div>
-                </a>
-
-                <!-- Cert 9: IBM SkillsBuild AI Specialization -->
-                <a href="Certificate/Completion Certificate _ SkillsBuild2.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="IBM SkillsBuild: Artificial Intelligence Specialization">
-                    <div class="cert-img-container">
-                        <img src="Certificate/images/ibm_skillsbuild_3.png" alt="IBM SkillsBuild AI Specialization" class="cert-img" loading="lazy" />
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">IBM: AI Specialization</h3>
-                    </div>
-                </a>
-
-                <!-- Cert 10: Proyek Berdampak PT Vinix -->
-                <a href="Certificate/aditya4523003@univpancasila.ac.id_Sertifikat Proyek (1).pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="Sertifikat Proyek Berdampak: Threat Modeling">
-                    <div class="cert-img-container">
-                        <img src="Certificate/images/aditya4523003@univpancasila.ac.id_Sertifikat Proyek (1).png" alt="Proyek Threat Modeling" class="cert-img" loading="lazy" />
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">Vinix: Threat Modeling</h3>
-                    </div>
-                </a>
-
-                <!-- Cert 11: TryHackMe Cyber Security 101 -->
-                <a href="Certificate/THM-7PKEKLLYLE.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="TryHackMe: Cyber Security 101 Path Completion">
-                    <div class="cert-img-container">
-                        <img src="Certificate/images/THM-7PKEKLLYLE.png" alt="TryHackMe Cyber Security 101" class="cert-img" loading="lazy" />
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">TryHackMe: Cyber Security 101</h3>
-                    </div>
-                </a>
-
-                <!-- Cert 12: TryHackMe Pre Security -->
-                <a href="Certificate/THM-8WKKI3COQN.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="TryHackMe: Pre Security Path Completion">
-                    <div class="cert-img-container">
-                        <img src="Certificate/images/THM-8WKKI3COQN.png" alt="TryHackMe Pre Security" class="cert-img" loading="lazy" />
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">TryHackMe: Pre Security</h3>
-                    </div>
-                </a>
-
-                <!-- Cert 13: Dicoding AWS Cloud & Gen AI -->
-                <a href="Certificate/sertifikat_course_251_5631887_170726013548.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="Dicoding: Belajar Dasar Cloud &amp; Gen AI di AWS">
-                    <div class="cert-img-container">
-                        <img src="Certificate/images/sertifikat_course_251_5631887_170726013548.png" alt="Dicoding Dasar Cloud Gen AI" class="cert-img" loading="lazy" />
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">Dicoding: Cloud &amp; Gen AI AWS</h3>
-                    </div>
-                </a>
-
-                <!-- Cert 14: Softskill PT Vinix -->
-                <a href="Certificate/aditya4523003@univpancasila.ac.id_Sertifikat Softskill.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="Professional Communication di Tempat Kerja">
-                    <div class="cert-img-container">
-                        <img src="Certificate/images/aditya4523003@univpancasila.ac.id_Sertifikat Softskill.png" alt="Professional Communication" class="cert-img" loading="lazy" />
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">Vinix: Professional Communication</h3>
-                    </div>
-                </a>
-
-                <!-- Cert 15: IDN Webinar Pentesting -->
-                <a href="Certificate/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 27 Januari 2026.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="IDN: Basic Mobile Pentesting Participant">
-                    <div class="cert-img-container">
-                        <img src="Certificate/images/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 27 Januari 2026.png" alt="IDN Basic Mobile Pentesting" class="cert-img" loading="lazy" />
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">IDN: Mobile Pentesting</h3>
-                    </div>
-                </a>
-
-                <!-- Cert 16: IDN Webinar Sistem Keamanan -->
-                <a href="Certificate/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 29 Januari 2026.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="IDN: Membangun Sistem Keamanan Dari Nol">
-                    <div class="cert-img-container">
-                        <img src="Certificate/images/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 29 Januari 2026.png" alt="IDN Membangun Sistem Keamanan" class="cert-img" loading="lazy" />
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">IDN: Sistem Keamanan Dari Nol</h3>
-                    </div>
-                </a>
-
-                <!-- Cert 17: Kuliah Umum AI Geospasial -->
-                <a href="Certificate/sertifikat_geospasial.jpeg" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="Peserta Kuliah Umum: AI Geospasial">
-                    <div class="cert-img-container">
-                        <img src="Certificate/sertifikat_geospasial.jpeg" alt="Kuliah Umum AI Geospasial" class="cert-img" loading="lazy" />
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">Kuliah Umum: AI Geospasial</h3>
-                    </div>
-                </a>
-
-                <!-- Cert 18: Kuliah Tamu Internasional -->
-                <a href="Certificate/4523210003 Aditya Nur Lintang - Sertifikat Kuliah Tamu Internasional 10 Sep 25.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="Kuliah Tamu Internasional Magang Global">
-                    <div class="cert-img-container">
-                        <img src="Certificate/images/pancasila1.jpg" alt="Kuliah Tamu Internasional" class="cert-img" loading="lazy" />
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">Kuliah Tamu: Magang Global</h3>
-                    </div>
-                </a>
-
-                <!-- Cert 19: Dicoding SDD Kiro -->
-                <a href="Certificate/dicoding2.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="Dicoding: Spec-Driven Development dengan Kiro">
-                    <div class="cert-img-container">
-                        <img src="Certificate/images/dicoding2.jpg" alt="Dicoding Spec-Driven Development Kiro" class="cert-img" loading="lazy" />
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">Dicoding: SDD dengan Kiro</h3>
-                    </div>
-                </a>
-
-                <!-- Cert 20: Dicoding Data Science Microsoft Fabric -->
-                <a href="Certificate/dicoding3.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="Dicoding: Belajar Penerapan Data Science dengan Microsoft Fabric">
-                    <div class="cert-img-container">
-                        <img src="Certificate/images/dicoding3.jpg" alt="Dicoding Data Science Microsoft Fabric" class="cert-img" loading="lazy" />
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">Dicoding: Microsoft Fabric</h3>
-                    </div>
-                </a>
-
-                <!-- Cert 21: Dunia Coding Website Aman AI -->
-                <a href="Certificate/duniacoding.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal" title="Dunia Coding: Website Aman di Era AI">
-                    <div class="cert-img-container">
-                        <img src="Certificate/images/duniacoding.jpg" alt="Dunia Coding Website Aman AI" class="cert-img" loading="lazy" />
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">Dunia Coding: Website Aman AI</h3>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-        <!-- Section 04: Skills (Dark Obsidian Studio + Wavy Text Follow Path Ribbons) -->
-        <section id="skills" class="skills-section-wavy-dark reveal">
-            <div class="modern-section-header">
-                <span class="modern-section-overline skills-neon-overline">TECH STACK</span>
-                <h2 class="modern-section-title skills-white-title">Skills &amp; Technologies</h2>
-            </div>
-            
-            <div class="skills-wavy-container" aria-label="Animated Wavy Skills and Technologies Ribbons">
-                <svg class="skills-wavy-svg" viewBox="0 0 1600 440" preserveAspectRatio="none">
-                    <defs>
-                        <!-- Wave 1 Center Path for Text -->
-                        <path id="wavePath1" d="M -2400,110 C -2181.5,160.4 -2018.5,160.4 -1800.0,110 C -1581.5,59.6 -1418.5,59.6 -1200.0,110 C -981.5,160.4 -818.5,160.4 -600.0,110 C -381.5,59.6 -218.5,59.6 0.0,110 C 218.5,160.4 381.5,160.4 600.0,110 C 818.5,59.6 981.5,59.6 1200.0,110 C 1418.5,160.4 1581.5,160.4 1800.0,110 C 2018.5,59.6 2181.5,59.6 2400.0,110 C 2618.5,160.4 2781.5,160.4 3000.0,110 C 3218.5,59.6 3381.5,59.6 3600.0,110 C 3818.5,160.4 3981.5,160.4 4200.0,110 C 4418.5,59.6 4581.5,59.6 4800.0,110" fill="none" />
-                        
-                        <!-- Wave 2 Center Path for Text -->
-                        <path id="wavePath2" d="M -2400,310 C -2181.5,259.6 -2018.5,259.6 -1800.0,310 C -1581.5,360.4 -1418.5,360.4 -1200.0,310 C -981.5,259.6 -818.5,259.6 -600.0,310 C -381.5,360.4 -218.5,360.4 0.0,310 C 218.5,259.6 381.5,259.6 600.0,310 C 818.5,360.4 981.5,360.4 1200.0,310 C 1418.5,259.6 1581.5,259.6 1800.0,310 C 2018.5,360.4 2181.5,360.4 2400.0,310 C 2618.5,259.6 2781.5,259.6 3000.0,310 C 3218.5,360.4 3381.5,360.4 3600.0,310 C 3818.5,259.6 3981.5,259.6 4200.0,310 C 4418.5,360.4 4581.5,360.4 4800.0,310" fill="none" />
-                    </defs>
-
-                    <!-- Wave 1 Upper & Lower Contour Lines (Matching Reference Image) -->
-                    <path class="wave-contour-line" d="M -2400,65 C -2181.5,115.4 -2018.5,115.4 -1800.0,65 C -1581.5,14.6 -1418.5,14.6 -1200.0,65 C -981.5,115.4 -818.5,115.4 -600.0,65 C -381.5,14.6 -218.5,14.6 0.0,65 C 218.5,115.4 381.5,115.4 600.0,65 C 818.5,14.6 981.5,14.6 1200.0,65 C 1418.5,115.4 1581.5,115.4 1800.0,65 C 2018.5,14.6 2181.5,14.6 2400.0,65 C 2618.5,115.4 2781.5,115.4 3000.0,65 C 3218.5,14.6 3381.5,14.6 3600.0,65 C 3818.5,115.4 3981.5,115.4 4200.0,65 C 4418.5,14.6 4581.5,14.6 4800.0,65" fill="none" />
-                    <path class="wave-contour-line" d="M -2400,155 C -2181.5,205.4 -2018.5,205.4 -1800.0,155 C -1581.5,104.6 -1418.5,104.6 -1200.0,155 C -981.5,205.4 -818.5,205.4 -600.0,155 C -381.5,104.6 -218.5,104.6 0.0,155 C 218.5,205.4 381.5,205.4 600.0,155 C 818.5,104.6 981.5,104.6 1200.0,155 C 1418.5,205.4 1581.5,205.4 1800.0,155 C 2018.5,104.6 2181.5,104.6 2400.0,155 C 2618.5,205.4 2781.5,205.4 3000.0,155 C 3218.5,104.6 3381.5,104.6 3600.0,155 C 3818.5,205.4 3981.5,205.4 4200.0,155 C 4418.5,104.6 4581.5,104.6 4800.0,155" fill="none" />
-
-                    <!-- Wave 2 Upper & Lower Contour Lines (Matching Reference Image) -->
-                    <path class="wave-contour-line" d="M -2400,265 C -2181.5,214.6 -2018.5,214.6 -1800.0,265 C -1581.5,315.4 -1418.5,315.4 -1200.0,265 C -981.5,214.6 -818.5,214.6 -600.0,265 C -381.5,315.4 -218.5,315.4 0.0,265 C 218.5,214.6 381.5,214.6 600.0,265 C 818.5,315.4 981.5,315.4 1200.0,265 C 1418.5,214.6 1581.5,214.6 1800.0,265 C 2018.5,315.4 2181.5,315.4 2400.0,265 C 2618.5,214.6 2781.5,214.6 3000.0,265 C 3218.5,315.4 3381.5,315.4 3600.0,265 C 3818.5,214.6 3981.5,214.6 4200.0,265 C 4418.5,315.4 4581.5,315.4 4800.0,265" fill="none" />
-                    <path class="wave-contour-line" d="M -2400,355 C -2181.5,304.6 -2018.5,304.6 -1800.0,355 C -1581.5,405.4 -1418.5,405.4 -1200.0,355 C -981.5,304.6 -818.5,304.6 -600.0,355 C -381.5,405.4 -218.5,405.4 0.0,355 C 218.5,304.6 381.5,304.6 600.0,355 C 818.5,405.4 981.5,405.4 1200.0,355 C 1418.5,304.6 1581.5,304.6 1800.0,355 C 2018.5,405.4 2181.5,405.4 2400.0,355 C 2618.5,304.6 2781.5,304.6 3000.0,355 C 3218.5,405.4 3381.5,405.4 3600.0,355 C 3818.5,304.6 3981.5,304.6 4200.0,355 C 4418.5,405.4 4581.5,405.4 4800.0,355" fill="none" />
-
-                    <!-- Track 1: Running Cyber Security Text Along Wave 1 -->
-                    <text class="wavy-follow-text text-track-1">
-                        <textPath id="wavyTextPath1" href="#wavePath1" startOffset="0%">
-                            CYBER SECURITY • WAZUH SIEM • BURP SUITE • OPENVAS • NMAP • WIRESHARK • SHODAN • CISCO NETWORK • LINUX ADMIN • ETHICAL HACKING • CYBER SECURITY • WAZUH SIEM • BURP SUITE • OPENVAS • NMAP • WIRESHARK • SHODAN • CISCO NETWORK • LINUX ADMIN • ETHICAL HACKING •
-                        </textPath>
-                    </text>
-
-                    <!-- Track 2: Running Cloud & Dev Text Along Wave 2 -->
-                    <text class="wavy-follow-text text-track-2">
-                        <textPath id="wavyTextPath2" href="#wavePath2" startOffset="0%">
-                            AWS CLOUD ARCHITECTURE • DOCKER • PYTHON • LARAVEL • PHP • MYSQL • JAVASCRIPT • HTML5 • CSS3 • AI AGENTS • CLOUD COMPUTING • AWS CLOUD ARCHITECTURE • DOCKER • PYTHON • LARAVEL • PHP • MYSQL • JAVASCRIPT • HTML5 • CSS3 • AI AGENTS • CLOUD COMPUTING •
-                        </textPath>
-                    </text>
+        <!-- Carousel Wrapper -->
+        <div class="project-carousel-wrapper">
+            <button class="carousel-nav-btn carousel-prev" id="carouselPrev" aria-label="Previous project">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6" />
                 </svg>
-            </div>
-        </section>
+            </button>
 
-        <!-- Section 05: Contact (Dark Studio Background + Light Font) -->
-        <section id="contact" class="contact-section-dark reveal">
-            <div class="modern-section-header">
-                <span class="modern-section-overline">GET IN TOUCH</span>
-                <h2 class="modern-section-title">Let's Connect &amp; Collaborate</h2>
-            </div>
-            <div class="contact-grid">
-                <a href="https://github.com/unaware22" target="_blank" rel="noopener noreferrer" class="contact-link">
-                    <svg class="contact-svg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                    <span>GitHub</span>
-                </a>
-                <a href="https://www.linkedin.com/in/aditya-nur-lintang-b8483333a/" target="_blank" rel="noopener noreferrer" class="contact-link">
-                    <svg class="contact-svg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
-                    <span>LinkedIn</span>
-                </a>
-                <a href="mailto:adityanurlintang211@gmail.com" class="contact-link">
-                    <svg class="contact-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    <span>Email</span>
-                </a>
-            </div>
-        </section>
+            <div class="project-carousel-viewport" id="carouselViewport">
+                <div class="project-carousel-track" id="carouselTrack">
 
-        <!-- Footer -->
-        <footer class="footer reveal">
-            <div class="footer-left">
-                <span>© 2026 Aditya Nur Lintang — Portofolio</span>
-                <p class="footer-sub">Hosting di AWS S3</p>
-            </div>
-            
-            <!-- Cloud Resume Visitor Counter -->
-            <div class="visitor-counter">
-                <div class="counter-glow"></div>
-                <span class="counter-icon">✨</span>
-                <span class="counter-label">Visitor Count:</span>
-                <span id="visitor-count" class="counter-num">00000</span>
-            </div>
+                    <!-- Slide 1: Cloud Security Monitoring & Automated Incident Response -->
+                    <div class="project-slide" data-index="0">
+                        <div class="project-slide-inner glass-card">
+                            <div class="project-slide-img-wrap">
+                                <img src="Project/projectbaru.png"
+                                    alt="Cloud Security Monitoring &amp; Automated Incident Response"
+                                    class="project-slide-img" loading="lazy" />
+                                <div class="project-slide-img-overlay"></div>
+                            </div>
+                            <div class="project-slide-body">
+                                <h3 class="project-slide-title">Cloud Security Monitoring &amp; Automated Incident
+                                    Response</h3>
+                                <p class="project-slide-desc">Membangun website e-commerce produk digital dari nol dan
+                                    terintegrasi payment gateway Midtrans. Dijalankan pada infrastruktur AWS EC2 &amp;
+                                    Amazon RDS PostgreSQL, dilengkapi sistem monitoring keamanan real-time berbasis
+                                    Wazuh SIEM serta workflow automated incident response menggunakan n8n untuk mitigasi
+                                    aktivitas mencurigakan secara otomatis (proyek skripsi NCS &amp; portfolio Cloud
+                                    Engineer).</p>
+                                <div class="project-slide-tech">
+                                    <span>AWS EC2 &amp; RDS</span>
+                                    <span>Midtrans PG</span>
+                                    <span>Wazuh SIEM</span>
+                                    <span>n8n Automation</span>
+                                    <span>PostgreSQL</span>
+                                    <span>E-Commerce</span>
+                                </div>
+                                <div class="project-slide-footer">
+                                    <span class="project-slide-status in-progress">
+                                        <span class="status-dot in-progress-dot"></span>In Progress (Skripsi)
+                                    </span>
+                                    <a href="https://github.com/unaware22/Cloud-Security-Monitoring-Automated-Incident-Response"
+                                        target="_blank" rel="noopener noreferrer" class="project-github-btn"
+                                        aria-label="View on GitHub">
+                                        <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                                        </svg>
+                                        Lihat di GitHub
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="footer-right">
-                <a href="#" class="back-to-top">Kembali ke atas ↑</a>
-            </div>
-        </footer>
+                    <!-- Slide 2: UAS Desain Web -->
+                    <div class="project-slide" data-index="1">
+                        <div class="project-slide-inner glass-card">
+                            <div class="project-slide-img-wrap">
+                                <img src="Project/project1.png" alt="UAS Desain Web – Resto Kemang"
+                                    class="project-slide-img" loading="lazy" />
+                                <div class="project-slide-img-overlay"></div>
+                            </div>
+                            <div class="project-slide-body">
+                                <h3 class="project-slide-title">UAS Desain Web — Resto Kemang</h3>
+                                <p class="project-slide-desc">Website restoran modern yang dikembangkan sebagai proyek
+                                    ujian akhir mata kuliah Desain Web. Menampilkan desain responsif, animasi
+                                    interaktif, menu navigasi dinamis, serta halaman pemesanan yang terintegrasi.</p>
+                                <div class="project-slide-tech">
+                                    <span>HTML</span>
+                                    <span>CSS</span>
+                                    <span>JavaScript</span>
+                                </div>
+                                <div class="project-slide-footer">
+                                    <span class="project-slide-status">
+                                        <span class="status-dot"></span>Completed
+                                    </span>
+                                    <a href="https://github.com/unaware22/PROJECT-UAS-DW-A" target="_blank"
+                                        rel="noopener noreferrer" class="project-github-btn"
+                                        aria-label="View on GitHub">
+                                        <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                                        </svg>
+                                        Lihat di GitHub
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3: Cloud Resume Challenge -->
+                    <div class="project-slide" data-index="2">
+                        <div class="project-slide-inner glass-card">
+                            <div class="project-slide-img-wrap">
+                                <img src="Project/project2.png" alt="Cloud Resume Challenge – CI/CD AWS S3"
+                                    class="project-slide-img" loading="lazy" />
+                                <div class="project-slide-img-overlay"></div>
+                            </div>
+                            <div class="project-slide-body">
+                                <h3 class="project-slide-title">Cloud Resume Challenge — AWS S3 &amp; CI/CD</h3>
+                                <p class="project-slide-desc">Membangun portfolio website dan men-deploy-nya ke AWS S3
+                                    dengan pipeline CI/CD otomatis menggunakan GitHub Actions. Setiap push ke repository
+                                    secara otomatis memperbarui konten live di S3 bucket.</p>
+                                <div class="project-slide-tech">
+                                    <span>AWS S3</span>
+                                    <span>GitHub Actions</span>
+                                    <span>CI/CD</span>
+                                    <span>IAM</span>
+                                </div>
+                                <div class="project-slide-footer">
+                                    <span class="project-slide-status">
+                                        <span class="status-dot"></span>Completed
+                                    </span>
+                                    <a href="https://github.com/unaware22/cloud-resume-challenge" target="_blank"
+                                        rel="noopener noreferrer" class="project-github-btn"
+                                        aria-label="View on GitHub">
+                                        <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                                        </svg>
+                                        Lihat di GitHub
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4: SPK Sanitasi -->
+                    <div class="project-slide" data-index="3">
+                        <div class="project-slide-inner glass-card">
+                            <div class="project-slide-img-wrap">
+                                <img src="Project/project3.png" alt="SPK Sanitasi Nasional – SAW &amp; SMART"
+                                    class="project-slide-img" loading="lazy" />
+                                <div class="project-slide-img-overlay"></div>
+                            </div>
+                            <div class="project-slide-body">
+                                <h3 class="project-slide-title">SPK Sanitasi Nasional — SAW &amp; SMART</h3>
+                                <p class="project-slide-desc">Sistem Pendukung Keputusan (SPK) untuk perangkingan
+                                    kualitas sanitasi nasional menggunakan metode SAW dan SMART. Menampilkan visualisasi
+                                    grafik interaktif dan perbandingan skor antar provinsi secara real-time.</p>
+                                <div class="project-slide-tech">
+                                    <span>JavaScript</span>
+                                    <span>SAW</span>
+                                    <span>SMART</span>
+                                    <span>Data Visualization</span>
+                                </div>
+                                <div class="project-slide-footer">
+                                    <span class="project-slide-status">
+                                        <span class="status-dot"></span>Completed
+                                    </span>
+                                    <a href="https://github.com/unaware22/SPK-Sanitasi" target="_blank"
+                                        rel="noopener noreferrer" class="project-github-btn"
+                                        aria-label="View on GitHub">
+                                        <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                                        </svg>
+                                        Lihat di GitHub
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5: STRIDE Ethical Hacking Kubernetes -->
+                    <div class="project-slide" data-index="4">
+                        <div class="project-slide-inner glass-card">
+                            <div class="project-slide-img-wrap">
+                                <img src="Project/project4.png" alt="STRIDE Threat Modeling – Kubernetes Infra"
+                                    class="project-slide-img" loading="lazy" />
+                                <div class="project-slide-img-overlay"></div>
+                            </div>
+                            <div class="project-slide-body">
+                                <h3 class="project-slide-title">STRIDE Threat Modeling pada Infrastruktur Kubernetes
+                                </h3>
+                                <p class="project-slide-desc">Proyek akhir Studi Independen Vinix: Ethical Hacking.
+                                    Menerapkan metodologi STRIDE untuk mengidentifikasi dan memodelkan ancaman keamanan
+                                    pada arsitektur Kubernetes, mencakup analisis attack surface, threat actors, dan
+                                    rekomendasi mitigasi.</p>
+                                <div class="project-slide-tech">
+                                    <span>STRIDE</span>
+                                    <span>Kubernetes</span>
+                                    <span>Ethical Hacking</span>
+                                    <span>Threat Modeling</span>
+                                </div>
+                                <div class="project-slide-footer">
+                                    <span class="project-slide-status">
+                                        <span class="status-dot"></span>Completed
+                                    </span>
+                                    <a href="https://github.com/unaware22/StudiIndependen-Vinix7" target="_blank"
+                                        rel="noopener noreferrer" class="project-github-btn"
+                                        aria-label="View on GitHub">
+                                        <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                                        </svg>
+                                        Lihat di GitHub
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 6: Langflow Hacktiv8 -->
+                    <div class="project-slide" data-index="5">
+                        <div class="project-slide-inner glass-card">
+                            <div class="project-slide-img-wrap">
+                                <img src="Project/project5.png" alt="Langflow – Security Awareness AI Assistant"
+                                    class="project-slide-img" loading="lazy" />
+                                <div class="project-slide-img-overlay"></div>
+                            </div>
+                            <div class="project-slide-body">
+                                <h3 class="project-slide-title">Security Awareness AI Assistant — Langflow &amp;
+                                    Hacktiv8</h3>
+                                <p class="project-slide-desc">Membangun pipeline AI berbasis Langflow untuk membuat
+                                    Security Awareness &amp; Incident Report Assistant. Menggunakan Google Generative AI
+                                    Embeddings, Astra DB sebagai vector store, dan Gemini sebagai LLM untuk menjawab
+                                    pertanyaan seputar keamanan siber.</p>
+                                <div class="project-slide-tech">
+                                    <span>Langflow</span>
+                                    <span>Gemini AI</span>
+                                    <span>Astra DB</span>
+                                    <span>RAG Pipeline</span>
+                                </div>
+                                <div class="project-slide-footer">
+                                    <span class="project-slide-status">
+                                        <span class="status-dot"></span>Completed
+                                    </span>
+                                    <a href="https://github.com/unaware22/Langflow-Hactiv8" target="_blank"
+                                        rel="noopener noreferrer" class="project-github-btn"
+                                        aria-label="View on GitHub">
+                                        <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                                        </svg>
+                                        Lihat di GitHub
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- /.project-carousel-track -->
+            </div><!-- /.project-carousel-viewport -->
+
+            <button class="carousel-nav-btn carousel-next" id="carouselNext" aria-label="Next project">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6" />
+                </svg>
+            </button>
+        </div><!-- /.project-carousel-wrapper -->
+
+        <!-- Dots Indicator -->
+        <div class="carousel-dots" id="carouselDots" role="tablist" aria-label="Project navigation">
+            <button class="carousel-dot active" data-slide="0" role="tab" aria-selected="true"
+                aria-label="Project 1"></button>
+            <button class="carousel-dot" data-slide="1" role="tab" aria-selected="false"
+                aria-label="Project 2"></button>
+            <button class="carousel-dot" data-slide="2" role="tab" aria-selected="false"
+                aria-label="Project 3"></button>
+            <button class="carousel-dot" data-slide="3" role="tab" aria-selected="false"
+                aria-label="Project 4"></button>
+            <button class="carousel-dot" data-slide="4" role="tab" aria-selected="false"
+                aria-label="Project 5"></button>
+            <button class="carousel-dot" data-slide="5" role="tab" aria-selected="false"
+                aria-label="Project 6"></button>
+        </div>
+
+    </section>
+
+
+    <!-- Section 03: Certifications (5 Cards Per Row on Desktop, Image + Title Only) -->
+    <section id="certifications" class="certifications-modern-section reveal">
+        <div class="modern-section-header">
+            <span class="modern-section-overline">CREDENTIALS</span>
+            <h2 class="modern-section-title">Certifications &amp; Badges</h2>
+        </div>
+        <div class="certifications-grid" id="certificationsGrid">
+            <!-- Cert 1: IBM SkillsBuild & Hacktiv8 AI Agent -->
+            <a href="Certificate/BuildanAIAgent_Badge20260729-8-idrwxr.pdf" target="_blank" rel="noopener noreferrer"
+                class="cert-card reveal" title="IT AI Agent For Programming &amp; Build an AI Agent">
+                <div class="cert-img-container">
+                    <img src="Certificate/images/ibm_skillsbuild.png"
+                        alt="IT AI Agent For Programming &amp; Build an AI Agent" class="cert-img" loading="lazy" />
+                </div>
+                <div class="cert-info">
+                    <h3 class="cert-title">IT AI Agent For Programming</h3>
+                </div>
+            </a>
+
+            <!-- Cert 2: IBM SkillsBuild AI Foundations -->
+            <a href="Certificate/Completion Certificate _ SkillsBuild.pdf" target="_blank" rel="noopener noreferrer"
+                class="cert-card reveal" title="IBM SkillsBuild: Artificial Intelligence Foundations">
+                <div class="cert-img-container">
+                    <img src="Certificate/images/ibm_skillsbuild_2.png" alt="IBM SkillsBuild AI Foundations"
+                        class="cert-img" loading="lazy" />
+                </div>
+                <div class="cert-info">
+                    <h3 class="cert-title">IBM: AI Foundations</h3>
+                </div>
+            </a>
+
+            <!-- Cert 3: AWS Builder Dicoding 1 -->
+            <a href="Certificate/sertifikat_course_902_5631887_190726141626.pdf" target="_blank"
+                rel="noopener noreferrer" class="cert-card reveal"
+                title="AWS Builder: Cloud Practitioner &amp; Architecture">
+                <div class="cert-img-container">
+                    <img src="Certificate/images/aws_builder_1.png" alt="AWS Builder Cloud Practitioner"
+                        class="cert-img" loading="lazy" />
+                </div>
+                <div class="cert-info">
+                    <h3 class="cert-title">AWS: Cloud Practitioner</h3>
+                </div>
+            </a>
+
+            <!-- Cert 4: AWS Builder Dicoding 2 -->
+            <a href="Certificate/sertifikat_course_929_5631887_190726141444.pdf" target="_blank"
+                rel="noopener noreferrer" class="cert-card reveal"
+                title="AWS Builder: Cloud Services &amp; Infrastructure">
+                <div class="cert-img-container">
+                    <img src="Certificate/images/aws_builder_2.png" alt="AWS Builder Cloud Services" class="cert-img"
+                        loading="lazy" />
+                </div>
+                <div class="cert-info">
+                    <h3 class="cert-title">AWS: Cloud Services &amp; Infra</h3>
+                </div>
+            </a>
+
+            <!-- Cert 5: AWS Builder Official Certificate -->
+            <a href="Certificate/awsbuilder.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal"
+                title="AWS Cloud Practitioner &amp; Infrastructure Builder">
+                <div class="cert-img-container">
+                    <img src="Certificate/images/awsbuilder_main.png" alt="AWS Cloud Practitioner Builder"
+                        class="cert-img" loading="lazy" />
+                </div>
+                <div class="cert-info">
+                    <h3 class="cert-title">AWS: Infrastructure Builder</h3>
+                </div>
+            </a>
+
+            <!-- Cert 6: AWS Builder Specialized Certificate -->
+            <a href="Certificate/awsbuilder2.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal"
+                title="AWS Cloud Security &amp; Deployment Specialist">
+                <div class="cert-img-container">
+                    <img src="Certificate/images/awsbuilder_alt.png" alt="AWS Cloud Security Specialist"
+                        class="cert-img" loading="lazy" />
+                </div>
+                <div class="cert-info">
+                    <h3 class="cert-title">AWS: Cloud Security Specialist</h3>
+                </div>
+            </a>
+
+            <!-- Cert 7: MSIB PT Vinix Utama -->
+            <a href="Certificate/aditya4523003@univpancasila.ac.id_Sertifikat Utama (1).pdf" target="_blank"
+                rel="noopener noreferrer" class="cert-card reveal" title="MSIB Batch 4: Cybersecurity Ethical Hackers">
+                <div class="cert-img-container">
+                    <img src="Certificate/images/aditya4523003@univpancasila.ac.id_Sertifikat Utama (1).png"
+                        alt="MSIB 4 Cybersecurity Ethical Hackers" class="cert-img" loading="lazy" />
+                </div>
+                <div class="cert-info">
+                    <h3 class="cert-title">MSIB 4: Ethical Hackers</h3>
+                </div>
+            </a>
+
+            <!-- Cert 8: IBM SkillsBuild AI Agent Assistant -->
+            <a href="Certificate/aiagent.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal"
+                title="IBM SkillsBuild: AI Agent Assistant &amp; Prompting">
+                <div class="cert-img-container">
+                    <img src="Certificate/images/ibm_aiagent.png" alt="IBM SkillsBuild AI Agent Assistant"
+                        class="cert-img" loading="lazy" />
+                </div>
+                <div class="cert-info">
+                    <h3 class="cert-title">IBM: AI Agent Assistant</h3>
+                </div>
+            </a>
+
+            <!-- Cert 9: IBM SkillsBuild AI Specialization -->
+            <a href="Certificate/Completion Certificate _ SkillsBuild2.pdf" target="_blank" rel="noopener noreferrer"
+                class="cert-card reveal" title="IBM SkillsBuild: Artificial Intelligence Specialization">
+                <div class="cert-img-container">
+                    <img src="Certificate/images/ibm_skillsbuild_3.png" alt="IBM SkillsBuild AI Specialization"
+                        class="cert-img" loading="lazy" />
+                </div>
+                <div class="cert-info">
+                    <h3 class="cert-title">IBM: AI Specialization</h3>
+                </div>
+            </a>
+
+            <!-- Cert 10: Proyek Berdampak PT Vinix -->
+            <a href="Certificate/aditya4523003@univpancasila.ac.id_Sertifikat Proyek (1).pdf" target="_blank"
+                rel="noopener noreferrer" class="cert-card reveal" title="Sertifikat Proyek Berdampak: Threat Modeling">
+                <div class="cert-img-container">
+                    <img src="Certificate/images/aditya4523003@univpancasila.ac.id_Sertifikat Proyek (1).png"
+                        alt="Proyek Threat Modeling" class="cert-img" loading="lazy" />
+                </div>
+                <div class="cert-info">
+                    <h3 class="cert-title">Vinix: Threat Modeling</h3>
+                </div>
+            </a>
+
+            <!-- Cert 11: TryHackMe Cyber Security 101 -->
+            <a href="Certificate/THM-7PKEKLLYLE.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal"
+                title="TryHackMe: Cyber Security 101 Path Completion">
+                <div class="cert-img-container">
+                    <img src="Certificate/images/THM-7PKEKLLYLE.png" alt="TryHackMe Cyber Security 101" class="cert-img"
+                        loading="lazy" />
+                </div>
+                <div class="cert-info">
+                    <h3 class="cert-title">TryHackMe: Cyber Security 101</h3>
+                </div>
+            </a>
+
+            <!-- Cert 12: TryHackMe Pre Security -->
+            <a href="Certificate/THM-8WKKI3COQN.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal"
+                title="TryHackMe: Pre Security Path Completion">
+                <div class="cert-img-container">
+                    <img src="Certificate/images/THM-8WKKI3COQN.png" alt="TryHackMe Pre Security" class="cert-img"
+                        loading="lazy" />
+                </div>
+                <div class="cert-info">
+                    <h3 class="cert-title">TryHackMe: Pre Security</h3>
+                </div>
+            </a>
+
+            <!-- Cert 13: Dicoding AWS Cloud & Gen AI -->
+            <a href="Certificate/sertifikat_course_251_5631887_170726013548.pdf" target="_blank"
+                rel="noopener noreferrer" class="cert-card reveal"
+                title="Dicoding: Belajar Dasar Cloud &amp; Gen AI di AWS">
+                <div class="cert-img-container">
+                    <img src="Certificate/images/sertifikat_course_251_5631887_170726013548.png"
+                        alt="Dicoding Dasar Cloud Gen AI" class="cert-img" loading="lazy" />
+                </div>
+                <div class="cert-info">
+                    <h3 class="cert-title">Dicoding: Cloud &amp; Gen AI AWS</h3>
+                </div>
+            </a>
+
+            <!-- Cert 14: Softskill PT Vinix -->
+            <a href="Certificate/aditya4523003@univpancasila.ac.id_Sertifikat Softskill.pdf" target="_blank"
+                rel="noopener noreferrer" class="cert-card reveal" title="Professional Communication di Tempat Kerja">
+                <div class="cert-img-container">
+                    <img src="Certificate/images/aditya4523003@univpancasila.ac.id_Sertifikat Softskill.png"
+                        alt="Professional Communication" class="cert-img" loading="lazy" />
+                </div>
+                <div class="cert-info">
+                    <h3 class="cert-title">Vinix: Professional Communication</h3>
+                </div>
+            </a>
+
+            <!-- Cert 15: IDN Webinar Pentesting -->
+            <a href="Certificate/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 27 Januari 2026.pdf"
+                target="_blank" rel="noopener noreferrer" class="cert-card reveal"
+                title="IDN: Basic Mobile Pentesting Participant">
+                <div class="cert-img-container">
+                    <img src="Certificate/images/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 27 Januari 2026.png"
+                        alt="IDN Basic Mobile Pentesting" class="cert-img" loading="lazy" />
+                </div>
+                <div class="cert-info">
+                    <h3 class="cert-title">IDN: Mobile Pentesting</h3>
+                </div>
+            </a>
+
+            <!-- Cert 16: IDN Webinar Sistem Keamanan -->
+            <a href="Certificate/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 29 Januari 2026.pdf"
+                target="_blank" rel="noopener noreferrer" class="cert-card reveal"
+                title="IDN: Membangun Sistem Keamanan Dari Nol">
+                <div class="cert-img-container">
+                    <img src="Certificate/images/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 29 Januari 2026.png"
+                        alt="IDN Membangun Sistem Keamanan" class="cert-img" loading="lazy" />
+                </div>
+                <div class="cert-info">
+                    <h3 class="cert-title">IDN: Sistem Keamanan Dari Nol</h3>
+                </div>
+            </a>
+
+            <!-- Cert 17: Kuliah Umum AI Geospasial -->
+            <a href="Certificate/sertifikat_geospasial.jpeg" target="_blank" rel="noopener noreferrer"
+                class="cert-card reveal" title="Peserta Kuliah Umum: AI Geospasial">
+                <div class="cert-img-container">
+                    <img src="Certificate/sertifikat_geospasial.jpeg" alt="Kuliah Umum AI Geospasial" class="cert-img"
+                        loading="lazy" />
+                </div>
+                <div class="cert-info">
+                    <h3 class="cert-title">Kuliah Umum: AI Geospasial</h3>
+                </div>
+            </a>
+
+            <!-- Cert 18: Kuliah Tamu Internasional -->
+            <a href="Certificate/4523210003 Aditya Nur Lintang - Sertifikat Kuliah Tamu Internasional 10 Sep 25.pdf"
+                target="_blank" rel="noopener noreferrer" class="cert-card reveal"
+                title="Kuliah Tamu Internasional Magang Global">
+                <div class="cert-img-container">
+                    <img src="Certificate/images/pancasila1.jpg" alt="Kuliah Tamu Internasional" class="cert-img"
+                        loading="lazy" />
+                </div>
+                <div class="cert-info">
+                    <h3 class="cert-title">Kuliah Tamu: Magang Global</h3>
+                </div>
+            </a>
+
+            <!-- Cert 19: Dicoding SDD Kiro -->
+            <a href="Certificate/dicoding2.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal"
+                title="Dicoding: Spec-Driven Development dengan Kiro">
+                <div class="cert-img-container">
+                    <img src="Certificate/images/dicoding2.jpg" alt="Dicoding Spec-Driven Development Kiro"
+                        class="cert-img" loading="lazy" />
+                </div>
+                <div class="cert-info">
+                    <h3 class="cert-title">Dicoding: SDD dengan Kiro</h3>
+                </div>
+            </a>
+
+            <!-- Cert 20: Dicoding Data Science Microsoft Fabric -->
+            <a href="Certificate/dicoding3.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal"
+                title="Dicoding: Belajar Penerapan Data Science dengan Microsoft Fabric">
+                <div class="cert-img-container">
+                    <img src="Certificate/images/dicoding3.jpg" alt="Dicoding Data Science Microsoft Fabric"
+                        class="cert-img" loading="lazy" />
+                </div>
+                <div class="cert-info">
+                    <h3 class="cert-title">Dicoding: Microsoft Fabric</h3>
+                </div>
+            </a>
+
+            <!-- Cert 21: Dunia Coding Website Aman AI -->
+            <a href="Certificate/duniacoding.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal"
+                title="Dunia Coding: Website Aman di Era AI">
+                <div class="cert-img-container">
+                    <img src="Certificate/images/duniacoding.jpg" alt="Dunia Coding Website Aman AI" class="cert-img"
+                        loading="lazy" />
+                </div>
+                <div class="cert-info">
+                    <h3 class="cert-title">Dunia Coding: Website Aman AI</h3>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Section 04: Skills (Dark Obsidian Studio + Wavy Text Follow Path Ribbons) -->
+    <section id="skills" class="skills-section-wavy-dark reveal">
+        <div class="modern-section-header">
+            <span class="modern-section-overline skills-neon-overline">TECH STACK</span>
+            <h2 class="modern-section-title skills-white-title">Skills &amp; Technologies</h2>
+        </div>
+
+        <div class="skills-wavy-container" aria-label="Animated Wavy Skills and Technologies Ribbons">
+            <svg class="skills-wavy-svg" viewBox="0 0 1600 440" preserveAspectRatio="none">
+                <defs>
+                    <!-- Wave 1 Center Path for Text -->
+                    <path id="wavePath1"
+                        d="M -2400,110 C -2181.5,160.4 -2018.5,160.4 -1800.0,110 C -1581.5,59.6 -1418.5,59.6 -1200.0,110 C -981.5,160.4 -818.5,160.4 -600.0,110 C -381.5,59.6 -218.5,59.6 0.0,110 C 218.5,160.4 381.5,160.4 600.0,110 C 818.5,59.6 981.5,59.6 1200.0,110 C 1418.5,160.4 1581.5,160.4 1800.0,110 C 2018.5,59.6 2181.5,59.6 2400.0,110 C 2618.5,160.4 2781.5,160.4 3000.0,110 C 3218.5,59.6 3381.5,59.6 3600.0,110 C 3818.5,160.4 3981.5,160.4 4200.0,110 C 4418.5,59.6 4581.5,59.6 4800.0,110"
+                        fill="none" />
+
+                    <!-- Wave 2 Center Path for Text -->
+                    <path id="wavePath2"
+                        d="M -2400,310 C -2181.5,259.6 -2018.5,259.6 -1800.0,310 C -1581.5,360.4 -1418.5,360.4 -1200.0,310 C -981.5,259.6 -818.5,259.6 -600.0,310 C -381.5,360.4 -218.5,360.4 0.0,310 C 218.5,259.6 381.5,259.6 600.0,310 C 818.5,360.4 981.5,360.4 1200.0,310 C 1418.5,259.6 1581.5,259.6 1800.0,310 C 2018.5,360.4 2181.5,360.4 2400.0,310 C 2618.5,259.6 2781.5,259.6 3000.0,310 C 3218.5,360.4 3381.5,360.4 3600.0,310 C 3818.5,259.6 3981.5,259.6 4200.0,310 C 4418.5,360.4 4581.5,360.4 4800.0,310"
+                        fill="none" />
+                </defs>
+
+                <!-- Wave 1 Upper & Lower Contour Lines (Matching Reference Image) -->
+                <path class="wave-contour-line"
+                    d="M -2400,65 C -2181.5,115.4 -2018.5,115.4 -1800.0,65 C -1581.5,14.6 -1418.5,14.6 -1200.0,65 C -981.5,115.4 -818.5,115.4 -600.0,65 C -381.5,14.6 -218.5,14.6 0.0,65 C 218.5,115.4 381.5,115.4 600.0,65 C 818.5,14.6 981.5,14.6 1200.0,65 C 1418.5,115.4 1581.5,115.4 1800.0,65 C 2018.5,14.6 2181.5,14.6 2400.0,65 C 2618.5,115.4 2781.5,115.4 3000.0,65 C 3218.5,14.6 3381.5,14.6 3600.0,65 C 3818.5,115.4 3981.5,115.4 4200.0,65 C 4418.5,14.6 4581.5,14.6 4800.0,65"
+                    fill="none" />
+                <path class="wave-contour-line"
+                    d="M -2400,155 C -2181.5,205.4 -2018.5,205.4 -1800.0,155 C -1581.5,104.6 -1418.5,104.6 -1200.0,155 C -981.5,205.4 -818.5,205.4 -600.0,155 C -381.5,104.6 -218.5,104.6 0.0,155 C 218.5,205.4 381.5,205.4 600.0,155 C 818.5,104.6 981.5,104.6 1200.0,155 C 1418.5,205.4 1581.5,205.4 1800.0,155 C 2018.5,104.6 2181.5,104.6 2400.0,155 C 2618.5,205.4 2781.5,205.4 3000.0,155 C 3218.5,104.6 3381.5,104.6 3600.0,155 C 3818.5,205.4 3981.5,205.4 4200.0,155 C 4418.5,104.6 4581.5,104.6 4800.0,155"
+                    fill="none" />
+
+                <!-- Wave 2 Upper & Lower Contour Lines (Matching Reference Image) -->
+                <path class="wave-contour-line"
+                    d="M -2400,265 C -2181.5,214.6 -2018.5,214.6 -1800.0,265 C -1581.5,315.4 -1418.5,315.4 -1200.0,265 C -981.5,214.6 -818.5,214.6 -600.0,265 C -381.5,315.4 -218.5,315.4 0.0,265 C 218.5,214.6 381.5,214.6 600.0,265 C 818.5,315.4 981.5,315.4 1200.0,265 C 1418.5,214.6 1581.5,214.6 1800.0,265 C 2018.5,315.4 2181.5,315.4 2400.0,265 C 2618.5,214.6 2781.5,214.6 3000.0,265 C 3218.5,315.4 3381.5,315.4 3600.0,265 C 3818.5,214.6 3981.5,214.6 4200.0,265 C 4418.5,315.4 4581.5,315.4 4800.0,265"
+                    fill="none" />
+                <path class="wave-contour-line"
+                    d="M -2400,355 C -2181.5,304.6 -2018.5,304.6 -1800.0,355 C -1581.5,405.4 -1418.5,405.4 -1200.0,355 C -981.5,304.6 -818.5,304.6 -600.0,355 C -381.5,405.4 -218.5,405.4 0.0,355 C 218.5,304.6 381.5,304.6 600.0,355 C 818.5,405.4 981.5,405.4 1200.0,355 C 1418.5,304.6 1581.5,304.6 1800.0,355 C 2018.5,405.4 2181.5,405.4 2400.0,355 C 2618.5,304.6 2781.5,304.6 3000.0,355 C 3218.5,405.4 3381.5,405.4 3600.0,355 C 3818.5,304.6 3981.5,304.6 4200.0,355 C 4418.5,405.4 4581.5,405.4 4800.0,355"
+                    fill="none" />
+
+                <!-- Track 1: Running Cyber Security Text Along Wave 1 -->
+                <text class="wavy-follow-text text-track-1">
+                    <textPath id="wavyTextPath1" href="#wavePath1" startOffset="0%">
+                        CYBER SECURITY • WAZUH SIEM • BURP SUITE • OPENVAS • NMAP • WIRESHARK • SHODAN • CISCO NETWORK •
+                        LINUX ADMIN • ETHICAL HACKING • CYBER SECURITY • WAZUH SIEM • BURP SUITE • OPENVAS • NMAP •
+                        WIRESHARK • SHODAN • CISCO NETWORK • LINUX ADMIN • ETHICAL HACKING •
+                    </textPath>
+                </text>
+
+                <!-- Track 2: Running Cloud & Dev Text Along Wave 2 -->
+                <text class="wavy-follow-text text-track-2">
+                    <textPath id="wavyTextPath2" href="#wavePath2" startOffset="0%">
+                        AWS CLOUD ARCHITECTURE • DOCKER • PYTHON • LARAVEL • PHP • MYSQL • JAVASCRIPT • HTML5 • CSS3 •
+                        AI AGENTS • CLOUD COMPUTING • AWS CLOUD ARCHITECTURE • DOCKER • PYTHON • LARAVEL • PHP • MYSQL •
+                        JAVASCRIPT • HTML5 • CSS3 • AI AGENTS • CLOUD COMPUTING •
+                    </textPath>
+                </text>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Section 05: Contact (Dark Studio Background + Light Font) -->
+    <section id="contact" class="contact-section-dark reveal">
+        <div class="modern-section-header">
+            <span class="modern-section-overline">GET IN TOUCH</span>
+            <h2 class="modern-section-title">Let's Connect &amp; Collaborate</h2>
+        </div>
+        <div class="contact-grid">
+            <a href="https://github.com/unaware22" target="_blank" rel="noopener noreferrer" class="contact-link">
+                <svg class="contact-svg-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                </svg>
+                <span>GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/in/aditya-nur-lintang-b8483333a/" target="_blank"
+                rel="noopener noreferrer" class="contact-link">
+                <svg class="contact-svg-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                </svg>
+                <span>LinkedIn</span>
+            </a>
+            <a href="mailto:adityanurlintang211@gmail.com" class="contact-link">
+                <svg class="contact-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                </svg>
+                <span>Email</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer reveal">
+        <div class="footer-left">
+            <span>© 2026 Aditya Nur Lintang — Portofolio</span>
+            <p class="footer-sub">Hosting di AWS S3</p>
+        </div>
+
+        <!-- Cloud Resume Visitor Counter -->
+        <div class="visitor-counter">
+            <div class="counter-glow"></div>
+            <span class="counter-icon">✨</span>
+            <span class="counter-label">Visitor Count:</span>
+            <span id="visitor-count" class="counter-num">00000</span>
+        </div>
+
+        <div class="footer-right">
+            <a href="#" class="back-to-top">Kembali ke atas ↑</a>
+        </div>
+    </footer>
 
     <!-- Interactive Location Modal Popup (No API Key Required) -->
     <div id="location-modal" class="modal-overlay" aria-hidden="true">
@@ -915,14 +1136,9 @@
                     Depok, Jawa Barat — Lokasi kampus Universitas Pancasila & wilayah domisili kegiatan.
                 </p>
                 <div class="map-iframe-container">
-                    <iframe 
-                        title="Peta Lokasi Depok Jawa Barat"
-                        src="https://maps.google.com/maps?q=Depok,Jawa+Barat,Indonesia&t=&z=12&ie=UTF8&iwloc=&output=embed" 
-                        width="100%" 
-                        height="320" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
+                    <iframe title="Peta Lokasi Depok Jawa Barat"
+                        src="https://maps.google.com/maps?q=Depok,Jawa+Barat,Indonesia&t=&z=12&ie=UTF8&iwloc=&output=embed"
+                        width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
                 </div>
@@ -936,4 +1152,5 @@
     </div>
 
 </body>
+
 </html>

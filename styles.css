@@ -2223,7 +2223,7 @@ body.dark-theme .hero-description:hover {
 }
 
 /* =============================================
-   SECTION 02: PROJECTS (BRIGHT CANVAS + DARK CONTRAST CARDS)
+   SECTION 02: PROJECTS (BRIGHT CANVAS + DYNAMIC DARK HOVER TRANSFORMATION)
    ============================================= */
 .projects-section-bright {
     position: relative;
@@ -2232,6 +2232,14 @@ body.dark-theme .hero-description:hover {
     width: 100%;
     box-sizing: border-box;
     overflow: hidden;
+    transition: background 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+}
+
+/* Dynamic Hover Transformation: Background turns pure dark obsidian when ACTIVE card is hovered */
+.projects-section-bright:has(.project-slide.active:hover),
+.projects-section-bright.is-card-hovered {
+    background: #08090C !important;
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.6);
 }
 
 .projects-dark-overline {
@@ -2244,6 +2252,15 @@ body.dark-theme .hero-description:hover {
     margin-bottom: 8px;
     display: inline-block;
     filter: none;
+    transition: color 0.45s ease, filter 0.45s ease, text-shadow 0.45s ease;
+}
+
+/* Portfolio text turns Neon Lime Green (#D4F436) on ACTIVE card hover */
+.projects-section-bright:has(.project-slide.active:hover) .projects-dark-overline,
+.projects-section-bright.is-card-hovered .projects-dark-overline {
+    color: #D4F436 !important;
+    filter: drop-shadow(0 0 10px rgba(212, 244, 54, 0.65));
+    text-shadow: 0 0 16px rgba(212, 244, 54, 0.4);
 }
 
 .projects-dark-title {
@@ -2255,6 +2272,42 @@ body.dark-theme .hero-description:hover {
     letter-spacing: -0.03em;
     margin: 0;
     text-align: center;
+    transition: color 0.45s ease, text-shadow 0.45s ease;
+}
+
+/* Featured Projects text turns Pure White on ACTIVE card hover */
+.projects-section-bright:has(.project-slide.active:hover) .projects-dark-title,
+.projects-section-bright.is-card-hovered .projects-dark-title {
+    color: #FFFFFF !important;
+    text-shadow: 0 0 24px rgba(255, 255, 255, 0.25);
+}
+
+/* Dots & Nav Buttons in Dark Atmosphere */
+.projects-section-bright:has(.project-slide.active:hover) .carousel-nav-btn,
+.projects-section-bright.is-card-hovered .carousel-nav-btn {
+    background: #131620;
+    border-color: rgba(255, 255, 255, 0.16);
+    color: #FFFFFF;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.projects-section-bright:has(.project-slide.active:hover) .carousel-nav-btn:hover:not(:disabled),
+.projects-section-bright.is-card-hovered .carousel-nav-btn:hover:not(:disabled) {
+    background: #D4F436;
+    border-color: #D4F436;
+    color: #0A0B0E;
+    box-shadow: 0 0 24px rgba(212, 244, 54, 0.6);
+}
+
+.projects-section-bright:has(.project-slide.active:hover) .carousel-dot,
+.projects-section-bright.is-card-hovered .carousel-dot {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.projects-section-bright:has(.project-slide.active:hover) .carousel-dot.active,
+.projects-section-bright.is-card-hovered .carousel-dot.active {
+    background: #D4F436;
+    box-shadow: 0 0 12px rgba(212, 244, 54, 0.6);
 }
 
 .project-carousel-wrapper {
@@ -2283,14 +2336,24 @@ body.dark-theme .hero-description:hover {
 
 .project-slide {
     flex: 0 0 clamp(300px, 68%, 760px);
-    transition: transform 0.4s ease, opacity 0.4s ease;
+    transition: transform 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
     opacity: 0.35;
     transform: scale(0.96);
+    pointer-events: none; /* Inactive slides cannot be hovered */
+    user-select: none;
 }
 
 .project-slide.active {
     opacity: 1;
     transform: scale(1);
+    pointer-events: auto; /* Only active slide is interactive/hoverable */
+}
+
+/* Dim non-hovered slides subtly when user hovers the active card */
+.projects-section-bright:has(.project-slide.active:hover) .project-slide:not(.active),
+.projects-section-bright.is-card-hovered .project-slide:not(.active) {
+    opacity: 0.22;
+    filter: brightness(0.8);
 }
 
 /* Dark Project Slide Box on Bright Canvas */
@@ -2303,13 +2366,27 @@ body.dark-theme .hero-description:hover {
     display: flex;
     flex-direction: column;
     height: 100%;
-    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
-.project-slide.active .project-slide-inner:hover {
-    transform: translateY(-5px);
-    border-color: rgba(212, 244, 54, 0.5);
-    box-shadow: 0 32px 65px rgba(0, 0, 0, 0.28), 0 0 30px rgba(212, 244, 54, 0.2);
+/* Luminous Bright Card Effect on Hover (ONLY for Active Card) */
+.project-slide.active:hover .project-slide-inner {
+    transform: translateY(-8px) scale(1.015);
+    background: linear-gradient(145deg, #181C28, #0E111A);
+    border-color: #D4F436;
+    box-shadow: 0 35px 75px rgba(0, 0, 0, 0.7), 0 0 45px rgba(212, 244, 54, 0.35), 0 0 90px rgba(212, 244, 54, 0.15);
+}
+
+.project-slide.active:hover .project-slide-img {
+    transform: scale(1.06);
+    filter: brightness(1.08) contrast(1.05);
+}
+
+.project-slide.active:hover .project-slide-tech span {
+    background: rgba(212, 244, 54, 0.12);
+    border-color: rgba(212, 244, 54, 0.35);
+    color: #F4FF80;
+    box-shadow: 0 0 10px rgba(212, 244, 54, 0.15);
 }
 
 .project-slide-img-wrap {
@@ -2328,11 +2405,7 @@ body.dark-theme .hero-description:hover {
     object-fit: cover;
     object-position: top center;
     display: block;
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.project-slide.active .project-slide-inner:hover .project-slide-img {
-    transform: scale(1.05);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
 }
 
 .project-slide-img-overlay {
@@ -2366,6 +2439,8 @@ body.dark-theme .hero-description:hover {
     font-size: 14.5px;
     color: rgba(255, 255, 255, 0.72);
     line-height: 1.65;
+    text-align: justify;
+    text-justify: inter-word;
     flex-grow: 1;
     margin: 0;
 }
@@ -2410,6 +2485,10 @@ body.dark-theme .hero-description:hover {
     flex-shrink: 0;
 }
 
+.project-slide-status.in-progress {
+    color: #FBBF24;
+}
+
 .status-dot {
     width: 8px;
     height: 8px;
@@ -2417,6 +2496,25 @@ body.dark-theme .hero-description:hover {
     background: #4ADE80;
     box-shadow: 0 0 8px #4ADE80;
     display: inline-block;
+}
+
+.status-dot.in-progress-dot {
+    background: #FBBF24;
+    box-shadow: 0 0 8px #FBBF24;
+    animation: statusPulse 2s infinite ease-in-out;
+}
+
+@keyframes statusPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+        box-shadow: 0 0 8px rgba(245, 158, 11, 0.6);
+    }
+    50% {
+        transform: scale(1.25);
+        opacity: 0.75;
+        box-shadow: 0 0 14px rgba(245, 158, 11, 0.9);
+    }
 }
 
 .project-github-btn {
@@ -2468,7 +2566,7 @@ body.dark-theme .hero-description:hover {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.25s ease;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, visibility 0.3s ease;
     z-index: 10;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
 }
@@ -2484,6 +2582,13 @@ body.dark-theme .hero-description:hover {
 .carousel-nav-btn:disabled {
     opacity: 0.25;
     cursor: not-allowed;
+}
+
+.carousel-nav-btn.is-hidden {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    cursor: default !important;
 }
 
 .carousel-prev {
@@ -2556,24 +2661,6 @@ body.dark-theme .hero-description:hover {
 @media (max-width: 768px) {
     .certifications-modern-section {
         padding: clamp(60px, 8vh, 80px) 16px clamp(50px, 7vh, 70px);
-    }
-
-    .cert-swipe-hint {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 18px;
-    }
-
-    .cert-swipe-hint span {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 11.5px;
-        font-weight: 600;
-        color: rgba(255, 255, 255, 0.6);
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 5px 16px;
-        border-radius: 9999px;
-        letter-spacing: 0.04em;
     }
 
     .certifications-grid {
@@ -3105,6 +3192,7 @@ body.dark-theme .hero-description:hover {
     .project-slide-desc {
         font-size: 12.5px;
         line-height: 1.5;
+        text-align: justify;
     }
 
     .project-slide-badge {
