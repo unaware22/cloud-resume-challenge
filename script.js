@@ -4,22 +4,21 @@
  */
 
 document.addEventListener("DOMContentLoaded", () => {
-    initIrisPreloader();
-    initHeroRive();
-    initScrollNavbar();
-    initThemeSwitcher();
-    initScrollReveal();
-    initVisitorCounter();
-    initTypewriter();
-    initExperienceCountUp();
-    initInteractiveExperienceCards();
-    initLocationModal();
-    initProjectCarousel();
-    initBadgeCardTilt();
-    initWavySkillsText();
-    initDrawerCipherScramble();
-    initCertScrollDrag();
-    initPageTransitions();
+    if (typeof initIrisPreloader === "function") initIrisPreloader();
+    if (typeof initHeroRive === "function") initHeroRive();
+    if (typeof initScrollNavbar === "function") initScrollNavbar();
+    if (typeof initThemeSwitcher === "function") initThemeSwitcher();
+    if (typeof initScrollReveal === "function") initScrollReveal();
+    if (typeof initVisitorCounter === "function") initVisitorCounter();
+    if (typeof initTypewriter === "function") initTypewriter();
+    if (typeof initExperienceCountUp === "function") initExperienceCountUp();
+    if (typeof initInteractiveExperienceCards === "function") initInteractiveExperienceCards();
+    if (typeof initLocationModal === "function") initLocationModal();
+    if (typeof initProjectCarousel === "function") initProjectCarousel();
+    if (typeof initWavySkillsText === "function") initWavySkillsText();
+    if (typeof initDrawerCipherScramble === "function") initDrawerCipherScramble();
+    if (typeof initCertScrollDrag === "function") initCertScrollDrag();
+    if (typeof initPageTransitions === "function") initPageTransitions();
 });
 
 /**
@@ -370,37 +369,184 @@ function initDrawerCipherScramble() {
 }
 
 /**
- * Smooth Drag & Flick Scrolling for Certifications Grid on Mobile / Desktop
+ * 2-Row Seamless Infinite Auto-Scrolling Marquee with Interactive Drag/Swipe
+ * - Row 1 auto-scrolls leftward
+ * - Row 2 auto-scrolls rightward
+ * - Continuous infinite looping with zero stutter/jump
+ * - Mouse drag & Touch swipe with natural inertia momentum
+ * - Distinguishes between drags and link clicks (< 6px drag opens certificate)
  */
 function initCertScrollDrag() {
-    const grid = document.getElementById("certificationsGrid");
-    if (!grid) return;
+    const row1 = document.getElementById("certRow1");
+    const row2 = document.getElementById("certRow2");
+    if (!row1 || !row2) return;
 
-    let isDown = false;
-    let startX = 0;
-    let scrollLeft = 0;
+    const rows = [
+        {
+            el: row1,
+            track: document.getElementById("certTrack1"),
+            direction: -1, // moves left
+            baseSpeed: 0.75,
+            x: 0,
+            speed: -0.75,
+            isDragging: false,
+            startX: 0,
+            lastX: 0,
+            dragDistance: 0,
+            halfWidth: 0
+        },
+        {
+            el: row2,
+            track: document.getElementById("certTrack2"),
+            direction: 1, // moves right
+            baseSpeed: 0.75,
+            x: 0,
+            speed: 0.75,
+            isDragging: false,
+            startX: 0,
+            lastX: 0,
+            dragDistance: 0,
+            halfWidth: 0
+        }
+    ];
 
-    grid.addEventListener("mousedown", (e) => {
-        isDown = true;
-        startX = e.pageX - grid.offsetLeft;
-        scrollLeft = grid.scrollLeft;
+    function updateHalfWidths() {
+        rows.forEach(item => {
+            const firstGroup = item.track ? item.track.querySelector(".cert-marquee-group") : null;
+            if (firstGroup) {
+                item.halfWidth = firstGroup.offsetWidth;
+            }
+        });
+    }
+
+    // Measure initially and on window resize / fonts loaded
+    updateHalfWidths();
+    window.addEventListener("resize", updateHalfWidths);
+    setTimeout(updateHalfWidths, 300);
+    setTimeout(updateHalfWidths, 1000);
+
+    // Initial position for row 2 so it has room to move rightward seamlessly
+    setTimeout(() => {
+        if (rows[1].halfWidth > 0 && rows[1].x === 0) {
+            rows[1].x = -rows[1].halfWidth / 2;
+        }
+    }, 100);
+
+    // Set up dragging for each row
+    rows.forEach(item => {
+        const el = item.el;
+        if (!el || !item.track) return;
+
+        let lastTime = 0;
+        let lastPointerX = 0;
+        let velocity = 0;
+
+        function onPointerDown(e) {
+            item.isDragging = true;
+            el.classList.add("is-dragging");
+            item.startX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+            item.lastX = item.startX;
+            lastPointerX = item.startX;
+            lastTime = performance.now();
+            item.dragDistance = 0;
+            velocity = 0;
+
+            window.addEventListener("pointermove", onPointerMove, { passive: false });
+            window.addEventListener("pointerup", onPointerUp);
+            window.addEventListener("pointercancel", onPointerUp);
+        }
+
+        function onPointerMove(e) {
+            if (!item.isDragging) return;
+            const clientX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+            const dx = clientX - item.lastX;
+            item.dragDistance += Math.abs(dx);
+            item.lastX = clientX;
+
+            const now = performance.now();
+            const dt = now - lastTime;
+            if (dt > 8) {
+                velocity = ((clientX - lastPointerX) / dt) * 16; // px per frame
+                lastPointerX = clientX;
+                lastTime = now;
+            }
+
+            item.x += dx;
+
+            // Wrap position seamlessly during drag
+            if (item.halfWidth > 0) {
+                while (item.x <= -item.halfWidth) item.x += item.halfWidth;
+                while (item.x > 0) item.x -= item.halfWidth;
+            }
+
+            item.track.style.transform = `translate3d(${item.x.toFixed(2)}px, 0, 0)`;
+        }
+
+        function onPointerUp() {
+            if (!item.isDragging) return;
+            item.isDragging = false;
+            el.classList.remove("is-dragging");
+            window.removeEventListener("pointermove", onPointerMove);
+            window.removeEventListener("pointerup", onPointerUp);
+            window.removeEventListener("pointercancel", onPointerUp);
+
+            // Apply momentum boost if user flicked
+            if (Math.abs(velocity) > 0.4) {
+                item.speed = Math.max(-14, Math.min(14, velocity));
+            }
+        }
+
+        el.addEventListener("pointerdown", onPointerDown);
+
+        // Prevent opening links if user was dragging
+        el.querySelectorAll(".cert-card").forEach(card => {
+            card.addEventListener("click", (e) => {
+                if (item.dragDistance > 6) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            });
+        });
     });
 
-    grid.addEventListener("mouseleave", () => {
-        isDown = false;
-    });
+    // Continuous 60fps/120fps physics loop
+    let lastFrameTime = performance.now();
 
-    grid.addEventListener("mouseup", () => {
-        isDown = false;
-    });
+    function marqueeLoop(currentTime) {
+        const delta = Math.min((currentTime - lastFrameTime) / 16.667, 2.5);
+        lastFrameTime = currentTime;
 
-    grid.addEventListener("mousemove", (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - grid.offsetLeft;
-        const walk = (x - startX) * 1.5;
-        grid.scrollLeft = scrollLeft - walk;
-    });
+        rows.forEach(item => {
+            if (!item.track) return;
+            if (item.halfWidth <= 0) {
+                updateHalfWidths();
+            }
+
+            if (!item.isDragging) {
+                // Smoothly decay velocity back to natural speed
+                const naturalSpeed = item.baseSpeed * item.direction;
+                item.speed += (naturalSpeed - item.speed) * 0.04;
+
+                item.x += item.speed * delta;
+
+                // Seamless infinite wrap around halfWidth
+                if (item.halfWidth > 0) {
+                    while (item.x <= -item.halfWidth) {
+                        item.x += item.halfWidth;
+                    }
+                    while (item.x > 0) {
+                        item.x -= item.halfWidth;
+                    }
+                }
+
+                item.track.style.transform = `translate3d(${item.x.toFixed(2)}px, 0, 0)`;
+            }
+        });
+
+        requestAnimationFrame(marqueeLoop);
+    }
+
+    requestAnimationFrame(marqueeLoop);
 }
 
 /**

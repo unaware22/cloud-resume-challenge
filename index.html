@@ -11,10 +11,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&family=Pixelify+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Press+Start+2P&display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=64" />
+    <link rel="stylesheet" href="styles.css?v=65" />
     <script src="interactive/rive_lite.js"></script>
     <script src="interactive/cat_data.js"></script>
-    <script src="script.js?v=64" defer></script>
+    <script src="script.js?v=65" defer></script>
 </head>
 
 <body>
@@ -509,7 +509,7 @@
                                 </div>
                                 <div class="project-slide-footer">
                                     <span class="project-slide-status in-progress">
-                                        <span class="status-dot in-progress-dot"></span>In Progress (Skripsi)
+                                        <span class="status-dot in-progress-dot"></span>In Progress
                                     </span>
                                     <a href="https://github.com/unaware22/Cloud-Security-Monitoring-Automated-Incident-Response"
                                         target="_blank" rel="noopener noreferrer" class="project-github-btn"
@@ -743,270 +743,499 @@
     </section>
 
 
-    <!-- Section 03: Certifications (5 Cards Per Row on Desktop, Image + Title Only) -->
+    <!-- Section 03: Certifications (2-Row Seamless Infinite Auto-Scroll Marquee + Draggable) -->
     <section id="certifications" class="certifications-modern-section reveal">
         <div class="modern-section-header">
             <span class="modern-section-overline">CREDENTIALS</span>
             <h2 class="modern-section-title">Certifications &amp; Badges</h2>
         </div>
-        <div class="certifications-grid" id="certificationsGrid">
-            <!-- Cert 1: IBM SkillsBuild & Hacktiv8 AI Agent -->
-            <a href="Certificate/BuildanAIAgent_Badge20260729-8-idrwxr.pdf" target="_blank" rel="noopener noreferrer"
-                class="cert-card reveal" title="IT AI Agent For Programming &amp; Build an AI Agent">
-                <div class="cert-img-container">
-                    <img src="Certificate/images/ibm_skillsbuild.png"
-                        alt="IT AI Agent For Programming &amp; Build an AI Agent" class="cert-img" loading="lazy" />
-                </div>
-                <div class="cert-info">
-                    <h3 class="cert-title">IT AI Agent For Programming</h3>
-                </div>
-            </a>
 
-            <!-- Cert 2: IBM SkillsBuild AI Foundations -->
-            <a href="Certificate/Completion Certificate _ SkillsBuild.pdf" target="_blank" rel="noopener noreferrer"
-                class="cert-card reveal" title="IBM SkillsBuild: Artificial Intelligence Foundations">
-                <div class="cert-img-container">
-                    <img src="Certificate/images/ibm_skillsbuild_2.png" alt="IBM SkillsBuild AI Foundations"
-                        class="cert-img" loading="lazy" />
-                </div>
-                <div class="cert-info">
-                    <h3 class="cert-title">IBM: AI Foundations</h3>
-                </div>
-            </a>
+        <div class="certifications-marquee-wrapper" id="certificationsMarqueeWrapper">
+            <!-- Row 1 (Auto-scrolling Left) -->
+            <div class="cert-marquee-row" id="certRow1" data-direction="left" data-speed="0.8">
+                <div class="cert-marquee-track" id="certTrack1">
+                    <!-- Group 1A (Original) -->
+                    <div class="cert-marquee-group">
+                        <!-- Cert 1 -->
+                        <a href="Certificate/BuildanAIAgent_Badge20260729-8-idrwxr.pdf" target="_blank" rel="noopener noreferrer"
+                            class="cert-card" title="IT AI Agent For Programming &amp; Build an AI Agent">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/ibm_skillsbuild.png"
+                                    alt="IT AI Agent For Programming &amp; Build an AI Agent" class="cert-img" loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">IT AI Agent For Programming</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 2 -->
+                        <a href="Certificate/Completion Certificate _ SkillsBuild.pdf" target="_blank" rel="noopener noreferrer"
+                            class="cert-card" title="IBM SkillsBuild: Artificial Intelligence Foundations">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/ibm_skillsbuild_2.png" alt="IBM SkillsBuild AI Foundations"
+                                    class="cert-img" loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">IBM: AI Foundations</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 3 -->
+                        <a href="Certificate/sertifikat_course_902_5631887_190726141626.pdf" target="_blank"
+                            rel="noopener noreferrer" class="cert-card"
+                            title="AWS Builder: Cloud Practitioner &amp; Architecture">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/aws_builder_1.png" alt="AWS Builder Cloud Practitioner"
+                                    class="cert-img" loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">AWS: Cloud Practitioner</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 4 -->
+                        <a href="Certificate/sertifikat_course_929_5631887_190726141444.pdf" target="_blank"
+                            rel="noopener noreferrer" class="cert-card"
+                            title="AWS Builder: Cloud Services &amp; Infrastructure">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/aws_builder_2.png" alt="AWS Builder Cloud Services" class="cert-img"
+                                    loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">AWS: Cloud Services &amp; Infra</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 5 -->
+                        <a href="Certificate/awsbuilder.pdf" target="_blank" rel="noopener noreferrer" class="cert-card"
+                            title="AWS Cloud Practitioner &amp; Infrastructure Builder">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/awsbuilder_main.png" alt="AWS Cloud Practitioner Builder"
+                                    class="cert-img" loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">AWS: Infrastructure Builder</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 6 -->
+                        <a href="Certificate/awsbuilder2.pdf" target="_blank" rel="noopener noreferrer" class="cert-card"
+                            title="AWS Cloud Security &amp; Deployment Specialist">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/awsbuilder_alt.png" alt="AWS Cloud Security Specialist"
+                                    class="cert-img" loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">AWS: Cloud Security Specialist</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 7 -->
+                        <a href="Certificate/aditya4523003@univpancasila.ac.id_Sertifikat Utama (1).pdf" target="_blank"
+                            rel="noopener noreferrer" class="cert-card" title="MSIB Batch 4: Cybersecurity Ethical Hackers">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/aditya4523003@univpancasila.ac.id_Sertifikat Utama (1).png"
+                                    alt="MSIB 4 Cybersecurity Ethical Hackers" class="cert-img" loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">MSIB 4: Ethical Hackers</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 8 -->
+                        <a href="Certificate/aiagent.pdf" target="_blank" rel="noopener noreferrer" class="cert-card"
+                            title="IBM SkillsBuild: AI Agent Assistant &amp; Prompting">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/ibm_aiagent.png" alt="IBM SkillsBuild AI Agent Assistant"
+                                    class="cert-img" loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">IBM: AI Agent Assistant</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 9 -->
+                        <a href="Certificate/Completion Certificate _ SkillsBuild2.pdf" target="_blank" rel="noopener noreferrer"
+                            class="cert-card" title="IBM SkillsBuild: Artificial Intelligence Specialization">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/ibm_skillsbuild_3.png" alt="IBM SkillsBuild AI Specialization"
+                                    class="cert-img" loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">IBM: AI Specialization</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 10 -->
+                        <a href="Certificate/aditya4523003@univpancasila.ac.id_Sertifikat Proyek (1).pdf" target="_blank"
+                            rel="noopener noreferrer" class="cert-card" title="Sertifikat Proyek Berdampak: Threat Modeling">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/aditya4523003@univpancasila.ac.id_Sertifikat Proyek (1).png"
+                                    alt="Proyek Threat Modeling" class="cert-img" loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">Vinix: Threat Modeling</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 11 -->
+                        <a href="Certificate/THM-7PKEKLLYLE.pdf" target="_blank" rel="noopener noreferrer" class="cert-card"
+                            title="TryHackMe: Cyber Security 101 Path Completion">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/THM-7PKEKLLYLE.png" alt="TryHackMe Cyber Security 101" class="cert-img"
+                                    loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">TryHackMe: Cyber Security 101</h3>
+                            </div>
+                        </a>
+                    </div>
 
-            <!-- Cert 3: AWS Builder Dicoding 1 -->
-            <a href="Certificate/sertifikat_course_902_5631887_190726141626.pdf" target="_blank"
-                rel="noopener noreferrer" class="cert-card reveal"
-                title="AWS Builder: Cloud Practitioner &amp; Architecture">
-                <div class="cert-img-container">
-                    <img src="Certificate/images/aws_builder_1.png" alt="AWS Builder Cloud Practitioner"
-                        class="cert-img" loading="lazy" />
+                    <!-- Group 1B (Duplicate for Seamless Infinite Loop) -->
+                    <div class="cert-marquee-group" aria-hidden="true">
+                        <!-- Cert 1 -->
+                        <a href="Certificate/BuildanAIAgent_Badge20260729-8-idrwxr.pdf" target="_blank" rel="noopener noreferrer"
+                            class="cert-card" tabindex="-1">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/ibm_skillsbuild.png"
+                                    alt="IT AI Agent For Programming &amp; Build an AI Agent" class="cert-img" loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">IT AI Agent For Programming</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 2 -->
+                        <a href="Certificate/Completion Certificate _ SkillsBuild.pdf" target="_blank" rel="noopener noreferrer"
+                            class="cert-card" tabindex="-1">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/ibm_skillsbuild_2.png" alt="IBM SkillsBuild AI Foundations"
+                                    class="cert-img" loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">IBM: AI Foundations</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 3 -->
+                        <a href="Certificate/sertifikat_course_902_5631887_190726141626.pdf" target="_blank"
+                            rel="noopener noreferrer" class="cert-card" tabindex="-1">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/aws_builder_1.png" alt="AWS Builder Cloud Practitioner"
+                                    class="cert-img" loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">AWS: Cloud Practitioner</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 4 -->
+                        <a href="Certificate/sertifikat_course_929_5631887_190726141444.pdf" target="_blank"
+                            rel="noopener noreferrer" class="cert-card" tabindex="-1">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/aws_builder_2.png" alt="AWS Builder Cloud Services" class="cert-img"
+                                    loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">AWS: Cloud Services &amp; Infra</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 5 -->
+                        <a href="Certificate/awsbuilder.pdf" target="_blank" rel="noopener noreferrer" class="cert-card" tabindex="-1">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/awsbuilder_main.png" alt="AWS Cloud Practitioner Builder"
+                                    class="cert-img" loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">AWS: Infrastructure Builder</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 6 -->
+                        <a href="Certificate/awsbuilder2.pdf" target="_blank" rel="noopener noreferrer" class="cert-card" tabindex="-1">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/awsbuilder_alt.png" alt="AWS Cloud Security Specialist"
+                                    class="cert-img" loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">AWS: Cloud Security Specialist</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 7 -->
+                        <a href="Certificate/aditya4523003@univpancasila.ac.id_Sertifikat Utama (1).pdf" target="_blank"
+                            rel="noopener noreferrer" class="cert-card" tabindex="-1">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/aditya4523003@univpancasila.ac.id_Sertifikat Utama (1).png"
+                                    alt="MSIB 4 Cybersecurity Ethical Hackers" class="cert-img" loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">MSIB 4: Ethical Hackers</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 8 -->
+                        <a href="Certificate/aiagent.pdf" target="_blank" rel="noopener noreferrer" class="cert-card" tabindex="-1">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/ibm_aiagent.png" alt="IBM SkillsBuild AI Agent Assistant"
+                                    class="cert-img" loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">IBM: AI Agent Assistant</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 9 -->
+                        <a href="Certificate/Completion Certificate _ SkillsBuild2.pdf" target="_blank" rel="noopener noreferrer"
+                            class="cert-card" tabindex="-1">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/ibm_skillsbuild_3.png" alt="IBM SkillsBuild AI Specialization"
+                                    class="cert-img" loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">IBM: AI Specialization</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 10 -->
+                        <a href="Certificate/aditya4523003@univpancasila.ac.id_Sertifikat Proyek (1).pdf" target="_blank"
+                            rel="noopener noreferrer" class="cert-card" tabindex="-1">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/aditya4523003@univpancasila.ac.id_Sertifikat Proyek (1).png"
+                                    alt="Proyek Threat Modeling" class="cert-img" loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">Vinix: Threat Modeling</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 11 -->
+                        <a href="Certificate/THM-7PKEKLLYLE.pdf" target="_blank" rel="noopener noreferrer" class="cert-card" tabindex="-1">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/THM-7PKEKLLYLE.png" alt="TryHackMe Cyber Security 101" class="cert-img"
+                                    loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">TryHackMe: Cyber Security 101</h3>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-                <div class="cert-info">
-                    <h3 class="cert-title">AWS: Cloud Practitioner</h3>
-                </div>
-            </a>
+            </div>
 
-            <!-- Cert 4: AWS Builder Dicoding 2 -->
-            <a href="Certificate/sertifikat_course_929_5631887_190726141444.pdf" target="_blank"
-                rel="noopener noreferrer" class="cert-card reveal"
-                title="AWS Builder: Cloud Services &amp; Infrastructure">
-                <div class="cert-img-container">
-                    <img src="Certificate/images/aws_builder_2.png" alt="AWS Builder Cloud Services" class="cert-img"
-                        loading="lazy" />
-                </div>
-                <div class="cert-info">
-                    <h3 class="cert-title">AWS: Cloud Services &amp; Infra</h3>
-                </div>
-            </a>
+            <!-- Row 2 (Auto-scrolling Right) -->
+            <div class="cert-marquee-row" id="certRow2" data-direction="right" data-speed="0.8">
+                <div class="cert-marquee-track" id="certTrack2">
+                    <!-- Group 2A (Original) -->
+                    <div class="cert-marquee-group">
+                        <!-- Cert 12 -->
+                        <a href="Certificate/THM-8WKKI3COQN.pdf" target="_blank" rel="noopener noreferrer" class="cert-card"
+                            title="TryHackMe: Pre Security Path Completion">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/THM-8WKKI3COQN.png" alt="TryHackMe Pre Security" class="cert-img"
+                                    loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">TryHackMe: Pre Security</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 13 -->
+                        <a href="Certificate/sertifikat_course_251_5631887_170726013548.pdf" target="_blank"
+                            rel="noopener noreferrer" class="cert-card"
+                            title="Dicoding: Belajar Dasar Cloud &amp; Gen AI di AWS">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/sertifikat_course_251_5631887_170726013548.png"
+                                    alt="Dicoding Dasar Cloud Gen AI" class="cert-img" loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">Dicoding: Cloud &amp; Gen AI AWS</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 14 -->
+                        <a href="Certificate/aditya4523003@univpancasila.ac.id_Sertifikat Softskill.pdf" target="_blank"
+                            rel="noopener noreferrer" class="cert-card" title="Professional Communication di Tempat Kerja">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/aditya4523003@univpancasila.ac.id_Sertifikat Softskill.png"
+                                    alt="Professional Communication" class="cert-img" loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">Vinix: Professional Communication</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 15 -->
+                        <a href="Certificate/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 27 Januari 2026.pdf"
+                            target="_blank" rel="noopener noreferrer" class="cert-card"
+                            title="IDN: Basic Mobile Pentesting Participant">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 27 Januari 2026.png"
+                                    alt="IDN Basic Mobile Pentesting" class="cert-img" loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">IDN: Mobile Pentesting</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 16 -->
+                        <a href="Certificate/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 29 Januari 2026.pdf"
+                            target="_blank" rel="noopener noreferrer" class="cert-card"
+                            title="IDN: Membangun Sistem Keamanan Dari Nol">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 29 Januari 2026.png"
+                                    alt="IDN Membangun Sistem Keamanan" class="cert-img" loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">IDN: Sistem Keamanan Dari Nol</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 17 -->
+                        <a href="Certificate/sertifikat_geospasial.jpeg" target="_blank" rel="noopener noreferrer"
+                            class="cert-card" title="Peserta Kuliah Umum: AI Geospasial">
+                            <div class="cert-img-container">
+                                <img src="Certificate/sertifikat_geospasial.jpeg" alt="Kuliah Umum AI Geospasial" class="cert-img"
+                                    loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">Kuliah Umum: AI Geospasial</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 18 -->
+                        <a href="Certificate/4523210003 Aditya Nur Lintang - Sertifikat Kuliah Tamu Internasional 10 Sep 25.pdf"
+                            target="_blank" rel="noopener noreferrer" class="cert-card"
+                            title="Kuliah Tamu Internasional Magang Global">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/pancasila1.jpg" alt="Kuliah Tamu Internasional" class="cert-img"
+                                    loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">Kuliah Tamu: Magang Global</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 19 -->
+                        <a href="Certificate/dicoding2.pdf" target="_blank" rel="noopener noreferrer" class="cert-card"
+                            title="Dicoding: Spec-Driven Development dengan Kiro">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/dicoding2.jpg" alt="Dicoding Spec-Driven Development Kiro"
+                                    class="cert-img" loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">Dicoding: SDD dengan Kiro</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 20 -->
+                        <a href="Certificate/dicoding3.pdf" target="_blank" rel="noopener noreferrer" class="cert-card"
+                            title="Dicoding: Belajar Penerapan Data Science dengan Microsoft Fabric">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/dicoding3.jpg" alt="Dicoding Data Science Microsoft Fabric"
+                                    class="cert-img" loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">Dicoding: Microsoft Fabric</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 21 -->
+                        <a href="Certificate/duniacoding.pdf" target="_blank" rel="noopener noreferrer" class="cert-card"
+                            title="Dunia Coding: Website Aman di Era AI">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/duniacoding.jpg" alt="Dunia Coding Website Aman AI" class="cert-img"
+                                    loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">Dunia Coding: Website Aman AI</h3>
+                            </div>
+                        </a>
+                    </div>
 
-            <!-- Cert 5: AWS Builder Official Certificate -->
-            <a href="Certificate/awsbuilder.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal"
-                title="AWS Cloud Practitioner &amp; Infrastructure Builder">
-                <div class="cert-img-container">
-                    <img src="Certificate/images/awsbuilder_main.png" alt="AWS Cloud Practitioner Builder"
-                        class="cert-img" loading="lazy" />
+                    <!-- Group 2B (Duplicate for Seamless Infinite Loop) -->
+                    <div class="cert-marquee-group" aria-hidden="true">
+                        <!-- Cert 12 -->
+                        <a href="Certificate/THM-8WKKI3COQN.pdf" target="_blank" rel="noopener noreferrer" class="cert-card" tabindex="-1">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/THM-8WKKI3COQN.png" alt="TryHackMe Pre Security" class="cert-img"
+                                    loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">TryHackMe: Pre Security</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 13 -->
+                        <a href="Certificate/sertifikat_course_251_5631887_170726013548.pdf" target="_blank"
+                            rel="noopener noreferrer" class="cert-card" tabindex="-1">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/sertifikat_course_251_5631887_170726013548.png"
+                                    alt="Dicoding Dasar Cloud Gen AI" class="cert-img" loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">Dicoding: Cloud &amp; Gen AI AWS</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 14 -->
+                        <a href="Certificate/aditya4523003@univpancasila.ac.id_Sertifikat Softskill.pdf" target="_blank"
+                            rel="noopener noreferrer" class="cert-card" tabindex="-1">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/aditya4523003@univpancasila.ac.id_Sertifikat Softskill.png"
+                                    alt="Professional Communication" class="cert-img" loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">Vinix: Professional Communication</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 15 -->
+                        <a href="Certificate/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 27 Januari 2026.pdf"
+                            target="_blank" rel="noopener noreferrer" class="cert-card" tabindex="-1">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 27 Januari 2026.png"
+                                    alt="IDN Basic Mobile Pentesting" class="cert-img" loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">IDN: Mobile Pentesting</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 16 -->
+                        <a href="Certificate/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 29 Januari 2026.pdf"
+                            target="_blank" rel="noopener noreferrer" class="cert-card" tabindex="-1">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 29 Januari 2026.png"
+                                    alt="IDN Membangun Sistem Keamanan" class="cert-img" loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">IDN: Sistem Keamanan Dari Nol</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 17 -->
+                        <a href="Certificate/sertifikat_geospasial.jpeg" target="_blank" rel="noopener noreferrer"
+                            class="cert-card" tabindex="-1">
+                            <div class="cert-img-container">
+                                <img src="Certificate/sertifikat_geospasial.jpeg" alt="Kuliah Umum AI Geospasial" class="cert-img"
+                                    loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">Kuliah Umum: AI Geospasial</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 18 -->
+                        <a href="Certificate/4523210003 Aditya Nur Lintang - Sertifikat Kuliah Tamu Internasional 10 Sep 25.pdf"
+                            target="_blank" rel="noopener noreferrer" class="cert-card" tabindex="-1">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/pancasila1.jpg" alt="Kuliah Tamu Internasional" class="cert-img"
+                                    loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">Kuliah Tamu: Magang Global</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 19 -->
+                        <a href="Certificate/dicoding2.pdf" target="_blank" rel="noopener noreferrer" class="cert-card" tabindex="-1">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/dicoding2.jpg" alt="Dicoding Spec-Driven Development Kiro"
+                                    class="cert-img" loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">Dicoding: SDD dengan Kiro</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 20 -->
+                        <a href="Certificate/dicoding3.pdf" target="_blank" rel="noopener noreferrer" class="cert-card" tabindex="-1">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/dicoding3.jpg" alt="Dicoding Data Science Microsoft Fabric"
+                                    class="cert-img" loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">Dicoding: Microsoft Fabric</h3>
+                            </div>
+                        </a>
+                        <!-- Cert 21 -->
+                        <a href="Certificate/duniacoding.pdf" target="_blank" rel="noopener noreferrer" class="cert-card" tabindex="-1">
+                            <div class="cert-img-container">
+                                <img src="Certificate/images/duniacoding.jpg" alt="Dunia Coding Website Aman AI" class="cert-img"
+                                    loading="lazy" />
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">Dunia Coding: Website Aman AI</h3>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-                <div class="cert-info">
-                    <h3 class="cert-title">AWS: Infrastructure Builder</h3>
-                </div>
-            </a>
-
-            <!-- Cert 6: AWS Builder Specialized Certificate -->
-            <a href="Certificate/awsbuilder2.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal"
-                title="AWS Cloud Security &amp; Deployment Specialist">
-                <div class="cert-img-container">
-                    <img src="Certificate/images/awsbuilder_alt.png" alt="AWS Cloud Security Specialist"
-                        class="cert-img" loading="lazy" />
-                </div>
-                <div class="cert-info">
-                    <h3 class="cert-title">AWS: Cloud Security Specialist</h3>
-                </div>
-            </a>
-
-            <!-- Cert 7: MSIB PT Vinix Utama -->
-            <a href="Certificate/aditya4523003@univpancasila.ac.id_Sertifikat Utama (1).pdf" target="_blank"
-                rel="noopener noreferrer" class="cert-card reveal" title="MSIB Batch 4: Cybersecurity Ethical Hackers">
-                <div class="cert-img-container">
-                    <img src="Certificate/images/aditya4523003@univpancasila.ac.id_Sertifikat Utama (1).png"
-                        alt="MSIB 4 Cybersecurity Ethical Hackers" class="cert-img" loading="lazy" />
-                </div>
-                <div class="cert-info">
-                    <h3 class="cert-title">MSIB 4: Ethical Hackers</h3>
-                </div>
-            </a>
-
-            <!-- Cert 8: IBM SkillsBuild AI Agent Assistant -->
-            <a href="Certificate/aiagent.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal"
-                title="IBM SkillsBuild: AI Agent Assistant &amp; Prompting">
-                <div class="cert-img-container">
-                    <img src="Certificate/images/ibm_aiagent.png" alt="IBM SkillsBuild AI Agent Assistant"
-                        class="cert-img" loading="lazy" />
-                </div>
-                <div class="cert-info">
-                    <h3 class="cert-title">IBM: AI Agent Assistant</h3>
-                </div>
-            </a>
-
-            <!-- Cert 9: IBM SkillsBuild AI Specialization -->
-            <a href="Certificate/Completion Certificate _ SkillsBuild2.pdf" target="_blank" rel="noopener noreferrer"
-                class="cert-card reveal" title="IBM SkillsBuild: Artificial Intelligence Specialization">
-                <div class="cert-img-container">
-                    <img src="Certificate/images/ibm_skillsbuild_3.png" alt="IBM SkillsBuild AI Specialization"
-                        class="cert-img" loading="lazy" />
-                </div>
-                <div class="cert-info">
-                    <h3 class="cert-title">IBM: AI Specialization</h3>
-                </div>
-            </a>
-
-            <!-- Cert 10: Proyek Berdampak PT Vinix -->
-            <a href="Certificate/aditya4523003@univpancasila.ac.id_Sertifikat Proyek (1).pdf" target="_blank"
-                rel="noopener noreferrer" class="cert-card reveal" title="Sertifikat Proyek Berdampak: Threat Modeling">
-                <div class="cert-img-container">
-                    <img src="Certificate/images/aditya4523003@univpancasila.ac.id_Sertifikat Proyek (1).png"
-                        alt="Proyek Threat Modeling" class="cert-img" loading="lazy" />
-                </div>
-                <div class="cert-info">
-                    <h3 class="cert-title">Vinix: Threat Modeling</h3>
-                </div>
-            </a>
-
-            <!-- Cert 11: TryHackMe Cyber Security 101 -->
-            <a href="Certificate/THM-7PKEKLLYLE.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal"
-                title="TryHackMe: Cyber Security 101 Path Completion">
-                <div class="cert-img-container">
-                    <img src="Certificate/images/THM-7PKEKLLYLE.png" alt="TryHackMe Cyber Security 101" class="cert-img"
-                        loading="lazy" />
-                </div>
-                <div class="cert-info">
-                    <h3 class="cert-title">TryHackMe: Cyber Security 101</h3>
-                </div>
-            </a>
-
-            <!-- Cert 12: TryHackMe Pre Security -->
-            <a href="Certificate/THM-8WKKI3COQN.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal"
-                title="TryHackMe: Pre Security Path Completion">
-                <div class="cert-img-container">
-                    <img src="Certificate/images/THM-8WKKI3COQN.png" alt="TryHackMe Pre Security" class="cert-img"
-                        loading="lazy" />
-                </div>
-                <div class="cert-info">
-                    <h3 class="cert-title">TryHackMe: Pre Security</h3>
-                </div>
-            </a>
-
-            <!-- Cert 13: Dicoding AWS Cloud & Gen AI -->
-            <a href="Certificate/sertifikat_course_251_5631887_170726013548.pdf" target="_blank"
-                rel="noopener noreferrer" class="cert-card reveal"
-                title="Dicoding: Belajar Dasar Cloud &amp; Gen AI di AWS">
-                <div class="cert-img-container">
-                    <img src="Certificate/images/sertifikat_course_251_5631887_170726013548.png"
-                        alt="Dicoding Dasar Cloud Gen AI" class="cert-img" loading="lazy" />
-                </div>
-                <div class="cert-info">
-                    <h3 class="cert-title">Dicoding: Cloud &amp; Gen AI AWS</h3>
-                </div>
-            </a>
-
-            <!-- Cert 14: Softskill PT Vinix -->
-            <a href="Certificate/aditya4523003@univpancasila.ac.id_Sertifikat Softskill.pdf" target="_blank"
-                rel="noopener noreferrer" class="cert-card reveal" title="Professional Communication di Tempat Kerja">
-                <div class="cert-img-container">
-                    <img src="Certificate/images/aditya4523003@univpancasila.ac.id_Sertifikat Softskill.png"
-                        alt="Professional Communication" class="cert-img" loading="lazy" />
-                </div>
-                <div class="cert-info">
-                    <h3 class="cert-title">Vinix: Professional Communication</h3>
-                </div>
-            </a>
-
-            <!-- Cert 15: IDN Webinar Pentesting -->
-            <a href="Certificate/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 27 Januari 2026.pdf"
-                target="_blank" rel="noopener noreferrer" class="cert-card reveal"
-                title="IDN: Basic Mobile Pentesting Participant">
-                <div class="cert-img-container">
-                    <img src="Certificate/images/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 27 Januari 2026.png"
-                        alt="IDN Basic Mobile Pentesting" class="cert-img" loading="lazy" />
-                </div>
-                <div class="cert-info">
-                    <h3 class="cert-title">IDN: Mobile Pentesting</h3>
-                </div>
-            </a>
-
-            <!-- Cert 16: IDN Webinar Sistem Keamanan -->
-            <a href="Certificate/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 29 Januari 2026.pdf"
-                target="_blank" rel="noopener noreferrer" class="cert-card reveal"
-                title="IDN: Membangun Sistem Keamanan Dari Nol">
-                <div class="cert-img-container">
-                    <img src="Certificate/images/Aditya Nur Lintang Sertifikat Webinar IT Cyber Security 29 Januari 2026.png"
-                        alt="IDN Membangun Sistem Keamanan" class="cert-img" loading="lazy" />
-                </div>
-                <div class="cert-info">
-                    <h3 class="cert-title">IDN: Sistem Keamanan Dari Nol</h3>
-                </div>
-            </a>
-
-            <!-- Cert 17: Kuliah Umum AI Geospasial -->
-            <a href="Certificate/sertifikat_geospasial.jpeg" target="_blank" rel="noopener noreferrer"
-                class="cert-card reveal" title="Peserta Kuliah Umum: AI Geospasial">
-                <div class="cert-img-container">
-                    <img src="Certificate/sertifikat_geospasial.jpeg" alt="Kuliah Umum AI Geospasial" class="cert-img"
-                        loading="lazy" />
-                </div>
-                <div class="cert-info">
-                    <h3 class="cert-title">Kuliah Umum: AI Geospasial</h3>
-                </div>
-            </a>
-
-            <!-- Cert 18: Kuliah Tamu Internasional -->
-            <a href="Certificate/4523210003 Aditya Nur Lintang - Sertifikat Kuliah Tamu Internasional 10 Sep 25.pdf"
-                target="_blank" rel="noopener noreferrer" class="cert-card reveal"
-                title="Kuliah Tamu Internasional Magang Global">
-                <div class="cert-img-container">
-                    <img src="Certificate/images/pancasila1.jpg" alt="Kuliah Tamu Internasional" class="cert-img"
-                        loading="lazy" />
-                </div>
-                <div class="cert-info">
-                    <h3 class="cert-title">Kuliah Tamu: Magang Global</h3>
-                </div>
-            </a>
-
-            <!-- Cert 19: Dicoding SDD Kiro -->
-            <a href="Certificate/dicoding2.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal"
-                title="Dicoding: Spec-Driven Development dengan Kiro">
-                <div class="cert-img-container">
-                    <img src="Certificate/images/dicoding2.jpg" alt="Dicoding Spec-Driven Development Kiro"
-                        class="cert-img" loading="lazy" />
-                </div>
-                <div class="cert-info">
-                    <h3 class="cert-title">Dicoding: SDD dengan Kiro</h3>
-                </div>
-            </a>
-
-            <!-- Cert 20: Dicoding Data Science Microsoft Fabric -->
-            <a href="Certificate/dicoding3.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal"
-                title="Dicoding: Belajar Penerapan Data Science dengan Microsoft Fabric">
-                <div class="cert-img-container">
-                    <img src="Certificate/images/dicoding3.jpg" alt="Dicoding Data Science Microsoft Fabric"
-                        class="cert-img" loading="lazy" />
-                </div>
-                <div class="cert-info">
-                    <h3 class="cert-title">Dicoding: Microsoft Fabric</h3>
-                </div>
-            </a>
-
-            <!-- Cert 21: Dunia Coding Website Aman AI -->
-            <a href="Certificate/duniacoding.pdf" target="_blank" rel="noopener noreferrer" class="cert-card reveal"
-                title="Dunia Coding: Website Aman di Era AI">
-                <div class="cert-img-container">
-                    <img src="Certificate/images/duniacoding.jpg" alt="Dunia Coding Website Aman AI" class="cert-img"
-                        loading="lazy" />
-                </div>
-                <div class="cert-info">
-                    <h3 class="cert-title">Dunia Coding: Website Aman AI</h3>
-                </div>
-            </a>
+            </div>
         </div>
     </section>
 

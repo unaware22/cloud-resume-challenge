@@ -2624,99 +2624,61 @@ body.dark-theme .hero-description:hover {
 }
 
 /* =============================================
-   SECTION 03: CERTIFICATIONS (5 CARDS PER ROW, IMAGE + TITLE ONLY)
+   SECTION 03: CERTIFICATIONS (2-ROW SEAMLESS INFINITE MARQUEE + DRAGGABLE)
    ============================================= */
 .certifications-modern-section {
     position: relative;
     background: #0A0B0E;
-    padding: clamp(90px, 11vh, 130px) 4% clamp(80px, 10vh, 120px);
+    padding: clamp(80px, 10vh, 120px) 0 clamp(80px, 10vh, 120px);
     width: 100%;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
-.certifications-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+.certifications-marquee-wrapper {
+    display: flex;
+    flex-direction: column;
     gap: 20px;
-    max-width: 1440px;
-    margin: 0 auto;
     width: 100%;
+    position: relative;
+    overflow: hidden;
+    /* Ultra-smooth edge gradient fade masks */
+    mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+    user-select: none;
+    -webkit-user-select: none;
 }
 
-@media (max-width: 1300px) {
-    .certifications-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 16px;
-    }
+.cert-marquee-row {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    cursor: grab;
+    touch-action: pan-y;
 }
 
-@media (max-width: 992px) {
-    .certifications-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 14px;
-    }
+.cert-marquee-row.is-dragging {
+    cursor: grabbing;
 }
 
-/* Mobile: Exactly 3 Rows Layout with Smooth Horizontal Flick/Swipe */
-@media (max-width: 768px) {
-    .certifications-modern-section {
-        padding: clamp(60px, 8vh, 80px) 16px clamp(50px, 7vh, 70px);
-    }
+.cert-marquee-track {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+    align-items: stretch;
+}
 
-    .certifications-grid {
-        display: grid;
-        grid-template-columns: none;
-        grid-template-rows: repeat(3, 1fr);
-        grid-auto-flow: column;
-        grid-auto-columns: clamp(140px, 42vw, 175px);
-        overflow-x: auto;
-        overflow-y: hidden;
-        -webkit-overflow-scrolling: touch;
-        touch-action: pan-x pan-y;
-        scroll-snap-type: none; /* Non-blocking smooth momentum swipe */
-        gap: 12px;
-        padding: 4px 4px 16px;
-        scrollbar-width: thin;
-        scrollbar-color: rgba(212, 244, 54, 0.4) transparent;
-        cursor: grab;
-    }
-
-    .certifications-grid:active {
-        cursor: grabbing;
-    }
-
-    .certifications-grid::-webkit-scrollbar {
-        height: 4px;
-    }
-
-    .certifications-grid::-webkit-scrollbar-thumb {
-        background: rgba(212, 244, 54, 0.4);
-        border-radius: 9999px;
-    }
-
-    .cert-card {
-        border-radius: 14px;
-        min-width: 0;
-        user-select: none;
-        -webkit-user-select: none;
-    }
-
-    .cert-img-container {
-        height: 95px !important;
-    }
-
-    .cert-info {
-        padding: 8px 10px !important;
-    }
-
-    .cert-title {
-        font-size: 11.5px !important;
-        line-height: 1.25 !important;
-    }
+.cert-marquee-group {
+    display: flex;
+    gap: 18px;
+    padding-right: 18px;
+    flex-shrink: 0;
+    align-items: stretch;
 }
 
 .cert-card {
-    background: rgba(255, 255, 255, 0.025);
+    background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
@@ -2725,21 +2687,25 @@ body.dark-theme .hero-description:hover {
     display: flex;
     flex-direction: column;
     text-decoration: none;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    width: clamp(210px, 20vw, 260px);
+    flex-shrink: 0;
     position: relative;
+    pointer-events: auto;
+    /* User request: TIDAK DAPAT DIHOVER (no transform/tilt/lift on hover) */
+    transition: none !important;
+    transform: none !important;
 }
 
 .cert-card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(212, 244, 54, 0.45);
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55), 0 0 25px rgba(212, 244, 54, 0.15);
+    transform: none !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35) !important;
 }
 
 .cert-img-container {
     width: 100%;
-    height: 160px;
+    height: clamp(120px, 12vw, 150px);
     overflow: hidden;
     background: #08090C;
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -2754,17 +2720,15 @@ body.dark-theme .hero-description:hover {
     height: 100%;
     object-fit: cover;
     object-position: center;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     display: block;
-}
-
-.cert-card:hover .cert-img {
-    transform: scale(1.06);
+    pointer-events: none;
+    transform: none !important;
+    transition: none !important;
 }
 
 .cert-info {
-    padding: 14px 14px;
-    background: rgba(14, 17, 24, 0.85);
+    padding: 12px 14px;
+    background: rgba(14, 17, 24, 0.92);
     flex-grow: 1;
     display: flex;
     align-items: center;
@@ -2774,21 +2738,54 @@ body.dark-theme .hero-description:hover {
 
 .cert-title {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 13.5px;
-    font-weight: 700;
-    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 600;
+    color: #F1F5F9;
     line-height: 1.35;
     margin: 0;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    transition: color 0.2s ease;
     letter-spacing: -0.01em;
+    transition: none !important;
 }
 
 .cert-card:hover .cert-title {
-    color: #D4F436;
+    color: #F1F5F9 !important;
+}
+
+@media (max-width: 768px) {
+    .certifications-modern-section {
+        padding: clamp(60px, 8vh, 80px) 0 clamp(50px, 7vh, 70px);
+    }
+
+    .certifications-marquee-wrapper {
+        gap: 14px;
+    }
+
+    .cert-marquee-group {
+        gap: 12px;
+        padding-right: 12px;
+    }
+
+    .cert-card {
+        width: clamp(155px, 44vw, 190px);
+        border-radius: 14px;
+    }
+
+    .cert-img-container {
+        height: clamp(95px, 26vw, 115px);
+    }
+
+    .cert-info {
+        padding: 9px 10px;
+    }
+
+    .cert-title {
+        font-size: 11.5px;
+        line-height: 1.25;
+    }
 }
 
 /* =============================================
