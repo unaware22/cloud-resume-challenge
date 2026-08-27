@@ -2688,8 +2688,11 @@ body.dark-theme .hero-description:hover {
     flex-direction: column;
     text-decoration: none;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-    width: clamp(210px, 20vw, 260px);
-    flex-shrink: 0;
+    flex: 0 0 clamp(200px, 20vw, 250px);
+    width: clamp(200px, 20vw, 250px);
+    min-width: clamp(200px, 20vw, 250px);
+    max-width: 250px;
+    box-sizing: border-box;
     position: relative;
     pointer-events: auto;
     /* User request: TIDAK DAPAT DIHOVER (no transform/tilt/lift on hover) */
@@ -2757,7 +2760,7 @@ body.dark-theme .hero-description:hover {
 
 @media (max-width: 768px) {
     .certifications-modern-section {
-        padding: clamp(60px, 8vh, 80px) 0 clamp(50px, 7vh, 70px);
+        padding: clamp(50px, 7vh, 70px) 0 clamp(40px, 6vh, 60px);
     }
 
     .certifications-marquee-wrapper {
@@ -2770,21 +2773,24 @@ body.dark-theme .hero-description:hover {
     }
 
     .cert-card {
-        width: clamp(155px, 44vw, 190px);
+        flex: 0 0 clamp(150px, 42vw, 185px) !important;
+        width: clamp(150px, 42vw, 185px) !important;
+        min-width: clamp(150px, 42vw, 185px) !important;
+        max-width: 185px !important;
         border-radius: 14px;
     }
 
     .cert-img-container {
-        height: clamp(95px, 26vw, 115px);
+        height: clamp(90px, 25vw, 110px) !important;
     }
 
     .cert-info {
-        padding: 9px 10px;
+        padding: 8px 10px !important;
     }
 
     .cert-title {
-        font-size: 11.5px;
-        line-height: 1.25;
+        font-size: 11.5px !important;
+        line-height: 1.25 !important;
     }
 }
 
@@ -3212,25 +3218,6 @@ body.dark-theme .hero-description:hover {
         height: 36px;
     }
 
-    
-    .certifications-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        width: 100%;
-    }
-    
-    .cert-card {
-        min-height: auto;
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .cert-card.reveal {
-        opacity: 1;
-        transform: none;
-    }
-
-    
     .contact-grid {
         grid-template-columns: 1fr;
     }

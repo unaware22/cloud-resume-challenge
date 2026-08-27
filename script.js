@@ -369,11 +369,12 @@ function initDrawerCipherScramble() {
 }
 
 /**
- * 2-Row Seamless Infinite Auto-Scrolling Marquee with Interactive Drag/Swipe
+ * 2-Row Seamless Infinite Auto-Scrolling Marquee with Mobile Gesture Drag & Swipe
  * - Row 1 auto-scrolls leftward
  * - Row 2 auto-scrolls rightward
  * - Continuous infinite looping with zero stutter/jump
- * - Mouse drag & Touch swipe with natural inertia momentum
+ * - Intelligent Gesture Disambiguation: Allows 100% natural vertical page scrolling on mobile
+ * - Horizontal swipe/drag with inertia physics
  * - Distinguishes between drags and link clicks (< 6px drag opens certificate)
  */
 function initCertScrollDrag() {
@@ -391,6 +392,7 @@ function initCertScrollDrag() {
             speed: -0.75,
             isDragging: false,
             startX: 0,
+            startY: 0,
             lastX: 0,
             dragDistance: 0,
             halfWidth: 0
@@ -404,6 +406,7 @@ function initCertScrollDrag() {
             speed: 0.75,
             isDragging: false,
             startX: 0,
+            startY: 0,
             lastX: 0,
             dragDistance: 0,
             halfWidth: 0
@@ -414,66 +417,117 @@ function initCertScrollDrag() {
         rows.forEach(item => {
             const firstGroup = item.track ? item.track.querySelector(".cert-marquee-group") : null;
             if (firstGroup) {
-                item.halfWidth = firstGroup.offsetWidth;
+                const w = firstGroup.getBoundingClientRect().width;
+                item.halfWidth = w > 0 ? w : firstGroup.scrollWidth;
             }
         });
     }
 
-    // Measure initially and on window resize / fonts loaded
+    // Measure initially and on various lifecycle events
     updateHalfWidths();
     window.addEventListener("resize", updateHalfWidths);
-    setTimeout(updateHalfWidths, 300);
-    setTimeout(updateHalfWidths, 1000);
+    window.addEventListener("orientationchange", () => setTimeout(updateHalfWidths, 150));
+    window.addEventListener("load", updateHalfWidths);
+    setTimeout(updateHalfWidths, 200);
+    setTimeout(updateHalfWidths, 600);
+    setTimeout(updateHalfWidths, 1500);
 
-    // Initial position for row 2 so it has room to move rightward seamlessly
+    // Initial position for row 2 so it starts at -halfWidth/2 (moving rightward)
     setTimeout(() => {
         if (rows[1].halfWidth > 0 && rows[1].x === 0) {
             rows[1].x = -rows[1].halfWidth / 2;
         }
-    }, 100);
+    }, 150);
 
-    // Set up dragging for each row
+    // Set up gesture handling for each row
     rows.forEach(item => {
         const el = item.el;
         if (!el || !item.track) return;
 
+        let isTracking = false;
+        let directionLocked = false;
         let lastTime = 0;
         let lastPointerX = 0;
         let velocity = 0;
 
-        function onPointerDown(e) {
-            item.isDragging = true;
-            el.classList.add("is-dragging");
-            item.startX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
-            item.lastX = item.startX;
-            lastPointerX = item.startX;
+        function getPoint(e) {
+            if (e.touches && e.touches.length > 0) {
+                return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+            }
+            if (e.changedTouches && e.changedTouches.length > 0) {
+                return { x: e.changedTouches[0].clientX, y: e.changedTouches[0].clientY };
+            }
+            return { x: e.clientX, y: e.clientY };
+        }
+
+        function onStart(e) {
+            const p = getPoint(e);
+            if (p.x === undefined || p.y === undefined) return;
+
+            isTracking = true;
+            item.isDragging = false;
+            directionLocked = false;
+            item.startX = p.x;
+            item.startY = p.y;
+            item.lastX = p.x;
+            lastPointerX = p.x;
             lastTime = performance.now();
             item.dragDistance = 0;
             velocity = 0;
 
-            window.addEventListener("pointermove", onPointerMove, { passive: false });
-            window.addEventListener("pointerup", onPointerUp);
-            window.addEventListener("pointercancel", onPointerUp);
+            window.addEventListener("touchmove", onMove, { passive: false });
+            window.addEventListener("touchend", onEnd, { passive: true });
+            window.addEventListener("touchcancel", onEnd, { passive: true });
+            window.addEventListener("mousemove", onMove);
+            window.addEventListener("mouseup", onEnd);
         }
 
-        function onPointerMove(e) {
+        function onMove(e) {
+            if (!isTracking) return;
+            const p = getPoint(e);
+            if (p.x === undefined || p.y === undefined) return;
+
+            const totalDx = p.x - item.startX;
+            const totalDy = p.y - item.startY;
+
+            // Gesture Intent Recognition (Disambiguate vertical page scroll vs horizontal drag)
+            if (!directionLocked) {
+                if (Math.abs(totalDy) > Math.abs(totalDx) && Math.abs(totalDy) > 6) {
+                    // Vertical page scroll detected -> Cancel horizontal drag tracking
+                    isTracking = false;
+                    item.isDragging = false;
+                    cleanupListeners();
+                    return;
+                } else if (Math.abs(totalDx) > Math.abs(totalDy) && Math.abs(totalDx) > 6) {
+                    // Horizontal drag detected
+                    directionLocked = true;
+                    item.isDragging = true;
+                    el.classList.add("is-dragging");
+                }
+            }
+
             if (!item.isDragging) return;
-            const clientX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
-            const dx = clientX - item.lastX;
+
+            // Prevent native page scroll while actively dragging marquee horizontally
+            if (e.cancelable) {
+                e.preventDefault();
+            }
+
+            const dx = p.x - item.lastX;
             item.dragDistance += Math.abs(dx);
-            item.lastX = clientX;
+            item.lastX = p.x;
 
             const now = performance.now();
             const dt = now - lastTime;
             if (dt > 8) {
-                velocity = ((clientX - lastPointerX) / dt) * 16; // px per frame
-                lastPointerX = clientX;
+                velocity = ((p.x - lastPointerX) / dt) * 16;
+                lastPointerX = p.x;
                 lastTime = now;
             }
 
             item.x += dx;
 
-            // Wrap position seamlessly during drag
+            // Seamless infinite wrap during drag
             if (item.halfWidth > 0) {
                 while (item.x <= -item.halfWidth) item.x += item.halfWidth;
                 while (item.x > 0) item.x -= item.halfWidth;
@@ -482,23 +536,35 @@ function initCertScrollDrag() {
             item.track.style.transform = `translate3d(${item.x.toFixed(2)}px, 0, 0)`;
         }
 
-        function onPointerUp() {
-            if (!item.isDragging) return;
-            item.isDragging = false;
-            el.classList.remove("is-dragging");
-            window.removeEventListener("pointermove", onPointerMove);
-            window.removeEventListener("pointerup", onPointerUp);
-            window.removeEventListener("pointercancel", onPointerUp);
+        function onEnd() {
+            if (!isTracking && !item.isDragging) return;
+            isTracking = false;
 
-            // Apply momentum boost if user flicked
-            if (Math.abs(velocity) > 0.4) {
-                item.speed = Math.max(-14, Math.min(14, velocity));
+            if (item.isDragging) {
+                item.isDragging = false;
+                el.classList.remove("is-dragging");
+
+                // Apply inertia momentum
+                if (Math.abs(velocity) > 0.4) {
+                    item.speed = Math.max(-14, Math.min(14, velocity));
+                }
             }
+
+            cleanupListeners();
         }
 
-        el.addEventListener("pointerdown", onPointerDown);
+        function cleanupListeners() {
+            window.removeEventListener("touchmove", onMove);
+            window.removeEventListener("touchend", onEnd);
+            window.removeEventListener("touchcancel", onEnd);
+            window.removeEventListener("mousemove", onMove);
+            window.removeEventListener("mouseup", onEnd);
+        }
 
-        // Prevent opening links if user was dragging
+        el.addEventListener("touchstart", onStart, { passive: true });
+        el.addEventListener("mousedown", onStart);
+
+        // Prevent opening links if user was performing a drag gesture (> 6px)
         el.querySelectorAll(".cert-card").forEach(card => {
             card.addEventListener("click", (e) => {
                 if (item.dragDistance > 6) {
@@ -529,7 +595,7 @@ function initCertScrollDrag() {
 
                 item.x += item.speed * delta;
 
-                // Seamless infinite wrap around halfWidth
+                // Seamless infinite loop wrap around halfWidth
                 if (item.halfWidth > 0) {
                     while (item.x <= -item.halfWidth) {
                         item.x += item.halfWidth;
