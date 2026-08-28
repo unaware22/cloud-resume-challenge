@@ -1277,8 +1277,23 @@ function initPageTransitions() {
 
 /**
  * 3. Visitor Counter for AWS Cloud Resume / Portofolio
- * Fetches count from AWS Lambda + DynamoDB with IP-based Deduplication.
+ * Per-device unique counting: 1 device = 1 visitor.
+ * - Generates a persistent visitor_id (UUID) stored in localStorage.
+ * - First visit → POST /visitor with visitor_id → Lambda increments & records the ID.
+ * - Return visit  → GET /visitor → fetch latest count only (no increment).
  */
+
+/**
+ * Generates a UUID v4 string.
+ */
+function generateUUID() {
+    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
+        const r = (Math.random() * 16) | 0;
+        const v = c === "x" ? r : (r & 0x3) | 0x8;
+        return v.toString(16);
+    });
+}
+
 async function initVisitorCounter() {
     const counterElement = document.getElementById("visitor-count");
     if (!counterElement) return;
@@ -1286,25 +1301,51 @@ async function initVisitorCounter() {
     // URL API Gateway (AWS Lambda + DynamoDB)
     const API_URL = "https://npcoyuaddi.execute-api.ap-southeast-1.amazonaws.com/prod/visitor";
 
+    // --- Per-device deduplication via localStorage ---
+    // visitor_id: UUID unik per browser/device, dibuat sekali dan disimpan selamanya.
+    let visitorId = localStorage.getItem("visitor_id");
+    if (!visitorId) {
+        visitorId = generateUUID();
+        localStorage.setItem("visitor_id", visitorId);
+    }
+
+    // has_visited: flag apakah device ini sudah pernah di-hitung sebagai visitor.
+    const hasVisited = localStorage.getItem("has_visited") === "true";
+
     if (API_URL) {
         try {
-            const response = await fetch(API_URL, {
-                method: "GET",
-                mode: "cors",
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            });
+            let response;
+
+            if (!hasVisited) {
+                // Kunjungan pertama: kirim POST dengan visitor_id agar Lambda increment.
+                response = await fetch(API_URL, {
+                    method: "POST",
+                    mode: "cors",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ visitor_id: visitorId })
+                });
+            } else {
+                // Sudah pernah berkunjung: hanya GET count tanpa increment.
+                response = await fetch(API_URL, {
+                    method: "GET",
+                    mode: "cors",
+                    headers: { "Content-Type": "application/json" }
+                });
+            }
 
             if (response.ok) {
                 const data = await response.json();
                 let parsedBody = data;
                 if (data.body) {
-                    parsedBody = typeof data.body === 'string' ? JSON.parse(data.body) : data.body;
+                    parsedBody = typeof data.body === "string" ? JSON.parse(data.body) : data.body;
                 }
                 const count = parsedBody.visitor_count ?? parsedBody.count ?? data.visitor_count ?? data.count;
 
                 if (count !== undefined && !isNaN(count)) {
+                    // Tandai device ini sudah terhitung setelah berhasil POST.
+                    if (!hasVisited) {
+                        localStorage.setItem("has_visited", "true");
+                    }
                     animateCounter(counterElement, parseInt(count, 10));
                     return;
                 }
